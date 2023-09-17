@@ -14,10 +14,10 @@
 
 int main() {
     cout << "Programa que muestra la lista de estudiantes y sus correspondientes notas" << endl;
-    string archivo = "archivo.txt";
-    Califications registro1(archivo);
+    ifstream archivo("archivo.txt"); // Cargo los datos del fichero
+    Califications registro(archivo);
     cout << "LISTA 1 CON EL ALU Y LA NOTA DE CADA ESTUDIANTE" << endl;
-    registro1.write();
+    registro.write();
     
     return 0;
 }
