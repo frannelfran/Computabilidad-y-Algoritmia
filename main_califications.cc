@@ -14,7 +14,7 @@
 
 int main() {
     cout << "Programa que muestra la lista de estudiantes y sus correspondientes notas" << endl;
-    ifstream archivo("archivo.txt"); // Cargo los datos del fichero
+    ifstream archivo("calificaciones.txt"); // Cargo los datos del fichero
     Califications registro(archivo);
     cout << "LISTA 1 CON EL ALU Y LA NOTA DE CADA ESTUDIANTE" << endl;
     registro.write(); // Muetsra por pantalla la lista de los alumnos con sus respectivas notas

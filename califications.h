@@ -11,7 +11,6 @@ class Califications {
     Califications(ifstream&); // Constructor de la clase
     void write(); // Imprimir por pantalla la lista
 
-
     private:
     std::map<std::string, double> lista_;
 };
