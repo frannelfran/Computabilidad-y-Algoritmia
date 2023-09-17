@@ -1,5 +1,4 @@
 #include "califications.hpp"
-#include "califications.cpp"
 
 int main() {
     char nombre_fichero[85]; 
