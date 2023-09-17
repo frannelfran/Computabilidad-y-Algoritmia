@@ -1,4 +1,4 @@
-#include "califications.hpp"
+#include "califications.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -10,20 +10,14 @@
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 17/09/2023
 // Archivo cya-P01-single-grades.cc: programa cliente.
-// Compilación: g++ -g califications.cpp main_califications.cpp -o main_califications 
+// Compilación: g++ -g califications.cc main_califications.cc -o main_califications 
 
 int main() {
-    char nombre_fichero[85]; 
     cout << "Programa que muestra la lista de estudiantes y sus correspondientes notas" << endl;
-    cout << "Introducir el archivo.txt con la lista de estudiantes " << endl;
-    cin >> nombre_fichero; // Introducir el nombre del fichero
+    string archivo = "archivo.txt";
+    Califications registro1(archivo);
+    cout << "LISTA 1 CON EL ALU Y LA NOTA DE CADA ESTUDIANTE" << endl;
+    registro1.write();
     
-    Califications Listado1(nombre_fichero);
-    Listado1.write();
-
-
-
-
-
     return 0;
 }
