@@ -17,7 +17,7 @@ int main() {
     ifstream archivo("archivo.txt"); // Cargo los datos del fichero
     Califications registro(archivo);
     cout << "LISTA 1 CON EL ALU Y LA NOTA DE CADA ESTUDIANTE" << endl;
-    registro.write();
+    registro.write(); // Muetsra por pantalla la lista de los alumnos con sus respectivas notas
     
     return 0;
 }
