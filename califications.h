@@ -9,8 +9,8 @@ class Califications {
 
     public:
     Califications(ifstream&); // Constructor de la clase
+    std::map<string, double> add(string, double);
     void write(); // Imprimir por pantalla la lista
-
     private:
     std::map<std::string, double> lista_;
 };
