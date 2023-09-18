@@ -12,12 +12,19 @@
 // Archivo cya-P01-single-grades.cc: programa cliente.
 // Compilación: g++ -g califications.cc main_califications.cc -o main_califications 
 
-int main() {
+int main(int argc, char* argv[]) {
     string usuario;
     double nota;
     int opcion;
+    if (argc != 2) { // Verifica si se proporciono el fichero como argumento
+        std::cerr << "Uso: " << argv[0] << "¡SE DEBE DE PASAR EL FICHERO COMO ARGUMENTO!" << std::endl;
+        return 1; // Sale del programa con un código de error
+    }
+    
     cout << "Programa que muestra la lista de estudiantes y sus correspondientes notas" << endl;
-    ifstream archivo("calificaciones.txt"); // Cargo los datos del fichero
+    std::string nombre_archivo = argv[1]; // Introducir el nombre del fichero
+    ifstream archivo(nombre_archivo); // Cargo los datos del fichero
+    cout << "Abriendo " << nombre_archivo << "...." << endl; // Abriendo fichero proporcionado
     Califications registro(archivo);
     do {
         cout << "LISTA CON EL ALU Y LA NOTA DE CADA ESTUDIANTE" << endl;
