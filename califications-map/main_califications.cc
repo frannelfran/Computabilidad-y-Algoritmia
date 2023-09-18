@@ -17,8 +17,13 @@ int main(int argc, char* argv[]) {
     double nota;
     int opcion;
     if (argc != 2) { // Verifica si se proporciono el fichero como argumento
-        cout << "Modo de empleo: " << argv[0] << " nombre_fichero.txt" << endl;
+        cout << "Introduce un fichero, ejecute --help para más información" << endl;
         return 1; // Sale del programa con un código de error
+    }
+    string ayuda = argv[1];
+    if (ayuda == "--help") {
+        cout << "Modo de empleo: " << argv[0] << " nombre_fichero.txt" << endl;
+        exit(EXIT_SUCCESS); // Salir
     }
 
     cout << "Programa que muestra la lista de estudiantes y sus correspondientes notas" << endl;
