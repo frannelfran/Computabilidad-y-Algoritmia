@@ -8,13 +8,13 @@ Califications::Califications(ifstream& archivo) { // Constructor de la clase
             lista_[alumno] = nota; // Almacenamiento de la nota de cvada alumno
         }
     }
-    archivo.close();
+    archivo.close(); // Cerrar el fichero
 }
 
 std::map<string, double> Califications::add(string alumno, double nota) { // Agregar un alumno con su nota
     lista_.insert(std::make_pair(alumno, nota));
     if(lista_.find(alumno) == lista_.end() || nota > lista_.find(alumno) -> second) { // Verificar si el alumno ya esta en la lista y si la nota es menor actualizarla
-        lista_[alumno] = nota; // Almacenamiento de la nota de cvada alumno
+        lista_[alumno] = nota; // Almacenamiento de la nota de cada alumno
     }
     return lista_;
 }
