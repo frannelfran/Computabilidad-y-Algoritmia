@@ -17,10 +17,10 @@ int main(int argc, char* argv[]) {
     double nota;
     int opcion;
     if (argc != 2) { // Verifica si se proporciono el fichero como argumento
-        std::cerr << "Uso: " << argv[0] << "¡SE DEBE DE PASAR EL FICHERO COMO ARGUMENTO!" << std::endl;
+        cout << "Modo de empleo: " << argv[0] << " nombre_fichero.txt" << endl;
         return 1; // Sale del programa con un código de error
     }
-    
+
     cout << "Programa que muestra la lista de estudiantes y sus correspondientes notas" << endl;
     std::string nombre_archivo = argv[1]; // Introducir el nombre del fichero
     ifstream archivo(nombre_archivo); // Cargo los datos del fichero
