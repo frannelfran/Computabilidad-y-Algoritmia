@@ -12,7 +12,7 @@
 // Archivo p01_single_grades.cc
 // Definición: Implementación de la clase Califications
 
-Califications::Califications(ifstream& archivo) {
+Califications::Califications(ifstream& archivo) { // Constructor de la clase
   std::string alumno;
 	double nota;
 	while (archivo >> alumno >> nota) {
@@ -21,15 +21,12 @@ Califications::Califications(ifstream& archivo) {
 	archivo.close(); // Cerrar el fichero
 }
 
-void Califications::write() {
-    for(std::map<string, vector<double> >::iterator i; i != lista_.end(); i++) {
-      cout << i->first << " ";
-      for(double nota : i->second) {
-        cout << nota << endl;
-      }
+void Califications::write() { // Imprimir por pantalla la lista de estudiantes
+  for(const auto& it : lista_) {
+    cout << it.first << " ";
+    for(const double& nota : it.second) {
+      cout << nota << " ";
     }
+    cout << endl;
   }
-
-
-
-
+}
