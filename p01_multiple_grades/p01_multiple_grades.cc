@@ -16,14 +16,20 @@ Califications::Califications(ifstream& archivo) {
   std::string alumno;
 	double nota;
 	while (archivo >> alumno >> nota) {
-		lista_.insert(std::make_pair(alumno, nota)); // Almacenamiento de la nota de cada alumno
+    lista_[alumno].push_back(nota);
 	}
 	archivo.close(); // Cerrar el fichero
 }
 
 void Califications::write() {
-  for(const auto& pair : lista_) {
-    cout << pair.first << " " << pair.second << endl;
+    for(std::map<string, vector<double> >::iterator i; i != lista_.end(); i++) {
+      cout << i->first << " ";
+      for(double nota : i->second) {
+        cout << nota << endl;
+      }
+    }
   }
-}
+
+
+
 
