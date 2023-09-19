@@ -9,7 +9,7 @@
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 17/09/2023
-// Archivo p01_main_single_grades.cc
+// Archivo p01_main_multiple_grades.cc
 
 int main(int argc, char *argv[]) {
 	string usuario;

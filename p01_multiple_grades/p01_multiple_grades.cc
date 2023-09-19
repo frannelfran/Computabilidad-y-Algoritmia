@@ -9,7 +9,7 @@
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 17/09/2023
-// Archivo p01_single_grades.cc
+// Archivo p01_multiple_grades.cc
 // Definición: Implementación de la clase Califications
 
 Califications::Califications(ifstream& archivo) { // Constructor de la clase
