@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 		cout << "Introduce un fichero, ejecute --help para más información" << endl;
 		return 1; // Sale del programa con un código de error
 	}
-	string ayuda = argv[1];
+	std::string ayuda = argv[1];
 	if (ayuda == "--help") {
 		cout << "Modo de empleo: " << "./p01_multiple_grades grades.txt" << endl;
 		exit(EXIT_SUCCESS); // Salir
