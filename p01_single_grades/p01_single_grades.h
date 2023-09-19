@@ -24,5 +24,5 @@ public:
 	void write();							 // Imprimir por pantalla la lista
 
 private:
-	std::map<std::string, double> lista_;
+	std::map<std::string, double> lista_; // Atributo privado de la clase
 };

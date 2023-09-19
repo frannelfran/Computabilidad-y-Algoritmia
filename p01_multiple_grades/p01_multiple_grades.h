@@ -25,5 +25,5 @@ public:
 	void write();	// Imprimir por pantalla la lista
 
 private:
-	map<std::string, vector<double> > lista_;
+	map<std::string, vector<double> > lista_; // Atributo privado de la clase
 };
