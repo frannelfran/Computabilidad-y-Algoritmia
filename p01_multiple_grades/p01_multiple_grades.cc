@@ -21,6 +21,10 @@ Califications::Califications(ifstream& archivo) { // Constructor de la clase
 	archivo.close(); // Cerrar el fichero
 }
 
+void Califications::add(string alumno, double nota) { // Agregar un alumno
+  lista_[alumno].push_back(nota);
+}
+
 void Califications::write() { // Imprimir por pantalla la lista de estudiantes
   for(const auto& it : lista_) {
     cout << it.first << " ";

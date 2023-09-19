@@ -21,7 +21,7 @@ class Califications {
 
 public:
 	Califications(ifstream&); // Constructor de la clase
-	// void add(string, double); // Agregar un alumno
+	void add(string, double); // Agregar un alumno
 	void write();	// Imprimir por pantalla la lista
 
 private:

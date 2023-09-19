@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 		cin >> opcion;
 
 		// OPCIONES
-		/*switch (opcion) {
+		switch (opcion) {
 			case 1: // Agregar un usuario con su nota
 			cout << "Introducir usuario: " << endl;
 			cin >> usuario;
@@ -52,7 +52,6 @@ int main(int argc, char *argv[]) {
 			registro.add(usuario, nota);
 			registro.write();
 		}
-		*/
 	} while (opcion != 0); // Salir del programa
 	return 0;
 }
