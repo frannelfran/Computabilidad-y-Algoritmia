@@ -30,3 +30,28 @@ int main(int argc, char *argv[]) {
 	ifstream archivo(nombre_archivo); // Cargo los datos del fichero
 	cout << "Abriendo " << nombre_archivo << "...." << endl; // Abriendo fichero proporcionado
 	Califications registro(archivo);
+	do {
+		cout << "LISTA CON EL ALU Y LA NOTA DE CADA ESTUDIANTE\n" << endl;
+		registro.write(); // Muestra por pantalla la lista de los alumnos con sus respectivas notas
+		
+		// MENÚ
+		cout << "______MENÚ_____\n" << endl;
+		cout << "1: Introducir usuario " << endl;
+		cout << "0: Exit" << endl;
+		cout << "_______________\n" << endl;
+		cout << "OPCIÓN? ";
+		cin >> opcion;
+
+		// OPCIONES
+		switch (opcion) {
+			case 1: // Agregar un usuario con su nota
+			cout << "Introducir usuario: " << endl;
+			cin >> usuario;
+			cout << "Introducir nota: " << endl;
+			cin >> nota;
+			registro.add(usuario, nota);
+			registro.write();
+		}
+	} while (opcion != 0); // Salir del programa
+	return 0;
+}
