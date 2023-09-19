@@ -1,4 +1,4 @@
-#include "califications.h"
+#include "p01_single_grades.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -9,7 +9,7 @@
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 17/09/2023
-// Archivo cya-P01-single-grades.cc: programa cliente.
+// Archivo p01_main_single_grades
 // Compilación: g++ -g califications.cc main_califications.cc -o main_califications
 
 int main(int argc, char *argv[]) {
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 	}
 	string ayuda = argv[1];
 	if (ayuda == "--help") {
-		cout << "Modo de empleo: " << argv[0] << " nombre_fichero.txt" << endl;
+		cout << "Modo de empleo: " << "./p01_single_grades grades.txt" << endl;
 		exit(EXIT_SUCCESS); // Salir
 	}
 

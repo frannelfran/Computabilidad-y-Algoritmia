@@ -1,12 +1,12 @@
 # Compilación
 main:
 	@echo "Compilando ficheros..."
-	g++ -g califications.cc main_califications.cc -o main_califications
+	g++ -g p01_single_grades.cc p01_main_single_grades.cc -o p01_single_grades
 
 .PHONY: clean
 
 # Eliminar archivos
 clean:
 	@echo "Eliminando ficheros compilados..."
-	rm -f main_califications
-	rm -rf main_califications.dSYM
+	rm -f p01_single_grades
+	rm -rf p01_single_grades.dSYM

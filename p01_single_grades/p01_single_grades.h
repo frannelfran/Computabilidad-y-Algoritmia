@@ -13,7 +13,7 @@ using namespace std;
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 17/09/2023
-// Archivo cya-P01-single-grades.cc: programa cliente.
+// Archivo p01_single_grades.h
 // Definición: Definición de la clase Califications
 
 class Califications {
