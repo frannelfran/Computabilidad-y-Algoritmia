@@ -26,10 +26,10 @@ void Califications::add(string alumno, double nota) { // Agregar un alumno
 }
 
 void Califications::write() { // Imprimir por pantalla la lista de estudiantes
-  for(const auto& it : lista_) {
-    cout << it.first << " ";
-    for(const double& nota : it.second) {
-      cout << nota << " ";
+  for(std::map<string, std::vector<double>>::iterator it = lista_.begin(); it != lista_.end(); it++) { // Recorremos la lista de estudiantes
+    cout << it->first << " "; // Imprimimos el estudiante
+    for(const double& nota : it->second) {
+      cout << nota << " "; // Imprimimos su nota
     }
     cout << endl;
   }

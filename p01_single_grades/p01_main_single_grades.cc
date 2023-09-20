@@ -46,9 +46,9 @@ int main(int argc, char *argv[]) {
 		// OPCIONES
 		switch (opcion) {
 			case 1: // Agregar un usuario con su nota
-			cout << "Introducir usuario: " << endl;
+			cout << "Introducir usuario: ";
 			cin >> usuario;
-			cout << "Introducir nota: " << endl;
+			cout << "Introducir nota: ";
 			cin >> nota;
 			registro.add(usuario, nota);
 			registro.write();
