@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include<vector>
+#include <vector>
 #include <map>
 using namespace std;
 
@@ -22,6 +22,7 @@ class Califications {
 public:
 	Califications(ifstream&); // Constructor de la clase
 	void add(string, double); // Agregar un alumno
+	map<string, std::vector<double>> ordenar(); // Ordenar las notas de los estudiantes de mayor a menor
 	void write();	// Imprimir por pantalla la lista
 
 private:

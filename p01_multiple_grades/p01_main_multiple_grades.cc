@@ -1,4 +1,5 @@
 #include "p01_multiple_grades.h"
+using namespace std;
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -33,9 +34,9 @@ int main(int argc, char *argv[]) {
 	do {
 		cout << "LISTA CON EL ALU Y LA NOTA DE CADA ESTUDIANTE\n" << endl;
 		registro.write(); // Muestra por pantalla la lista de los alumnos con sus respectivas notas
-		
 		// MENÚ
-		cout << "______MENÚ_____\n" << endl;
+		cout << "______MENU_____\n" << endl;
+		cout << "2: Ordenar la lista" << endl;
 		cout << "1: Introducir usuario " << endl;
 		cout << "0: Exit" << endl;
 		cout << "_______________\n" << endl;
@@ -50,6 +51,10 @@ int main(int argc, char *argv[]) {
 			cout << "Introducir nota: ";
 			cin >> nota;
 			registro.add(usuario, nota);
+			case 2:
+			Califications lista_ordenada();
+			registro.ordenar();
+			lista_ordenada.write();
 		}
 	} while (opcion != 0); // Salir del programa
 	return 0;
