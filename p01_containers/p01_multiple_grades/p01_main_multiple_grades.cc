@@ -53,8 +53,8 @@ int main(int argc, char *argv[]) {
 			registro.add(usuario, nota);
 			case 2:
 			Califications lista_ordenada();
-			registro.ordenar();
-			lista_ordenada.write();
+			// registro.ordenar();
+			// lista_ordenada.write();
 		}
 	} while (opcion != 0); // Salir del programa
 	return 0;
