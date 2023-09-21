@@ -35,12 +35,12 @@ int main(int argc, char *argv[]) {
 		cout << "LISTA CON EL ALU Y LA NOTA DE CADA ESTUDIANTE\n" << endl;
 		registro.write(); // Muestra por pantalla la lista de los alumnos con sus respectivas notas
 		// MENÚ
-		cout << "______MENU_____\n\
-						2: Ordenar la lista\
-						1: Introducir usuario\
-						0: Exit\
-						_______________\n\
-						OPCIÓN? " << endl;
+		cout << "______MENU_____\n" << endl;
+		cout << "2: Ordenar la lista" << endl;
+		cout << "1: Introducir usuario" << endl;
+		cout << "0: Exit" << endl;
+		cout << "_______________\n" << endl;
+		cout << "OPCIÓN? ";
 		cin >> opcion;
 
 		// OPCIONES
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 			registro.add(usuario, nota);
 			case 2:
 			Califications lista_ordenada();
-			// registro.ordenar();
+			// lregistro.ordenar();
 			// lista_ordenada.write();
 		}
 	} while (opcion != 0); // Salir del programa
