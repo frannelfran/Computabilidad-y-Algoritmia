@@ -50,7 +50,6 @@ int main(int argc, char *argv[]) {
 			cout << "Introducir nota: ";
 			cin >> nota;
 			registro.add(usuario, nota);
-			registro.write();
 		}
 	} while (opcion != 0); // Salir del programa
 	return 0;
