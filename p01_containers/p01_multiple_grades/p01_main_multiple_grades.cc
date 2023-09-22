@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 			cout << "Introducir nota: ";
 			cin >> nota;
 			registro.add(usuario, nota);
-			case 2:
+			case 2: // Ordena las calificaciones de cada estudiante de mayor a menor
 			registro.ordenar();
 		}
 	} while (opcion != 0); // Salir del programa
