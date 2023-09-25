@@ -19,7 +19,7 @@ using namespace std;
 
 class Cadena {
   public:
-    Cadena(const string mi_cadena); // Constructor de la clase cadena
+    Cadena(const string); // Constructor de la clase cadena
     void alfabeto(); // Crea el alfabeto según la cadena
   private: // Atributos privados de la clase
     vector<char> cadena_;
