@@ -19,13 +19,12 @@ using namespace std;
 class Language {
   public:
     Language(ifstream&); // Constructor de la clase Language
-    void alfabeto();
-    int longitud();
-    void inversa();
-    void prefijos();
-    void sufijos();
-    void write();
+    void alfabeto(); // Mostrar el alfabeto
+    int longitud(); // Mostrar la longitud del lenguaje
+    void inversa(); // Mostrar la inversa
+    void prefijos(); // Mostrar todos los prefijos
+    void sufijos(); // Mostrar todos los sufijos
 
   private:
-  set<string> lenguaje_;
+  set<string> lenguaje_; // Atributo privado de la clase
 };

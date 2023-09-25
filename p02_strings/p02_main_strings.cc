@@ -15,12 +15,18 @@ int main(int argc, char *argv[]) {
   string elemento;
   if(argc != 2) { // Verifica que se ha introducido un fichero como argumento
     cout << "Pruebe ./p02_strings --help para más información" << endl;
+    return 1;
   }
   string ayuda = argv[1];
   if(ayuda == "--help") {
     cout << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode" << endl;
     exit(EXIT_SUCCESS);
-  }
-  ifstream filein("filein.txt");
+  } 
+  string fichero_entrada = argv[1];
+  ifstream filein(fichero_entrada);
+  cout << "Abriendo " << fichero_entrada << "..." << endl;
+  Language registro(filein);
+  registro.alfabeto();
   
+
 }
