@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <set>
+using namespace std;
+
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 1: Operaciones con cadenas
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 25/09/2023
+// Archivo p02_strings.h
+// Descripción: Definición de la clase languaje
+
+class Language {
+  public:
+    Language(ifstream&); // Constructor de la clase Language
+    void alfabeto();
+    int longitud();
+    void inversa();
+    void prefijos();
+    void sufijos();
+    void write();
+
+  private:
+  set<string> lenguaje_;
+};
