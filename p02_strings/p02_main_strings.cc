@@ -1,4 +1,4 @@
-#include "p02_cadena.h"
+#include "p02_strings.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -25,5 +25,10 @@ int main(int argc, char *argv[]) {
   string fichero_entrada = argv[1];
   ifstream filein(fichero_entrada);
   cout << "Abriendo " << fichero_entrada << "..." << endl;
-  Cadena c1(filein);
+  vector<Cadena> cadenas; // Guardar todas las cadenas
+  string mi_cadena;
+  while(filein >> mi_cadena) {
+    Cadena c1(mi_cadena);
+    c1.alfabeto();
+  }
 }
