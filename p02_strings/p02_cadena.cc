@@ -22,4 +22,8 @@ Cadena::Cadena(ifstream& filein) { // Cionstructor de la clase
   filein.close(); // Cerrar el fichero
 }
 
-
+void Cadena::alfabeto() { // Crear el alfabeto
+  for(int it = 0; it << cadena_.size(); it++) { // Recorrer la cadena
+    alfabeto_.insert(cadena_[it]);
+  }
+}

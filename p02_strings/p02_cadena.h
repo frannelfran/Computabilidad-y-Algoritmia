@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <set>
 using namespace std;
 
 // Universidad de La Laguna
@@ -21,5 +22,6 @@ class Cadena {
     Cadena(ifstream&); // Constructor de la clase cadena
     void alfabeto(); // Crea el alfabeto según la cadena
   private:
-  vector<char> cadena_; // Atributo privado de la clase
+    vector<char> cadena_; // Atributo privado de la clase
+    set<char> alfabeto_;
 };
