@@ -19,11 +19,3 @@ Language::Language(ifstream& filein) { // Constructor de la clase lenguaje
   }
   filein.close(); // Cerrar el fichero
 }
-
-void Language::alfabeto() {
-  int i = 1;
-  for(string c : lenguaje_) {
-    cout << "L" << i << "= " << c << endl;
-    i++;
-  }
-}
