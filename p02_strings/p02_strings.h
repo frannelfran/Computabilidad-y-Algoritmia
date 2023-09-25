@@ -1,8 +1,5 @@
-#include <iostream>
-#include <string>
-#include <fstream>
+#include "cadena.h"
 #include <set>
-using namespace std;
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología

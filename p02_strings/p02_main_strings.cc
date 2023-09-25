@@ -1,4 +1,5 @@
 #include "p02_strings.h"
+#include "cadena.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -25,6 +26,5 @@ int main(int argc, char *argv[]) {
   string fichero_entrada = argv[1];
   ifstream filein(fichero_entrada);
   cout << "Abriendo " << fichero_entrada << "..." << endl;
-  Language<string> registro(filein);
-  registro.alfabeto();
+  Cadena c1(filein);
 }
