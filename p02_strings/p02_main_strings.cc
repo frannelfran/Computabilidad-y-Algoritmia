@@ -1,5 +1,4 @@
-#include "p02_strings.h"
-#include "cadena.h"
+#include "p02_cadena.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
