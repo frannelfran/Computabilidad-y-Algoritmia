@@ -12,7 +12,7 @@
 // Archivo p02_strings.cc
 // Definición: Implementación de la clase language
 
-Language::Language(ifstream& filein) { // Constructor de la clase lenguaje
+template<class T> Language<T>::Language(ifstream& filein) { // Constructor de la clase lenguaje
   string elemento;
   while(filein >> elemento) {
     lenguaje_.insert(elemento); // Introducir las cadenas al set

@@ -16,7 +16,7 @@ using namespace std;
 // Archivo p02_strings.h
 // Descripción: Definición de la clase languaje
 
-class Language {
+template<class T> class Language {
   public:
     Language(ifstream&); // Constructor de la clase Language
     void alfabeto(); // Mostrar el alfabeto

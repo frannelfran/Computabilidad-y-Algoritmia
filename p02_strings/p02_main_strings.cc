@@ -25,8 +25,6 @@ int main(int argc, char *argv[]) {
   string fichero_entrada = argv[1];
   ifstream filein(fichero_entrada);
   cout << "Abriendo " << fichero_entrada << "..." << endl;
-  Language registro(filein);
+  Language<string> registro(filein);
   registro.alfabeto();
-  
-
 }
