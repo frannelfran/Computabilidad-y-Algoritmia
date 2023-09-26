@@ -37,7 +37,8 @@ int main(int argc, char *argv[]) {
       set<char> mi_alfabeto;
       mi_alfabeto = c1.alfabeto();
       Alfabeto a1(mi_alfabeto);
-      cout << a1;
+      fileout << a1;
+      break;
     }
   }
   filein.close(); // Cerramos el fichero de entrada

@@ -26,4 +26,5 @@ ostream& operator<<(ostream& os, const Alfabeto& alf) { // Sobrecarga del operad
     os << *it << ", ";
   }
   os << "}" << endl;
+  return os;
 }
