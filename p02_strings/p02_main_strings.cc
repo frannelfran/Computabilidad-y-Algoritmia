@@ -12,7 +12,7 @@
 // Archivo p02_main_strings.cc
 
 int main(int argc, char *argv[]) {
-  if(argc != 2) { // Verifica que se ha introducido un fichero como argumento
+  if(argc != 4) { // Verifica que se ha introducido un fichero como argumento
     cout << "Pruebe ./p02_strings --help para más información" << endl;
     return 1;
   }
@@ -20,13 +20,15 @@ int main(int argc, char *argv[]) {
   if(ayuda == "--help") {
     cout << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode" << endl;
     exit(EXIT_SUCCESS);
-  } 
-  string fichero_entrada = argv[1];
-  ifstream filein(fichero_entrada);
+  }
+  // ARGUMENTOS DE ENTRADA
+  string fichero_entrada = argv[1]; // Fichero de entrada como argumento
+  string fichero_salida = argv[2]; // FIchero de salida como argumento
+  int opcion = stoi(argv[3]); // Opcode
+  
+  ifstream filein(fichero_entrada); // Leo el fichero de entrada
   cout << "Abriendo " << fichero_entrada << "..." << endl;
   string mi_cadena;
-  int opcion;
-  cin >> opcion;
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
     switch(opcion) {
@@ -43,4 +45,6 @@ int main(int argc, char *argv[]) {
       break;
     }
   }
+  filein.close(); // Cerramos el fichero de entrada
+  return 0;
 }
