@@ -14,14 +14,14 @@
 
 Cadena::Cadena(const string mi_cadena) { // Constructor de la clase
   for (const char letra : mi_cadena) {
-    cadena_.push_back(letra);
-    alfabeto_.insert(letra);
+    cadena_.push_back(letra); // Creo la cadena
+    alfabeto_.insert(letra); // Creo el alfabeto
   }
 }
 
-void Cadena::alfabeto() {
+void Cadena::alfabeto() { //Imprime el alfabeto asociado a la cadena
   cout << "{";
-  for(set<char>::iterator it = alfabeto_.begin(); it != alfabeto_.end(); ++it) {
+  for(set<char>::iterator it = alfabeto_.begin(); it != alfabeto_.end(); ++it) { // Recorremos el alfabeto
     if (next(it) == alfabeto_.end()) {
       cout << *it;
       break;
@@ -29,4 +29,15 @@ void Cadena::alfabeto() {
     cout << *it << ", ";
   }
   cout << "}" << endl;
+}
+
+int Cadena::longitud() { // Devuelve la longitud de cada cadena
+  return cadena_.size();
+}
+
+void Cadena::inversa() { // Muestra la cadena inversa
+  for(int it = cadena_.size(); it >= 0; it--) { // Recorremos la cadena empezando por el último elemento
+    cout << cadena_[it]; // Vamos mostrando los elementos de manera inversa
+  }
+  cout << endl; // Nueva línea
 }

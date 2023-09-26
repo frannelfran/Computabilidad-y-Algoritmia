@@ -12,7 +12,6 @@
 // Archivo p02_main_strings.cc
 
 int main(int argc, char *argv[]) {
-  string elemento;
   if(argc != 2) { // Verifica que se ha introducido un fichero como argumento
     cout << "Pruebe ./p02_strings --help para más información" << endl;
     return 1;
@@ -25,10 +24,23 @@ int main(int argc, char *argv[]) {
   string fichero_entrada = argv[1];
   ifstream filein(fichero_entrada);
   cout << "Abriendo " << fichero_entrada << "..." << endl;
-  vector<Cadena> cadenas; // Guardar todas las cadenas
   string mi_cadena;
+  int opcion;
+  cin >> opcion;
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
-    c1.alfabeto();
+    switch(opcion) {
+      case 1: // Muestra el alfabeto asociado a la cadena
+      c1.alfabeto();
+      break;
+      case 2: // Muestra la longitud asociada a cada cadena
+      int longitud;
+      longitud = c1.longitud();
+      cout << longitud << endl;
+      break;
+      case 3: // Muestra la inversa de la cadena
+      c1.inversa();
+      break;
+    }
   }
 }

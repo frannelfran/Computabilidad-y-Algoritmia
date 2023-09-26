@@ -21,6 +21,8 @@ class Cadena {
   public:
     Cadena(const string); // Constructor de la clase cadena
     void alfabeto(); // Crea el alfabeto según la cadena
+    int longitud(); // Muestra la longitud que tiene la cadena
+    void inversa(); // Muestra la cadena de manera inversa
   private: // Atributos privados de la clase
     vector<char> cadena_;
     set<char> alfabeto_;
