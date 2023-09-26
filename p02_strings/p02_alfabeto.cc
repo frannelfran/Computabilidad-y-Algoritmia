@@ -12,6 +12,18 @@
 // Archivo p02_alfabeto.cc
 // Descripción: Implementación de la clase alfabeto
 
-Alfabeto::Alfabeto(std::set<char>& mi_alfabeto) {
-  alfabeto_ = mi_alfabeto;
+Alfabeto::Alfabeto(set<char>& mi_cadena) { // Constructor de la clase
+  alfabeto_ = mi_cadena; // Crea el alfabeto
+}
+
+ostream& operator<<(ostream& os, const Alfabeto& alf) { // Sobrecarga del operador de salida "<<"
+  os << "{";
+  for(set<char>::iterator it = alf.alfabeto_.begin(); it != alf.alfabeto_.end(); ++it) { // Recorremos el alfabeto
+    if (next(it) == alf.alfabeto_.end()) {
+      os << *it;
+      break;
+    }
+    os << *it << ", ";
+  }
+  os << "}" << endl;
 }

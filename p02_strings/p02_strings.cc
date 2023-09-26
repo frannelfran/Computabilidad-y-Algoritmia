@@ -15,7 +15,6 @@
 Cadena::Cadena(const string mi_cadena) { // Constructor de la clase
   for (const char letra : mi_cadena) {
     cadena_.push_back(letra); // Creo la cadena
-    alfabeto_.insert(letra); // Creo el alfabeto
   }
 }
 

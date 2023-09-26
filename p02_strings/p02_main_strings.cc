@@ -1,4 +1,5 @@
 #include "p02_strings.h"
+#include "p02_alfabeto.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -32,15 +33,9 @@ int main(int argc, char *argv[]) {
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
     switch(opcode) {
-      case 2: // Muestra la longitud asociada a cada cadena
-      int longitud;
-      longitud = c1.longitud();
-      fileout << longitud << endl;
-      break;
-      /*case 3: // Muestra la inversa de la cadena
-      set<char> conjuntoInvertido;
-      conjuntoInvertido = c1.inversa();
-      fileout << conjuntoInvertido << endl;*/
+      case 1:
+      Alfabeto a1();
+      
     }
   }
   filein.close(); // Cerramos el fichero de entrada

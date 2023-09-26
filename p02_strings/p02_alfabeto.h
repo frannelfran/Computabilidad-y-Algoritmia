@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include <set>
+#include <vector>
+#include "p02_strings.h"
+using namespace std;
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -16,7 +19,8 @@
 
 class Alfabeto {
   public:
-  Alfabeto(std::set<char>&); // Constructor de la clase
+  Alfabeto(set<char>&); // Constructor de la clase
+  friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf); // Sobrecarga del operador de salida "<<"
   private:
-  std::set<char> alfabeto_; // Atributo privado de la clase
+  set<char> alfabeto_; // Atributo privado de la clase
 };
