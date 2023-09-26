@@ -16,7 +16,7 @@
 
 class Alfabeto {
   public:
-  Alfabeto(set<char>&); // Constructor de la clase
+  Alfabeto(std::set<char>&); // Constructor de la clase
   private:
-  set<char> alfabeto_; // Atributo privado de la clase
+  std::set<char> alfabeto_; // Atributo privado de la clase
 };

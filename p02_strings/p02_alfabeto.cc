@@ -12,6 +12,6 @@
 // Archivo p02_alfabeto.cc
 // Descripción: Implementación de la clase alfabeto
 
-Alfabeto::Alfabeto(set<char>& mi_alfabeto) {
+Alfabeto::Alfabeto(std::set<char>& mi_alfabeto) {
   alfabeto_ = mi_alfabeto;
 }
