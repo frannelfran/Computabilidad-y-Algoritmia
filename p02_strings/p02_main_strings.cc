@@ -33,11 +33,15 @@ int main(int argc, char *argv[]) {
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
     switch(opcode) {
-      case 1: // Muestra el alfabeto de cada cadena
-      set<char> mi_alfabeto;
-      mi_alfabeto = c1.alfabeto();
-      Alfabeto a1(mi_alfabeto);
-      fileout << a1;
+      case 1: { // Muestra el alfabeto de cada cadena
+        set<char> mi_alfabeto;
+        mi_alfabeto = c1.alfabeto();
+        Alfabeto a1(mi_alfabeto);
+        fileout << a1;
+        break;
+      }
+      case 2: // Muestra la longitud de cada cadena
+      fileout << c1.longitud() << endl;
       break;
     }
   }

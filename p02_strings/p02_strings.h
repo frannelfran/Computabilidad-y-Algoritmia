@@ -27,7 +27,6 @@ class Cadena {
     void sufijos(set<string>&); // Crea los sufijos de la cadena
 
     friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena); // Sobrecarga del operador "<<"
-  private: // Atributos privados de la clase
-    vector<char> cadena_;
-    set<char> alfabeto_;
+  private:
+    vector<char> cadena_; // Atributo privado de la clase
 };

@@ -17,9 +17,9 @@ using namespace std;
 // Descripción: Declaración de la clase cadena
 
 class Alfabeto {
-  public:
+public:
   Alfabeto(set<char>&); // Constructor de la clase
   friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf); // Sobrecarga del operador de salida "<<"
-  private:
+private:
   set<char> alfabeto_; // Atributo privado de la clase
 };
