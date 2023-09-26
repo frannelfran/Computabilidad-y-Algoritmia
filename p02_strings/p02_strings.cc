@@ -30,12 +30,11 @@ int Cadena::longitud() { // Devuelve la longitud de cada cadena
   return cadena_.size();
 }
 
-set<char> Cadena::inversa() { // Muestra la cadena inversa
-  set<char> cadenaInvertida;
+void Cadena::inversa() { // Muestra la cadena inversa
+  vector<char> cadenaInvertida;
   for(int it = cadena_.size(); it >= 0; it--) { // Recorremos la cadena empezando por el último elemento
-    cadenaInvertida.insert(cadena_[it]); // Vamos mostrando los elementos de manera inversa
+    cadenaInvertida.push_back(cadena_[it]); // Vamos mostrando los elementos de manera inversa
   }
-  return cadenaInvertida;
 }
 
 void Cadena::prefijos(set<string>& conjuntoPrefijos) { // Crea el conjunto de prefijos de la cadena
@@ -55,8 +54,8 @@ void Cadena::sufijos(set<string>& conjuntoSufijos) { // Crea el conjunto de sufi
 }
 
 ostream& operator<<(std::ostream& os, const Cadena& cadena) { // Sobrecarga del operador "<<"
-  for (char c : cadena.cadena_) {
-    os << c;
+  for (char letra : cadena.cadena_) {
+    os << letra;
   }
   return os;
 }

@@ -22,7 +22,7 @@ class Cadena {
     Cadena(const string); // Constructor de la clase cadena
     set<char> alfabeto(); // Crea el alfabeto según la cadena
     int longitud(); // Muestra la longitud que tiene la cadena
-    set<char> inversa(); // Muestra la cadena de manera inversa
+    void inversa(); // Muestra la cadena de manera inversa
     void prefijos(set<string>&); // Crea los prefijos de la cadena
     void sufijos(set<string>&); // Crea los sufijos de la cadena
 

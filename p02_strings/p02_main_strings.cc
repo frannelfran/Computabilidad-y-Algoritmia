@@ -34,8 +34,7 @@ int main(int argc, char *argv[]) {
     Cadena c1(mi_cadena);
     switch(opcode) {
       case 1: { // Muestra el alfabeto de cada cadena
-        set<char> mi_alfabeto;
-        mi_alfabeto = c1.alfabeto();
+        set<char> mi_alfabeto = c1.alfabeto();
         Alfabeto a1(mi_alfabeto);
         fileout << a1;
         break;
@@ -43,6 +42,10 @@ int main(int argc, char *argv[]) {
       case 2: // Muestra la longitud de cada cadena
       fileout << c1.longitud() << endl;
       break;
+      case 3: {
+        vector<char> mi_inversa = c1.inversa();
+        fileout << c1 << endl;
+      }
     }
   }
   filein.close(); // Cerramos el fichero de entrada
