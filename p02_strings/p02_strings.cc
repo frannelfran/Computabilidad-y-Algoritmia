@@ -33,8 +33,9 @@ int Cadena::longitud() { // Devuelve la longitud de cada cadena
 void Cadena::inversa() { // Muestra la cadena inversa
   vector<char> cadenaInvertida;
   for(int it = cadena_.size(); it >= 0; it--) { // Recorremos la cadena empezando por el último elemento
-    cadenaInvertida.push_back(cadena_[it]); // Vamos mostrando los elementos de manera inversa
+    cadenaInvertida.push_back(cadena_[it]);
   }
+  cadena_ == cadenaInvertida;
 }
 
 void Cadena::prefijos(set<string>& conjuntoPrefijos) { // Crea el conjunto de prefijos de la cadena

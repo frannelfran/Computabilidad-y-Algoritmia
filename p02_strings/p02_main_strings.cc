@@ -42,8 +42,8 @@ int main(int argc, char *argv[]) {
       case 2: // Muestra la longitud de cada cadena
       fileout << c1.longitud() << endl;
       break;
-      case 3: {
-        vector<char> mi_inversa = c1.inversa();
+      case 3: { // Muestra la cadena inversa 
+        c1.inversa();
         fileout << c1 << endl;
       }
     }
