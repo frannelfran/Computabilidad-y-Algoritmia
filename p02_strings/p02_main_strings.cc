@@ -45,8 +45,9 @@ int main(int argc, char *argv[]) {
       case 3: // Muestra la cadena inversa 
       c1.inversa();
       fileout << c1 << endl;
+      break;
       case 4: {
-        set<string> mi_sufijo;
+        set<string> mi_prefijo = c1.prefijos();
       }
     }
   }

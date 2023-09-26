@@ -23,7 +23,7 @@ class Cadena {
     set<char> alfabeto(); // Crea el alfabeto según la cadena
     int longitud(); // Muestra la longitud que tiene la cadena
     void inversa(); // Muestra la cadena de manera inversa
-    set<string> prefijos(set<string>&); // Crea los prefijos de la cadena
+    set<string> prefijos(); // Crea los prefijos de la cadena
     void sufijos(set<string>&); // Crea los sufijos de la cadena
 
     friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena); // Sobrecarga del operador "<<"
