@@ -44,8 +44,22 @@ int main(int argc, char *argv[]) {
       case 3: // Muestra la inversa de la cadena
       c1.inversa();
       break;
+      case 4:
+      set<string> conjuntoPrefijos;
+      c1.prefijos(conjuntoPrefijos); // Creo el conjunto de prefijos
+      // Imprimir los prefijos pertenecientes a cada cadena
+      cout << "{&, ";
+      for(set<string>::iterator it = conjuntoPrefijos.begin(); it != conjuntoPrefijos.end(); it++ ) { // Recorrer el conjunto de prefijos de la cadena
+        if(next(it) == conjuntoPrefijos.end()) {
+          cout << *it;
+          break;
+        }
+        cout << *it << ", ";
+      }
+      cout << "}" << endl;
     }
   }
   filein.close(); // Cerramos el fichero de entrada
+  fileout.close(); // erramos el fichero de salida
   return 0;
 }

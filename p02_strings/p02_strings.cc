@@ -42,6 +42,22 @@ void Cadena::inversa() { // Muestra la cadena inversa
   cout << endl; // Nueva línea
 }
 
+void Cadena::prefijos(set<string>& conjuntoPrefijos) { // Crea el conjunto de prefijos de la cadena
+  string prefijo;
+  for(char letra : cadena_) {
+    prefijo += letra; // A cada prefijo le vamos agregando una letra
+    conjuntoPrefijos.insert(prefijo); // Vamos insertando los prefijos en el set de strings
+  }
+}
+
+void Cadena::sufijos(set<string>& conjuntoSufijos) { // Crea el conjunto de sufijos de la cadena
+  string sufijo;
+  for(vector<char>::iterator letra = cadena_.end(); letra != cadena_.begin(); letra--) {
+    sufijo += *letra;
+    conjuntoSufijos.insert(sufijo);
+  }
+}
+
 ostream& operator<<(std::ostream& os, const Cadena& cadena) { // Sobrecarga del operador "<<"
   for (char c : cadena.cadena_) {
     os << c;
