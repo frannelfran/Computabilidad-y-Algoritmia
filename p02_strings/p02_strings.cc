@@ -35,11 +35,12 @@ int Cadena::longitud() { // Devuelve la longitud de cada cadena
   return cadena_.size();
 }
 
-void Cadena::inversa() { // Muestra la cadena inversa
+set<char> Cadena::inversa() { // Muestra la cadena inversa
+  set<char> cadenaInvertida;
   for(int it = cadena_.size(); it >= 0; it--) { // Recorremos la cadena empezando por el último elemento
-    cout << cadena_[it]; // Vamos mostrando los elementos de manera inversa
+    cadenaInvertida.insert(cadena_[it]); // Vamos mostrando los elementos de manera inversa
   }
-  cout << endl; // Nueva línea
+  return cadenaInvertida;
 }
 
 void Cadena::prefijos(set<string>& conjuntoPrefijos) { // Crea el conjunto de prefijos de la cadena

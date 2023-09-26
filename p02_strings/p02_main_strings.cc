@@ -28,35 +28,19 @@ int main(int argc, char *argv[]) {
   
   ifstream filein(fichero_entrada); // Leo el fichero de entrada
   ofstream fileout(fichero_salida);
-  cout << "Abriendo " << fichero_entrada << "..." << endl;
   string mi_cadena;
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
     switch(opcode) {
-      case 1: // Muestra el alfabeto asociado a la cadena
-      c1.alfabeto();
-      break;
       case 2: // Muestra la longitud asociada a cada cadena
       int longitud;
       longitud = c1.longitud();
-      cout << longitud << endl;
+      fileout << longitud << endl;
       break;
-      case 3: // Muestra la inversa de la cadena
-      c1.inversa();
-      break;
-      case 4:
-      set<string> conjuntoPrefijos;
-      c1.prefijos(conjuntoPrefijos); // Creo el conjunto de prefijos
-      // Imprimir los prefijos pertenecientes a cada cadena
-      cout << "{&, ";
-      for(set<string>::iterator it = conjuntoPrefijos.begin(); it != conjuntoPrefijos.end(); it++ ) { // Recorrer el conjunto de prefijos de la cadena
-        if(next(it) == conjuntoPrefijos.end()) {
-          cout << *it;
-          break;
-        }
-        cout << *it << ", ";
-      }
-      cout << "}" << endl;
+      /*case 3: // Muestra la inversa de la cadena
+      set<char> conjuntoInvertido;
+      conjuntoInvertido = c1.inversa();
+      fileout << conjuntoInvertido << endl;*/
     }
   }
   filein.close(); // Cerramos el fichero de entrada
