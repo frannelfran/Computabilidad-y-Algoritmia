@@ -2,7 +2,6 @@
 #include <string>
 #include <set>
 #include <vector>
-#include "p02_strings.h"
 using namespace std;
 
 // Universidad de La Laguna

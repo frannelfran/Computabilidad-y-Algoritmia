@@ -18,16 +18,12 @@ Cadena::Cadena(const string mi_cadena) { // Constructor de la clase
   }
 }
 
-void Cadena::alfabeto() { //Imprime el alfabeto asociado a la cadena
-  cout << "{";
-  for(set<char>::iterator it = alfabeto_.begin(); it != alfabeto_.end(); ++it) { // Recorremos el alfabeto
-    if (next(it) == alfabeto_.end()) {
-      cout << *it;
-      break;
-    }
-    cout << *it << ", ";
+set<char> Cadena::alfabeto() { //Imprime el alfabeto asociado a la cadena
+  set<char> mi_alfabeto;
+  for(int it = 0; it < cadena_.size(); it++) { // Recorre la cadena para crear el alfabeto
+    mi_alfabeto.insert(it);
   }
-  cout << "}" << endl;
+  return mi_alfabeto;
 }
 
 int Cadena::longitud() { // Devuelve la longitud de cada cadena
