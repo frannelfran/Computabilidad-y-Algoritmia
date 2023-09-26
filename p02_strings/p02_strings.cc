@@ -21,7 +21,7 @@ Cadena::Cadena(const string mi_cadena) { // Constructor de la clase
 set<char> Cadena::alfabeto() { //Imprime el alfabeto asociado a la cadena
   set<char> mi_alfabeto;
   for(int it = 0; it < cadena_.size(); it++) { // Recorre la cadena para crear el alfabeto
-    mi_alfabeto.insert(it);
+    mi_alfabeto.insert(cadena_[it]);
   }
   return mi_alfabeto;
 }

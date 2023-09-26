@@ -25,7 +25,7 @@ class Cadena {
     set<char> inversa(); // Muestra la cadena de manera inversa
     void prefijos(set<string>&); // Crea los prefijos de la cadena
     void sufijos(set<string>&); // Crea los sufijos de la cadena
-    
+
     friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena); // Sobrecarga del operador "<<"
   private: // Atributos privados de la clase
     vector<char> cadena_;
