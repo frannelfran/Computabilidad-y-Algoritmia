@@ -40,6 +40,7 @@ void Cadena::inversa() { // Muestra la cadena inversa
 
 void Cadena::prefijos(set<string>& conjuntoPrefijos) { // Crea el conjunto de prefijos de la cadena
   string prefijo;
+  conjuntoPrefijos.insert("&");
   for(char letra : cadena_) {
     prefijo += letra; // A cada prefijo le vamos agregando una letra
     conjuntoPrefijos.insert(prefijo); // Vamos insertando los prefijos en el set de strings
