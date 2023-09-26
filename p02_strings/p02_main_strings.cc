@@ -48,6 +48,7 @@ int main(int argc, char *argv[]) {
       break;
       case 4: {
         set<string> mi_prefijo = c1.prefijos();
+        
       }
     }
   }
