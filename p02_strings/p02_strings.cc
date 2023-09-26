@@ -9,7 +9,7 @@
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 25/09/2023
-// Archivo p02_cadena.cc
+// Archivo p02_strings.cc
 // Decripción: Implementación de la clase cadena
 
 Cadena::Cadena(const string mi_cadena) { // Constructor de la clase
@@ -40,4 +40,11 @@ void Cadena::inversa() { // Muestra la cadena inversa
     cout << cadena_[it]; // Vamos mostrando los elementos de manera inversa
   }
   cout << endl; // Nueva línea
+}
+
+ostream& operator<<(std::ostream& os, const Cadena& cadena) { // Sobrecarga del operador "<<"
+  for (char c : cadena.cadena_) {
+    os << c;
+  }
+  return os;
 }

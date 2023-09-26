@@ -14,7 +14,7 @@ using namespace std;
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 25/09/2023
-// Archivo p02_cadena.h
+// Archivo p02_strings.h
 // Decripción: Declaración de la clase cadena
 
 class Cadena {
@@ -23,6 +23,8 @@ class Cadena {
     void alfabeto(); // Crea el alfabeto según la cadena
     int longitud(); // Muestra la longitud que tiene la cadena
     void inversa(); // Muestra la cadena de manera inversa
+
+    friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena); // Sobrecarga del operador "<<"
   private: // Atributos privados de la clase
     vector<char> cadena_;
     set<char> alfabeto_;

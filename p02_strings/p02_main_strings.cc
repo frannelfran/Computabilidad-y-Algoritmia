@@ -24,14 +24,15 @@ int main(int argc, char *argv[]) {
   // ARGUMENTOS DE ENTRADA
   string fichero_entrada = argv[1]; // Fichero de entrada como argumento
   string fichero_salida = argv[2]; // FIchero de salida como argumento
-  int opcion = stoi(argv[3]); // Opcode
+  int opcode = stoi(argv[3]); // Opcode
   
   ifstream filein(fichero_entrada); // Leo el fichero de entrada
+  ofstream fileout(fichero_salida);
   cout << "Abriendo " << fichero_entrada << "..." << endl;
   string mi_cadena;
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
-    switch(opcion) {
+    switch(opcode) {
       case 1: // Muestra el alfabeto asociado a la cadena
       c1.alfabeto();
       break;
