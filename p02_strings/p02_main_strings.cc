@@ -12,7 +12,7 @@
 // Fecha: 25/09/2023
 // Archivo p02_main_strings.cc
 
-void write(set<string> mi_conjunto, ofstream& fileout) { // Escribe en el fichero el conjunto de prefijos o sufijos
+void write(set<string>& mi_conjunto, ofstream& fileout) { // Escribe en el fichero el conjunto de prefijos o sufijos
   fileout << "{";
   for(set<string>::iterator it = mi_conjunto.begin(); it != mi_conjunto.end(); it++) { // Recorremos el conjunto
     if(next(it) == mi_conjunto.end()) {
