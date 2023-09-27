@@ -40,19 +40,19 @@ int main(int argc, char *argv[]) {
         break;
       }
       case 2: // Muestra la longitud de cada cadena
-      fileout << c1.longitud() << endl;
-      break;
+        fileout << c1.longitud() << endl;
+        break;
       case 3: // Muestra la cadena inversa 
-      c1.inversa();
-      fileout << c1 << endl;
-      break;
-      case 4: {
+        c1.inversa();
+        fileout << c1 << endl;
+        break;
+      case 4: { // Muestra los prefijos asociados a cada cadena
         set<string> mi_prefijo = c1.prefijos();
-        
+
       }
     }
   }
   filein.close(); // Cerramos el fichero de entrada
-  fileout.close(); // erramos el fichero de salida
+  fileout.close(); // Cerramos el fichero de salida
   return 0;
 }
