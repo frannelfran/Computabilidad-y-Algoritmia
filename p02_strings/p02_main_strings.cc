@@ -12,6 +12,18 @@
 // Fecha: 25/09/2023
 // Archivo p02_main_strings.cc
 
+void write(set<string> mi_conjunto, ofstream& fileout) { // Escribe en el fichero el conjunto de prefijos o sufijos
+  fileout << "{";
+  for(set<string>::iterator it = mi_conjunto.begin(); it != mi_conjunto.end(); it++) { // Recorremos el conjunto
+    if(next(it) == mi_conjunto.end()) {
+      fileout << *it;
+      break;
+    }
+    fileout << *it << ", "; // Imprimimos los elementos del conjunto
+  }
+  fileout << "}" << endl;
+}
+
 int main(int argc, char *argv[]) {
   if(argc != 4) { // Verifica que se ha introducido un fichero como argumento
     cout << "Pruebe ./p02_strings --help para más información" << endl;
@@ -28,7 +40,7 @@ int main(int argc, char *argv[]) {
   int opcode = stoi(argv[3]); // Opcode
   
   ifstream filein(fichero_entrada); // Leo el fichero de entrada
-  ofstream fileout(fichero_salida);
+  ofstream fileout(fichero_salida); // Escribo en el fichero de salida
   string mi_cadena;
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
@@ -48,7 +60,13 @@ int main(int argc, char *argv[]) {
         break;
       case 4: { // Muestra los prefijos asociados a cada cadena
         set<string> mi_prefijo = c1.prefijos();
-
+        write(mi_prefijo, fileout);
+        break;
+      }
+      case 5: { // Muestra los sufijos asociados a cada cadena
+        set<string> mi_sufijo = c1.sufijos();
+        write(mi_sufijo, fileout);
+        break;
       }
     }
   }

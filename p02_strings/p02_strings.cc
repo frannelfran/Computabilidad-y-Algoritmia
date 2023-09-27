@@ -49,12 +49,14 @@ set<string> Cadena::prefijos() { // Crea el conjunto de prefijos de la cadena
   return conjuntoPrefijos;
 }
 
-void Cadena::sufijos(set<string>& conjuntoSufijos) { // Crea el conjunto de sufijos de la cadena
+set<string> Cadena::sufijos() { // Crea el conjunto de sufijos de la cadena
+  set<string> conjuntoSufijos;
   string sufijo;
-  for(vector<char>::iterator letra = cadena_.end(); letra != cadena_.begin(); letra--) {
-    sufijo += *letra;
+  for(int it = cadena_.size() -1; it >= 0; it--) {
+    sufijo += cadena_[it];
     conjuntoSufijos.insert(sufijo);
   }
+  return conjuntoSufijos;
 }
 
 ostream& operator<<(std::ostream& os, const Cadena& cadena) { // Sobrecarga del operador "<<"

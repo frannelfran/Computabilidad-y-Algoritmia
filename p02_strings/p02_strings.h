@@ -18,15 +18,15 @@ using namespace std;
 // Decripción: Declaración de la clase cadena
 
 class Cadena {
-  public:
-    Cadena(const string); // Constructor de la clase cadena
-    set<char> alfabeto(); // Crea el alfabeto según la cadena
-    int longitud(); // Muestra la longitud que tiene la cadena
-    void inversa(); // Muestra la cadena de manera inversa
-    set<string> prefijos(); // Crea los prefijos de la cadena
-    void sufijos(set<string>&); // Crea los sufijos de la cadena
+public:
+  Cadena(const string); // Constructor de la clase cadena
+  set<char> alfabeto(); // Crea el alfabeto según la cadena
+  int longitud(); // Muestra la longitud que tiene la cadena
+  void inversa(); // Muestra la cadena de manera inversa
+  set<string> prefijos(); // Crea los prefijos de la cadena
+  set<string> sufijos(); // Crea los sufijos de la cadena
 
-    friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena); // Sobrecarga del operador "<<"
-  private:
-    vector<char> cadena_; // Atributo privado de la clase
+  friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena); // Sobrecarga del operador "<<"
+private:
+  vector<char> cadena_; // Atributo privado de la clase
 };
