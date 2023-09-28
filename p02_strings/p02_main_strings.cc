@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
   string mi_cadena;
   while(filein >> mi_cadena) {
     Cadena c1(mi_cadena);
+    // TIPOS DE OPCIONES
     switch(opcode) {
       case 1: { // Muestra el alfabeto de cada cadena
         set<char> mi_alfabeto = c1.alfabeto();
