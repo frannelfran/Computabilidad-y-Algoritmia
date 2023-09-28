@@ -54,7 +54,7 @@ set<string> Cadena::sufijos() { // Crea el conjunto de sufijos de la cadena
   string sufijo;
   conjuntoSufijos.insert("&"); // Inserto la cadena vacía
   for (int it = cadena_.size() - 1; it >= 0; it--) {
-    sufijo += cadena_[it];
+    sufijo = cadena_[it] + sufijo;
     conjuntoSufijos.insert(sufijo); // Vamos insertando los sufijos en el set de strings
   }
   return conjuntoSufijos;
