@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
       exit(EXIT_SUCCESS);
     }
   }
-  if(argc != 4) { // Verifica que se ha introducido un fichero como argumento
+  else if(argc != 4) { // Verifica que se ha introducido un fichero como argumento
     cout << "Pruebe ./p02_strings --help para más información" << endl;
     return 1;
   }
