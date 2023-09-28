@@ -14,14 +14,16 @@
 // Archivo p02_main_strings.cc
 
 int main(int argc, char *argv[]) {
+  if(argc == 2) {
+    string ayuda = argv[1];
+    if(ayuda == "--help") { // Muestra el modo de empleo del programa
+      cout << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode" << endl;
+      exit(EXIT_SUCCESS);
+    }
+  }
   if(argc != 4) { // Verifica que se ha introducido un fichero como argumento
     cout << "Pruebe ./p02_strings --help para más información" << endl;
     return 1;
-  }
-  string ayuda = argv[1];
-  if(ayuda == "--help") {
-    cout << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode" << endl;
-    exit(EXIT_SUCCESS);
   }
   // ARGUMENTOS DE ENTRADA
   string fichero_entrada = argv[1]; // Fichero de entrada como argumento
