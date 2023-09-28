@@ -1,5 +1,6 @@
 #include "p02_strings.h"
 #include "p02_alfabeto.h"
+#include "p02_lenguaje.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -11,18 +12,6 @@
 // Correo: alu0101571669@ull.edu.es
 // Fecha: 25/09/2023
 // Archivo p02_main_strings.cc
-
-void write(set<string>& mi_conjunto, ofstream& fileout) { // Escribe en el fichero el conjunto de prefijos o sufijos
-  fileout << "{";
-  for(set<string>::iterator it = mi_conjunto.begin(); it != mi_conjunto.end(); it++) { // Recorremos el conjunto
-    if(next(it) == mi_conjunto.end()) {
-      fileout << *it;
-      break;
-    }
-    fileout << *it << ", "; // Imprimimos los elementos del conjunto
-  }
-  fileout << "}" << endl;
-}
 
 int main(int argc, char *argv[]) {
   if(argc != 4) { // Verifica que se ha introducido un fichero como argumento
@@ -60,13 +49,14 @@ int main(int argc, char *argv[]) {
         break;
       case 4: { // Muestra los prefijos asociados a cada cadena
         set<string> mi_prefijo = c1.prefijos();
-        write(mi_prefijo, fileout);
+        Lenguaje leng1(mi_prefijo);
+        fileout << leng1 << endl;
         break;
       }
       case 5: { // Muestra los sufijos asociados a cada cadena
         set<string> mi_sufijo = c1.sufijos();
-        write(mi_sufijo, fileout);
-        break;
+        Lenguaje leng2(mi_sufijo);
+        fileout << leng2 << endl;
       }
     }
   }

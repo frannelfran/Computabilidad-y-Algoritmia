@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <set>
-#include <vector>
 using namespace std;
 
 // Universidad de La Laguna
@@ -12,14 +11,14 @@ using namespace std;
 // Práctica 2: Operaciones con cadenas
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
-// Fecha: 26/09/2023
-// Archivo p02_alfabeto.h
-// Descripción: Declaración de la clase alfabeto
+// Fecha: 25/09/2023
+// Archivo p02_lenguaje.h
+// Descripción: Declaración de la clase lenguaje
 
-class Alfabeto {
+class Lenguaje {
 public:
-  Alfabeto(set<char>&); // Constructor de la clase
-  friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf); // Sobrecarga del operador de salida "<<"
+  Lenguaje(set<string>&); // Constructor de la clase
+  friend std::ostream& operator<<(std::ostream& os, const Lenguaje& leng); // Sobrecarga del operador "<<"
 private:
-  set<char> alfabeto_; // Atributo privado de la clase
+  set<string> lenguaje_; // Atributo privado de la clase
 };
