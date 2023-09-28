@@ -58,6 +58,7 @@ int main(int argc, char *argv[]) {
         set<string> mi_sufijo = c1.sufijos();
         Lenguaje leng2(mi_sufijo);
         fileout << leng2 << endl;
+        break;
       }
     }
   }
