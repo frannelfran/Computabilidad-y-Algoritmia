@@ -20,8 +20,8 @@ using namespace std;
 class Estado {
   public:
   Estado(ifstream&); // Constructor de la clase
-  int initial(ifstream&); // Estado inicial
+  char initial(ifstream&); // Estado inicial
   friend std::ostream& operator<<(std::ostream& os, const Estado& estado); // Sobrecarga del operador de salida 
   private:
-  set<int> estado_; // Atributo privado
+  set<char> estado_; // Atributo privado
 };

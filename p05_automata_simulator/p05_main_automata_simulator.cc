@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   Estado est(filein1);
   cout << "Estados del autómata: " << est << endl;
   // MOSTRAR ESTADO INICIAL
-  int inicial = est.initial(filein1);
+  char inicial = est.initial(filein1);
   cout << "Estado inicial: " << inicial << endl;
   
   // Cerrar lops ficheros
