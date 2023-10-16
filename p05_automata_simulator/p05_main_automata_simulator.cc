@@ -1,4 +1,5 @@
 #include "p05_alfabeto.h"
+#include "p05_estado.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -31,7 +32,7 @@ int main(int argc, char *argv[]) {
   // Mostrar el alfabeto
   Alfabeto alf(filein1);
   cout << "Alfabeto del automata: " << alf << endl;
-  
+  // Mostrar el número de estados
 
 
   return 0;

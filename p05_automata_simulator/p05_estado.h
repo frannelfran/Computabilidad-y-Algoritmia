@@ -1,7 +1,8 @@
 #include <iostream>
-#include <fstream>
-#include <set>
+#include <map>
+#include <vector>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -13,15 +14,14 @@ using namespace std;
 // Práctica 5: Implementación de un simulador de autómatas finitos
 // Autor: Franco Alla
 // Correo: alu0101571669@ull.edu.es
-// Fecha: 15/10/2023
-// Archivo alfabeto.h
-// Descripción: Declaración de la clase alfabeto
+// Fecha: 16/10/2023
+// Archivo p05_estado.h
+// Descripción: Declaración de la clase estado
 
-class Alfabeto {
+class Estado {
   public:
-  Alfabeto(ifstream&); // Constructor de la clase
-  friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf); // Sobrecarga del operador de salida
-  private:
-  set<char> alfabeto_;
-};
+  Estado(fstream&); // Constructor de la clase
 
+  private:
+  multimap<char, vector<char>> estado_; // Atributo privado
+};
