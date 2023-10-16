@@ -1,6 +1,5 @@
 #include <iostream>
-#include <map>
-#include <vector>
+#include <set>
 #include <string>
 #include <fstream>
 
@@ -20,8 +19,9 @@ using namespace std;
 
 class Estado {
   public:
-  Estado(fstream&); // Constructor de la clase
-
+  Estado(ifstream&); // Constructor de la clase
+  int initial(ifstream&); // Estado inicial
+  friend std::ostream& operator<<(std::ostream& os, const Estado& estado); // Sobrecarga del operador de salida 
   private:
-  multimap<char, vector<char>> estado_; // Atributo privado
+  set<int> estado_; // Atributo privado
 };
