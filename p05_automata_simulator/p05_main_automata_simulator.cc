@@ -30,17 +30,6 @@ int main(int argc, char *argv[]) {
   string entrada2 = argv[2];
   ifstream filein1(entrada1);
   ifstream filein2(entrada2);
-  cout << "---INFORMACIÓN EXTRAÍDA DEL FICHERO---" << endl;
-  // MOSTRAR EL ALFABETO
-  Alfabeto alf(filein1);
-  cout << "Alfabeto del automata: " << alf << endl;
-  // MOSTRAR LOS ESTADOS
-  Estado est(filein1);
-  cout << "Estados del autómata: " << est << endl;
-  // MOSTRAR ESTADO INICIAL
-  char inicial = est.initial(filein1);
-  cout << "Estado inicial: " << inicial << endl;
-  
   // Cerrar lops ficheros
   filein1.close();
   filein2.close();

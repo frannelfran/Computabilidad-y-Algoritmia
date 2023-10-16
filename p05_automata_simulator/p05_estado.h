@@ -2,6 +2,7 @@
 #include <set>
 #include <string>
 #include <fstream>
+#pragma once
 
 using namespace std;
 
@@ -17,11 +18,15 @@ using namespace std;
 // Archivo p05_estado.h
 // Descripción: Declaración de la clase estado
 
-class Estado {
+class ConjuntoDeEstado {
   public:
-  Estado(ifstream&); // Constructor de la clase
-  char initial(ifstream&); // Estado inicial
-  friend std::ostream& operator<<(std::ostream& os, const Estado& estado); // Sobrecarga del operador de salida 
+  ConjuntoDeEstado(ifstream&); // Constructor de la clase
+  bool aceptacion(); // Verificar si un estado es de aceptación
+  void transicion(char); // Transiciones de estados
+  void initial(ifstream&); // Estado inicial
+  friend std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado); // Sobrecarga del operador de salida 
   private:
-  set<char> estado_; // Atributo privado
+  set<char> estado_;
+  char initial_;
+  set<char> final_;
 };

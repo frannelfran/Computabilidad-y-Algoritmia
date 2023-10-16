@@ -12,7 +12,7 @@
 // Archivo p05_estado.h
 // Descripción: Implementación de la clase estado
 
-Estado::Estado(ifstream& mi_estado) {
+ConjuntoDeEstado::ConjuntoDeEstado(ifstream& mi_estado) {
   string linea;
   getline(mi_estado, linea); // Leer la segunda línea del fichero
   char numero_estado = linea[0];
@@ -21,7 +21,7 @@ Estado::Estado(ifstream& mi_estado) {
   }
 }
 
-char Estado::initial(ifstream& inicial) {
+void ConjuntoDeEstado::initial(ifstream& inicial) {
   string linea;
   getline(inicial, linea);
   char initial_state = linea[0]; // Convierto el estado inicial a char
@@ -29,10 +29,10 @@ char Estado::initial(ifstream& inicial) {
   if(it != estado_.end()) {
     initial_state = *it; // Asignar el estado inicial
   }
-  return initial_state;
+  initial_ = initial_state; // Asignamos el valor del nodo inicial al atributo de la clase
 }
 
-std::ostream& operator<<(std::ostream& os, const Estado& estado) {
+std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
   for (const auto& elemento : estado.estado_) {
     os << elemento << " ";
   }

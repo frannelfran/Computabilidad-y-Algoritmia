@@ -1,6 +1,9 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include "p05_alfabeto.h"
+#include "p05_estado.h"
+#pragma once
 
 using namespace std;
 
@@ -19,7 +22,9 @@ using namespace std;
 class Automata {
   public:
   Automata(ifstream&); // constructor de la clase
-
+  
   private: // Atributos privados de la clase
-  multimap<char, vector<string>> automata_;
+  Alfabeto alfabeto_;
+  ConjuntoDeEstado estado_;
+  map<char, multimap<char, char>> automata_;
 };
