@@ -12,9 +12,9 @@
 // Archivo alfabeto.cc
 // Descripción: Implementación de la clase alfabeto
 
-Alfabeto::Alfabeto(ifstream& mi_alfabeto) { // Constructor de la clase alfabeto
-  string linea;
-  getline(mi_alfabeto, linea); // Recorrer la primera línea del fichero
+Alfabeto::Alfabeto() {} // Constructor predeterminado de la clase alfabeto
+
+Alfabeto::Alfabeto(string linea) { // Constructor de la clase alfabeto
   for(const char simbolo : linea) { // Ir insertando los símbolos del alfabeto
     if(!isspace(simbolo)) { // Si no tiene espacio, insertar el símbolo
       alfabeto_.insert(simbolo);

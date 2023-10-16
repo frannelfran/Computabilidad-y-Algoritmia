@@ -1,7 +1,7 @@
 # Compilación
 main:
 	@echo "Compilando ficheros..."
-	g++ -g p05_main_automata_simulator.cc p05_alfabeto.cc p05_estado.cc -o p05_automata_simulator
+	g++ -g p05_main_automata_simulator.cc p05_alfabeto.cc p05_estado.cc p05_automata.cc -o p05_automata_simulator
 
 .PHONY: clean
 

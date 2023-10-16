@@ -21,10 +21,12 @@ using namespace std;
 class ConjuntoDeEstado {
   public:
   ConjuntoDeEstado(ifstream&); // Constructor de la clase
+  ConjuntoDeEstado();
   bool aceptacion(); // Verificar si un estado es de aceptación
   void transicion(char); // Transiciones de estados
   void initial(ifstream&); // Estado inicial
   friend std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado); // Sobrecarga del operador de salida 
+  
   private:
   set<char> estado_;
   char initial_;

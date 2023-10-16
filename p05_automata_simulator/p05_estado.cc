@@ -12,6 +12,8 @@
 // Archivo p05_estado.h
 // Descripción: Implementación de la clase estado
 
+ConjuntoDeEstado::ConjuntoDeEstado() {}
+
 ConjuntoDeEstado::ConjuntoDeEstado(ifstream& mi_estado) {
   string linea;
   getline(mi_estado, linea); // Leer la segunda línea del fichero

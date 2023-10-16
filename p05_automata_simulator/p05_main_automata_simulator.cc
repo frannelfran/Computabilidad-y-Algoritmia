@@ -30,6 +30,9 @@ int main(int argc, char *argv[]) {
   string entrada2 = argv[2];
   ifstream filein1(entrada1);
   ifstream filein2(entrada2);
+  // CREAR EL AUTOMATA
+  Automata autom(filein1);
+
   // Cerrar lops ficheros
   filein1.close();
   filein2.close();

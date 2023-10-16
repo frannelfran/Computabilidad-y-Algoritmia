@@ -20,7 +20,8 @@ using namespace std;
 
 class Alfabeto {
   public:
-  Alfabeto(ifstream&); // Constructor de la clase
+  Alfabeto(string); // Constructor de la clase
+  Alfabeto();
   friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf); // Sobrecarga del operador de salida
   private:
   set<char> alfabeto_;
