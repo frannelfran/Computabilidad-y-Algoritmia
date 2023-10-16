@@ -1,5 +1,6 @@
 #include "p05_alfabeto.h"
 #include "p05_estado.h"
+#include "p05_automata.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
