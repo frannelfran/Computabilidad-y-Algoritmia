@@ -24,4 +24,3 @@ class Alfabeto {
   private:
   set<char> alfabeto_;
 };
-

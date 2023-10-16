@@ -40,7 +40,6 @@ int main(int argc, char *argv[]) {
   int inicial = est.initial(filein1);
   cout << "Estado inicial: " << inicial << endl;
   
-
   // Cerrar lops ficheros
   filein1.close();
   filein2.close();
