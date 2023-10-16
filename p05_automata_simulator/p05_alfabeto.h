@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <set>
-#pragma once
+#include <string>
 
 using namespace std;
 
@@ -20,7 +20,8 @@ using namespace std;
 class Alfabeto {
   public:
   Alfabeto(ifstream&); // Constructor de la clase
+  friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf);
   private:
-  set<string> alfabeto_;
+  set<char> alfabeto_;
 };
 

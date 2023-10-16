@@ -12,3 +12,23 @@
 // Archivo alfabeto.cc
 // Descripción: Implementación de la clase alfabeto
 
+Alfabeto::Alfabeto(ifstream& mi_alfabeto) {
+  string linea;
+  getline(mi_alfabeto, linea);
+  for(const char simbolo : linea) {
+    alfabeto_.insert(simbolo);
+  }
+}
+
+ostream& operator<<(ostream& os, const Alfabeto& alf) { // Sobrecarga del operador de salida "<<"
+  os << "{";
+  for(set<char>::iterator it = alf.alfabeto_.begin(); it != alf.alfabeto_.end(); ++it) { // Recorremos el alfabeto
+    if (next(it) == alf.alfabeto_.end()) {
+      os << *it;
+      break;
+    }
+    os << *it << ", ";
+  }
+  os << "}" << endl;
+  return os;
+}

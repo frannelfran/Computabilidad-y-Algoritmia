@@ -1,4 +1,4 @@
-#include "p05_alfabeto.cc"
+#include "p05_alfabeto.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -28,11 +28,11 @@ int main(int argc, char *argv[]) {
   string entrada2 = argv[2];
   ifstream filein1(entrada1);
   ifstream filein12(entrada2);
-  // CREAR EL ALFABETO
-  int num = 0;
-  int numero_de_linea = 1;
-  string linea;
-  while(num < numero_de_linea && getline(filein1, linea)) {
-    Alfabeto alf(filein1);
-  }
+  // Mostrar el alfabeto
+  Alfabeto alf(filein1);
+  cout << "Alfabeto del automata: " << alf << endl;
+  
+
+
+  return 0;
 }
