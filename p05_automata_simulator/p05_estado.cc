@@ -12,7 +12,7 @@
 // Archivo p05_estado.h
 // Descripción: Implementación de la clase estado
 
-ConjuntoDeEstado::ConjuntoDeEstado() {}
+ConjuntoDeEstado::ConjuntoDeEstado() {} // Constructor por defecto de la clase ConjuntoDeEstados
 
 ConjuntoDeEstado::ConjuntoDeEstado(ifstream& mi_estado) {
   string linea;

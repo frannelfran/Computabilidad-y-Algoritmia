@@ -26,5 +26,5 @@ class Automata {
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;
   ConjuntoDeEstado estado_;
-  map<char, multimap<char, char>> automata_;
+  map<set<char>, multimap<char, char>> automata_;
 };

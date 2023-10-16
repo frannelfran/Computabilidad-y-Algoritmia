@@ -17,10 +17,6 @@
 Automata::Automata(ifstream& file) {
   string linea;
   getline(file, linea);
-  Alfabeto alf(linea);
-  alfabeto_ = alf;
-  cout << alf << endl;
-
-
-
+  Alfabeto alf(linea); // Creo el alfabeto
+  alfabeto_ = alf; // Asigno el alfabeto al atributo privado de la clase
 }
