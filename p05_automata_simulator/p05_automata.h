@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <string>
 #include <vector>
 #include "p05_alfabeto.h"
 #include "p05_estado.h"
