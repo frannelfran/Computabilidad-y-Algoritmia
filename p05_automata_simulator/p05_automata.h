@@ -22,7 +22,6 @@ using namespace std;
 class Automata {
   public:
   Automata(ifstream&); // constructor de la clase
-  friend std::ostream& operator<<(std::ostream& os, const Automata& automata);
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;
   ConjuntoDeEstado estado_;

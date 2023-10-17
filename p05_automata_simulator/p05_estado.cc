@@ -29,15 +29,6 @@ void ConjuntoDeEstado::initial(string inicial) { // Declarar el estado inicial
   }
 }
 
-bool ConjuntoDeEstado::aceptacion() {
-
-
-
-
-
-
-}
-
 std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
   for (const auto& elemento : estado.estado_) {
     os << elemento << " ";

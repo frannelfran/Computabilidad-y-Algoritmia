@@ -20,6 +20,7 @@ Automata::Automata(ifstream& file) {
   Alfabeto alf(linea); // Creo el alfabeto
   alfabeto_ = alf; // Asigno el alfabeto al atributo privado de la clase
   file >> num_estados;
-  char estado, aceptacion, transiciones;
-
+  file >> est_inicial;
+  ConjuntoDeEstado conjest(num_estados);
+  estado_ = conjest;
 }
