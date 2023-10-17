@@ -15,8 +15,11 @@
 // Descripción: Implementación de la clase autómata
 
 Automata::Automata(ifstream& file) {
-  string linea;
+  string linea, num_estados, est_inicial, estados;
   getline(file, linea);
   Alfabeto alf(linea); // Creo el alfabeto
   alfabeto_ = alf; // Asigno el alfabeto al atributo privado de la clase
+  file >> num_estados;
+  char estado, aceptacion, transiciones;
+
 }

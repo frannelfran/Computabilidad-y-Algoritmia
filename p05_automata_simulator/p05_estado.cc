@@ -14,24 +14,28 @@
 
 ConjuntoDeEstado::ConjuntoDeEstado() {} // Constructor por defecto de la clase ConjuntoDeEstados
 
-ConjuntoDeEstado::ConjuntoDeEstado(ifstream& mi_estado) {
-  string linea;
-  getline(mi_estado, linea); // Leer la segunda línea del fichero
-  char numero_estado = linea[0];
+ConjuntoDeEstado::ConjuntoDeEstado(string num_estados) {
+  char numero_estado = num_estados[0];
   for(char it = '0'; it < numero_estado; it++) {
     estado_.insert(it); // Insertar los estados que tienen el automata
   }
 }
 
-void ConjuntoDeEstado::initial(ifstream& inicial) {
-  string linea;
-  getline(inicial, linea);
-  char initial_state = linea[0]; // Convierto el estado inicial a char
+void ConjuntoDeEstado::initial(string inicial) { // Declarar el estado inicial
+  char initial_state = inicial[0]; // Convierto el estado inicial a char
   auto it = estado_.find(initial_state); // Buscar el estado en el conjunto
   if(it != estado_.end()) {
-    initial_state = *it; // Asignar el estado inicial
+    initial_ = initial_state; // Asignar el estado inicial
   }
-  initial_ = initial_state; // Asignamos el valor del nodo inicial al atributo de la clase
+}
+
+bool ConjuntoDeEstado::aceptacion() {
+
+
+
+
+
+
 }
 
 std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
