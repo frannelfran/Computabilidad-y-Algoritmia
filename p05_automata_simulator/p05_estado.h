@@ -2,6 +2,7 @@
 #include <set>
 #include <string>
 #include <fstream>
+#include "p05_nodo.h"
 #pragma once
 
 using namespace std;
@@ -28,7 +29,5 @@ class ConjuntoDeEstado {
   friend std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado); // Sobrecarga del operador de salida 
   
   private:
-  set<char> estado_;
-  char initial_;
-  set<char> final_;
+  map<int, Nodo> estados_;
 };

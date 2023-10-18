@@ -23,8 +23,8 @@ using namespace std;
 class Automata {
   public:
   Automata(ifstream&); // constructor de la clase
+  bool aceptado(string);
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;
   ConjuntoDeEstado estado_;
-  map<char, multimap<char, char>> automata_;
 };

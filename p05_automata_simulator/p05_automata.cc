@@ -13,14 +13,3 @@
 // Fecha: 16/10/2023
 // Archivo p05_automata.cc
 // Descripción: Implementación de la clase autómata
-
-Automata::Automata(ifstream& file) {
-  string linea, num_estados, est_inicial;
-  getline(file, linea);
-  Alfabeto alf(linea); // Creo el alfabeto
-  alfabeto_ = alf; // Asigno el alfabeto al atributo privado de la clase
-  file >> num_estados;
-  file >> est_inicial;
-  char estado, aceptacion, transiciones;
-  string estados_transistores;
-}
