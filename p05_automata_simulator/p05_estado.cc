@@ -18,6 +18,10 @@ ConjuntoDeEstado::ConjuntoDeEstado(int estado, Nodo transiciones) {
   estados_[estado] = transiciones; // Creo el conjunto de estados
 }
 
+void ConjuntoDeEstado::initial(int estado, Nodo transiciones) { // Poner el nodo inicial en el conjunto
+  estados_.insert(pair<int, Nodo>(estado, transiciones));
+}
+
 std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
   for (const auto& pair : estado.estados_) {
     os << "Estado " << pair.first << ":\n";

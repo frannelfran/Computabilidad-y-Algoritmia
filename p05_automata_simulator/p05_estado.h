@@ -22,10 +22,8 @@ using namespace std;
 class ConjuntoDeEstado {
   public:
   ConjuntoDeEstado(int, Nodo); // Constructor de la clase
-  ConjuntoDeEstado();
-  bool aceptacion(); // Verificar si un estado es de aceptación
-  void transicion(char); // Transiciones de estados
-  void initial(string); // Estado inicial
+  ConjuntoDeEstado(); // Cosntructor por defecto
+  void initial(int, Nodo); // Estado inicial
   friend std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado);
   
   private:

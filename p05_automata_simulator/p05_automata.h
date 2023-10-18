@@ -22,9 +22,9 @@ using namespace std;
 
 class Automata {
   public:
-  Automata(ifstream&); // constructor de la clase
+  Automata(); // constructor de la clase
   bool aceptado(string);
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;
-  ConjuntoDeEstado estado_;
+  ConjuntoDeEstado estados_;
 };

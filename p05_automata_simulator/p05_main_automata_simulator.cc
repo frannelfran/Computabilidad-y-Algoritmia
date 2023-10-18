@@ -35,8 +35,10 @@ ConjuntoDeEstado crear_conjunto(ifstream& file) { // Función para crear el conj
       file >> caracter;
       file >> siguiente;
       Nodo nodo(caracter, siguiente, aceptacion); // Creo las transiciones
-      ConjuntoDeEstado conjest(estado, nodo); // Creo el conjunto de estados
-      mi_conjunto = conjest;
+      if(estado == inicial) { // Colocar el estado inicial al principio del conjunto de estados
+        mi_conjunto.initial(estado, nodo);
+      }
+      ConjuntoDeEstado mi_conjunto(estado, nodo); // Creo el conjunto de estados
     }
   }
   return mi_conjunto;
