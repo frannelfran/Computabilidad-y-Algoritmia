@@ -7,6 +7,13 @@ Nodo::Nodo(char caracter, int siguiente, int aceptance) { // Constructor de la c
   transiciones_.insert(pair<char, int>(caracter, siguiente));
 }
 
+bool Nodo::aceptacion() { // Ver si el nodo es de aceptación
+  if(aceptacion_ == true) {
+    return aceptacion_;
+  }
+  return false;
+}
+
 std::ostream& operator<<(std::ostream& os, const Nodo& nodo) {
   os << "Aceptacion: " << nodo.aceptacion_ << "\n";
   for (const auto& pair : nodo.transiciones_) {
