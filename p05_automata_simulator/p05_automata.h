@@ -22,7 +22,8 @@ using namespace std;
 
 class Automata {
   public:
-  Automata(); // constructor de la clase
+  Automata(Alfabeto, ConjuntoDeEstado); // constructor de la clase
+  Automata();
   bool aceptado(string);
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;

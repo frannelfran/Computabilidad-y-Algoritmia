@@ -65,10 +65,10 @@ int main(int argc, char *argv[]) {
   Alfabeto alf = crear_alfabeto(filein1);
   // CREAR EL NÚMERO DE ESTADOS CON SUS TRANSICIONES
   ConjuntoDeEstado conjest = crear_conjunto(filein1);
+  // CREAR EL AUTOMATA
+  Automata autom(alf, conjest);
 
-
-
-  // Cerrar lops ficheros
+  // Cerrar los ficheros
   filein1.close();
   filein2.close();
 
