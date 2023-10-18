@@ -14,3 +14,15 @@
 
 ConjuntoDeEstado::ConjuntoDeEstado() {} // Constructor por defecto de la clase ConjuntoDeEstados
 
+ConjuntoDeEstado::ConjuntoDeEstado(int estado, Nodo transiciones) {
+  estados_[estado] = transiciones; // Creo el conjunto de estados
+}
+
+std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
+  for (const auto& pair : estado.estados_) {
+    os << "Estado " << pair.first << ":\n";
+    os << pair.second; // Utiliza la sobrecarga del operador << de la clase Nodo
+    os << "\n";
+  }
+  return os;
+}

@@ -14,39 +14,32 @@
 // Fecha: 15/10/2023
 // Archivo p05_main_automata_simulator
 
-Alfabeto crear_alfabeto(ifstream& file) {
+Alfabeto crear_alfabeto(ifstream& file) { // Funcion para crear el alfabeto
   string mi_alfabeto;
   getline(file, mi_alfabeto);
   Alfabeto alf(mi_alfabeto);
   return alf;
 }
 
-ConjuntoDeEstado crear_conjunto(ifstream& file) {
-  ConjuntoDeEstado sopa;
-  int nodo, num_estado, transiciones, inicial, siguiente, aceptacion;
+ConjuntoDeEstado crear_conjunto(ifstream& file) { // Función para crear el conjunto de estados
+  ConjuntoDeEstado mi_conjunto; // Conjunto de estados
+  int estado, num_estado, transiciones, inicial, siguiente, aceptacion;
   char caracter;
   file >> num_estado; // Leemos el número de estados
   file >> inicial; // Leemos el nodo inicial
   for(int it = 0; it < num_estado; it++) {
-    file >> nodo; // Leemos el nodo
+    file >> estado; // Leemos el estado
     file >> aceptacion; // Leemos si es de aceptacion
     file >> transiciones; // Leemos el número de transiciones
     for(int it2 = 0; it2 < transiciones; it2++) {
       file >> caracter;
       file >> siguiente;
-      Nodo nodo(caracter, siguiente, aceptacion);
+      Nodo nodo(caracter, siguiente, aceptacion); // Creo las transiciones
+      ConjuntoDeEstado conjest(estado, nodo); // Creo el conjunto de estados
+      mi_conjunto = conjest;
     }
-    
   }
-
-  
-  
-  return sopa;
-
-
-
-
-
+  return mi_conjunto;
 }
 
 int main(int argc, char *argv[]) {
