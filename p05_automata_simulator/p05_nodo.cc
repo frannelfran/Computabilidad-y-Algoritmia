@@ -1,5 +1,17 @@
 #include "p05_nodo.h"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 5: Implementación de un simulador de autómatas finitos
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 17/10/2023
+// Archivo p05_estado.h
+// Descripción: Implementación de la clase nodo
+
 Nodo::Nodo() {} // Constructor por defecto
 
 Nodo::Nodo(char caracter, int siguiente, int aceptance) { // Constructor de la clase Nodo
