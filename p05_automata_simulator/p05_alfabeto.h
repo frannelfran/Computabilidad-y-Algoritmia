@@ -22,6 +22,7 @@ class Alfabeto {
   public:
   Alfabeto(string); // Constructor de la clase
   Alfabeto();
+  bool contiene_alfabeto(char); // Verificar si el símbolo de la cadena esta contenido en el alfabeto
   friend std::ostream& operator<<(std::ostream& os, const Alfabeto& alf); // Sobrecarga del operador de salida
   private:
   set<char> alfabeto_;

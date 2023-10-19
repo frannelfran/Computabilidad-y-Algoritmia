@@ -14,6 +14,10 @@ bool Nodo::aceptacion() { // Ver si el nodo es de aceptación
   return false;
 }
 
+const multimap<char, int>& Nodo::obtenerTransiciones() const { // Obtener las transiciones
+  return transiciones_;
+}
+
 std::ostream& operator<<(std::ostream& os, const Nodo& nodo) {
   os << "Aceptacion: " << nodo.aceptacion_ << "\n";
   for (const auto& pair : nodo.transiciones_) {

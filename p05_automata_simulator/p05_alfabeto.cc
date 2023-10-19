@@ -22,6 +22,10 @@ Alfabeto::Alfabeto(string linea) { // Constructor de la clase alfabeto
   }
 }
 
+bool Alfabeto::contiene_alfabeto(char simbolo) { // Verificar que el símbolo está contenido en el alfabeto
+  return alfabeto_.find(simbolo) != alfabeto_.end();
+}
+
 ostream& operator<<(ostream& os, const Alfabeto& alf) { // Sobrecarga del operador de salida "<<"
   os << "{";
   for(set<char>::iterator it = alf.alfabeto_.begin(); it != alf.alfabeto_.end(); ++it) { // Recorremos el alfabeto

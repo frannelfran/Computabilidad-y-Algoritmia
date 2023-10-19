@@ -25,7 +25,9 @@ class Automata {
   Automata(Alfabeto, ConjuntoDeEstado); // constructor de la clase
   Automata();
   bool aceptado(string);
+  int actual(); // Obtener estado actual
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;
   ConjuntoDeEstado estados_;
+  int estado_actual;
 };

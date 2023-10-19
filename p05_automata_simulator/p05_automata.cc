@@ -21,3 +21,15 @@ Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstado mis_estados) {
   alfabeto_ = mi_alfabeto;
   estados_ = mis_estados;
 }
+
+int Automata::actual() { // Obtener el estado actual
+  return estado_actual;
+}
+
+bool Automata::aceptado(string cadena) {
+  for(const char simbolo : cadena) {
+    if(alfabeto_.contiene_alfabeto(simbolo)) { // Si la cadena no está contenida en el alfabeto no es aceptada
+      return false;
+    }
+  }
+}
