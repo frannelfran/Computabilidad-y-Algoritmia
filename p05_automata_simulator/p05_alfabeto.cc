@@ -14,8 +14,10 @@
 
 Alfabeto::Alfabeto() {} // Constructor predeterminado de la clase alfabeto
 
-Alfabeto::Alfabeto(string linea) { // Constructor de la clase alfabeto
-  for(const char simbolo : linea) { // Ir insertando los símbolos del alfabeto
+Alfabeto::Alfabeto(ifstream& file) { // Constructor de la clase alfabeto
+  string mi_alfabeto;
+  getline(file, mi_alfabeto);
+  for(const char simbolo : mi_alfabeto) { // Ir insertando los símbolos del alfabeto
     if(!isspace(simbolo)) { // Si no tiene espacio, insertar el símbolo
       alfabeto_.insert(simbolo);
     }
@@ -26,15 +28,11 @@ bool Alfabeto::contiene_alfabeto(char simbolo) { // Verificar que el símbolo es
   return alfabeto_.find(simbolo) != alfabeto_.end();
 }
 
-ostream& operator<<(ostream& os, const Alfabeto& alf) { // Sobrecarga del operador de salida "<<"
-  os << "{";
-  for(set<char>::iterator it = alf.alfabeto_.begin(); it != alf.alfabeto_.end(); ++it) { // Recorremos el alfabeto
-    if (next(it) == alf.alfabeto_.end()) {
-      os << *it;
-      break;
-    }
-    os << *it << ", ";
+std::ostream& operator<<(std::ostream& os, const Alfabeto& alf) {
+  os << "Alfabeto: { ";
+  for (char c : alf.alfabeto_) {
+    os << c << ' ';
   }
-  os << "}";
+  os << "}\n";
   return os;
 }

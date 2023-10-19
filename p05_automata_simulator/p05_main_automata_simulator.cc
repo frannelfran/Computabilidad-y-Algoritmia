@@ -14,36 +14,6 @@
 // Fecha: 15/10/2023
 // Archivo p05_main_automata_simulator
 
-Alfabeto crear_alfabeto(ifstream& file) { // Funcion para crear el alfabeto
-  string mi_alfabeto;
-  getline(file, mi_alfabeto);
-  Alfabeto alf(mi_alfabeto);
-  return alf;
-}
-
-ConjuntoDeEstado crear_conjunto(ifstream& file) { // Función para crear el conjunto de estados
-  ConjuntoDeEstado mi_conjunto; // Conjunto de estados
-  int estado, num_estado, transiciones, inicial, siguiente, aceptacion;
-  char caracter;
-  file >> num_estado; // Leemos el número de estados
-  file >> inicial; // Leemos el nodo inicial
-  for(int it = 0; it < num_estado; it++) {
-    file >> estado; // Leemos el estado
-    file >> aceptacion; // Leemos si es de aceptacion
-    file >> transiciones; // Leemos el número de transiciones
-    for(int it2 = 0; it2 < transiciones; it2++) {
-      file >> caracter;
-      file >> siguiente;
-      Nodo nodo(caracter, siguiente, aceptacion); // Creo las transiciones
-      if(estado == inicial) { // Colocar el estado inicial al principio del conjunto de estados
-        mi_conjunto.initial(estado, nodo); // Inserta el nodo incial al principio
-      }
-      ConjuntoDeEstado mi_conjunto(estado, nodo); // Creo el conjunto de estados
-    }
-  }
-  return mi_conjunto;
-}
-
 int main(int argc, char *argv[]) {
   if(argc == 2) {
     string ayuda = argv[1];
@@ -62,12 +32,13 @@ int main(int argc, char *argv[]) {
   ifstream filein1(entrada1);
   ifstream filein2(entrada2);
   // CREAR EL ALFABETO
-  Alfabeto alf = crear_alfabeto(filein1);
+  Alfabeto alf(filein1);
   // CREAR EL NÚMERO DE ESTADOS CON SUS TRANSICIONES
-  ConjuntoDeEstado conjest = crear_conjunto(filein1);
+  ConjuntoDeEstado conjest(filein1);
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
   string cadena;
+
   while(filein2 >> cadena) {
     bool aceptance = autom.aceptado(cadena);
     cout << cadena << " --- " << ((aceptance)? "Accepted" : "Rejected") << endl;

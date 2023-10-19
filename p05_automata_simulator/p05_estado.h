@@ -21,7 +21,7 @@ using namespace std;
 
 class ConjuntoDeEstado {
   public:
-  ConjuntoDeEstado(int, Nodo); // Constructor de la clase
+  ConjuntoDeEstado(ifstream&); // Constructor de la clase
   ConjuntoDeEstado(); // Cosntructor por defecto
   void initial(int, Nodo); // Estado inicial
   Nodo& obtener_estado(int identificador); // Método para obtener un estado por su identificador

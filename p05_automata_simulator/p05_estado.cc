@@ -1,4 +1,5 @@
 #include "p05_estado.h"
+#include "p05_nodo.h"
 
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
@@ -14,8 +15,22 @@
 
 ConjuntoDeEstado::ConjuntoDeEstado() {} // Constructor por defecto de la clase ConjuntoDeEstados
 
-ConjuntoDeEstado::ConjuntoDeEstado(int estado, Nodo transiciones) {
-  estados_[estado] = transiciones; // Creo el conjunto de estados
+ConjuntoDeEstado::ConjuntoDeEstado(ifstream& file) {
+  int estado, num_estado, transiciones, inicial, siguiente, aceptacion;
+  char caracter;
+  file >> num_estado; // Leemos el número de estados
+  file >> inicial; // Leemos el nodo inicial
+  for(int it = 0; it < num_estado; it++) {
+    file >> estado; // Leemos el estado
+    file >> aceptacion; // Leemos si es de aceptacion
+    file >> transiciones; // Leemos el número de transiciones
+    for(int it2 = 0; it2 < transiciones; it2++) {
+      file >> caracter;
+      file >> siguiente;
+      Nodo nodo(caracter, siguiente, aceptacion);
+      estados_.insert(pair<int, Nodo>(estado, nodo));
+    }
+  }
 }
 
 void ConjuntoDeEstado::initial(int estado, Nodo transiciones) { // Poner el nodo inicial en el conjunto
@@ -28,8 +43,7 @@ Nodo& ConjuntoDeEstado::obtener_estado(int identificador) {
     return it->second;
   }
   else {
-    // Devuelve un estado por defecto o maneja la ausencia del estado según tus necesidades.
-    // En este caso, retornaremos un estado vacío.
+    // Devuelve un estado por defecto, en este caso, retornaremos un estado vacío.
     static Nodo estadoVacio;
     return estadoVacio;
   }
@@ -53,10 +67,9 @@ bool ConjuntoDeEstado::contieneTransicion(int estadoActual, char simbolo, int& s
 }
 
 std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
-  for (const auto& pair : estado.estados_) {
-    os << "Estado " << pair.first << ":\n";
-    os << pair.second; // Utiliza la sobrecarga del operador << de la clase Nodo
-    os << "\n";
+  os << "Conjunto de Estado:\n";
+  for (const auto& par : estado.estados_) {
+    os << "Identificador: " << par.first << ", Nodo: " << par.second << "\n";
   }
   return os;
 }
