@@ -22,6 +22,36 @@ void ConjuntoDeEstado::initial(int estado, Nodo transiciones) { // Poner el nodo
   estados_.insert(pair<int, Nodo>(estado, transiciones));
 }
 
+Nodo& ConjuntoDeEstado::obtener_estado(int identificador) {
+  auto it = estados_.find(identificador);
+  if (it != estados_.end()) {
+    return it->second;
+  }
+  else {
+    // Devuelve un estado por defecto o maneja la ausencia del estado según tus necesidades.
+    // En este caso, retornaremos un estado vacío.
+    static Nodo estadoVacio;
+    return estadoVacio;
+  }
+}
+
+bool ConjuntoDeEstado::contiene_estado(int estado) { // Saber si el estado esta en el conjunto
+  return estados_.find(estado) != estados_.end();
+}
+
+bool ConjuntoDeEstado::contieneTransicion(int estadoActual, char simbolo, int& siguiente) const {
+  auto it = estados_.find(estadoActual);
+  if (it != estados_.end()) {
+    const multimap<char, int>& transiciones = it->second.obtenerTransiciones();
+    auto itTransicion = transiciones.find(simbolo);
+    if (itTransicion != transiciones.end()) {
+      siguiente = itTransicion->second;
+      return true;
+    }
+  }
+  return false;
+}
+
 std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado) {
   for (const auto& pair : estado.estados_) {
     os << "Estado " << pair.first << ":\n";

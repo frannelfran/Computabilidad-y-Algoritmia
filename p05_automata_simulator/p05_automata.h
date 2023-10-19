@@ -29,5 +29,5 @@ class Automata {
   private: // Atributos privados de la clase
   Alfabeto alfabeto_;
   ConjuntoDeEstado estados_;
-  int estado_actual;
+  int estado_actual_;
 };

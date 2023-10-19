@@ -23,13 +23,25 @@ Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstado mis_estados) {
 }
 
 int Automata::actual() { // Obtener el estado actual
-  return estado_actual;
+  return estado_actual_;
 }
 
 bool Automata::aceptado(string cadena) {
+  int estado_actual = 0;
   for(const char simbolo : cadena) {
-    if(alfabeto_.contiene_alfabeto(simbolo)) { // Si la cadena no está contenida en el alfabeto no es aceptada
+    if(!alfabeto_.contiene_alfabeto(simbolo)) { // Si el símbolo no esta contenido en el alfabeto se rechaza
       return false;
     }
+    int siguiente;
+    if (!estados_.contieneTransicion(estado_actual, simbolo, siguiente)) {
+      // No hay transición para el símbolo, la cadena es rechazada
+      return false;
+    }
+    estado_actual = siguiente;
   }
+  // Verificar si el estado actual es de aceptación
+  if (estados_.contiene_estado(estado_actual)) {
+    return estados_.obtener_estado(estado_actual).aceptacion();
+  }
+  return false;
 }

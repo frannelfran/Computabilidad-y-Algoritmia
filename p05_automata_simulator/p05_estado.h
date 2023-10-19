@@ -24,6 +24,9 @@ class ConjuntoDeEstado {
   ConjuntoDeEstado(int, Nodo); // Constructor de la clase
   ConjuntoDeEstado(); // Cosntructor por defecto
   void initial(int, Nodo); // Estado inicial
+  Nodo& obtener_estado(int identificador); // Método para obtener un estado por su identificador
+  bool contiene_estado(int); // Saber si el estado está en el conjunto
+  bool contieneTransicion(int estadoActual, char simbolo, int& siguiente) const; // Saber si el estado contiene la transición
   friend std::ostream& operator<<(std::ostream& os, const ConjuntoDeEstado& estado);
   
   private:

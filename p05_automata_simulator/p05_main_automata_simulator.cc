@@ -67,7 +67,12 @@ int main(int argc, char *argv[]) {
   ConjuntoDeEstado conjest = crear_conjunto(filein1);
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
-
+  string cadena;
+  while(filein2 >> cadena) {
+    bool aceptance = autom.aceptado(cadena);
+    cout << cadena << " --- " << ((aceptance)? "Accepted" : "Rejected") << endl;
+  }
+  
   // Cerrar los ficheros
   filein1.close();
   filein2.close();
