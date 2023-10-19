@@ -33,8 +33,10 @@ int main(int argc, char *argv[]) {
   ifstream filein2(entrada2);
   // CREAR EL ALFABETO
   Alfabeto alf(filein1);
+  cout << alf;
   // CREAR EL NÚMERO DE ESTADOS CON SUS TRANSICIONES
   ConjuntoDeEstado conjest(filein1);
+  cout << conjest;
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
   string cadena;
