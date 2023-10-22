@@ -1,5 +1,6 @@
 #include "p06_alfabeto.h"
 #include "p06_conjunto_estados.h"
+#include "p06_automata.h"
 
 using namespace std;
 
@@ -25,12 +26,10 @@ int main(int argc, char* argv[]) {
   // CREAR EL CONJUNTO DE ESTADOS
   ConjuntoDeEstados conjest(filein1);
   // CREAR EL AUTOMATA
-  
+  Automata autom(alf, conjest);
 
-
-
-  
-
-  
-  
+  // CERRAMOS LOS FICHEROS
+  filein1.close();
+  filein2.close();
+  return 0;
 }

@@ -1,7 +1,7 @@
 # Compilación
 main:
 	@echo "Compilando ficheros..."
-	g++ -g p06_main_NFA_to_DFA.cc p06_alfabeto.cc p06_conjunto_estados.cc -o NFA2DFA
+	g++ -g p06_main_NFA_to_DFA.cc p06_alfabeto.cc p06_conjunto_estados.cc p06_automata.cc -o NFA2DFA
 
 .PHONY: clean
 

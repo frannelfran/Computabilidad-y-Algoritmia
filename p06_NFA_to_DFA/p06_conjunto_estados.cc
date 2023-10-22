@@ -14,10 +14,13 @@ ConjuntoDeEstados::ConjuntoDeEstados() {} // Constructor por defecto de la clase
 ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
   int num_estados, estado_inicial, estados, transiciones, siguiente;
   bool aceptacion;
-  file >> num_estados;
-  file >> estado_inicial;
+  file >> num_estados; // Número de estados
+  file >> estado_inicial; // Estado inicial
   while(num_estados != 0) {
     file >> estados; // Estado del conjunto
+    if(estados == estado_inicial) { // Declarar el estado inicial
+      setEstadoInicial(estados);
+    }
     file >> aceptacion; // Verificar que es de aceptación
     aceptacion_.push_back(aceptacion);
     file >> transiciones; // Cuantas transiciones tiene cada estado
@@ -32,7 +35,21 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
   }
 }
 
+/**
+ * @brief Procedimiento que declara el estado inicial del conjunto
+ * @param estado_inicial Variable que contiene el estado inicial del conjunto
+*/
+
+void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
+  initial_ = estado_inicial;
+  cout << initial_ << endl;
+}
+
+/**
+ * @brief Sobrecarga del operador << para la clase ConjuntoDeEstados
+*/
 ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto) {
+  os << "Conjunto de estados" << endl;
   for (auto& estado : conjunto.conjunto_de_estados_) {
     os << "Estado: " << estado.first << "\n";
     for (auto& transicion : estado.second) {
