@@ -28,7 +28,7 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
       char simbolo;
       file >> simbolo;
       file >> siguiente;
-      conjunto_de_estados_[estados].emplace_back(simbolo, siguiente);
+      conjunto_de_estados_[estados].push_back({simbolo, siguiente});
       transiciones--;
     }
     num_estados--;

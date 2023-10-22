@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
   Alfabeto alf(filein1);
   // CREAR EL CONJUNTO DE ESTADOS
   ConjuntoDeEstados conjest(filein1);
-  cout << conjest;
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
   // Comprobar si la cadena es aceptada por el autómata
