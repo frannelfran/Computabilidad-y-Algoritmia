@@ -1,4 +1,6 @@
 #include "p06_alfabeto.h"
+#include "p06_conjunto_estados.h"
+#include "p06_transiciones.h"
 
 using namespace std;
 
@@ -22,5 +24,9 @@ int main(int argc, char* argv[]) {
   // CONSTRUIR EL ALFABETO
   Alfabeto alf(filein1);
   cout << alf << endl;
+  //CREAR EL CONJUNTO DE ESTADOS
+  Transiciones trans(filein1);
+  cout << trans;
+  
   
 }
