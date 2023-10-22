@@ -6,6 +6,18 @@
 
 using namespace std;
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 5: Implementación de un simulador de autómatas finitos
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 22/10/2023
+// Archivo: p05_conjunto_de_estados.cc
+// Descripción: Declaración de la clase conjunto de estados
+
 class ConjuntoDeEstados {
   public:
   ConjuntoDeEstados(); // Constructor por defecto

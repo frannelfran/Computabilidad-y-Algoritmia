@@ -4,6 +4,18 @@
 
 using namespace std;
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 5: Implementación de un simulador de autómatas finitos
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 22/10/2023
+// Archivo: p05_main_automata_simulator.cc
+// Descripción: Programa principal
+
 int main(int argc, char* argv[]) {
   if(argc == 2) {
     string ayuda = argv[1];
@@ -25,6 +37,7 @@ int main(int argc, char* argv[]) {
   Alfabeto alf(filein1);
   // CREAR EL CONJUNTO DE ESTADOS
   ConjuntoDeEstados conjest(filein1);
+  cout << conjest;
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
   // Comprobar si la cadena es aceptada por el autómata
