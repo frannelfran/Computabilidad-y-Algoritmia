@@ -1,47 +1,32 @@
-#include "p05_alfabeto.h"
-#include "p05_estado.h"
 #include "p05_automata.h"
-#include "p05_nodo.h"
 
-// Universidad de La Laguna
-// Escuela Superior de Ingeniería y Tecnología
-// Grado en Ingeniería Informática
-// Asignatura: Computabilidad y Algoritmia
-// Curso: 2º
-// Práctica 5: Implementación de un simulador de autómatas finitos
-// Autor: Franco Alla
-// Correo: alu0101571669@ull.edu.es
-// Fecha: 16/10/2023
-// Archivo p05_automata.cc
-// Descripción: Implementación de la clase autómata
+Automata::Automata() {} // Constructor por defecto
 
-Automata::Automata() {} // Cosntructor por defecto
-
-Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstado mis_estados) {
+/**
+ * @brief Constructor de la clase Automata
+ * @param mi_alfabeto Objeto de la clase Alfabeto
+ * @param mi_conjunto Objeto de la clase Conjunto
+ * @return Objeto de la clase Automata
+*/
+Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstados mi_conjunto) {
   alfabeto_ = mi_alfabeto;
-  estados_ = mis_estados;
+  conjunto_ = mi_conjunto;
 }
 
-int Automata::actual() { // Obtener el estado actual
-  return estado_actual_;
+/**
+ * @brief Función que dice si la cadena que se le pasa por parámetro es aceptada por el autómata
+ * @param cadena String que contiene la cadena del fichero
+ * @return Devuelve 1 si es aceptada y 0 si es rechazada
+*/
+bool Automata::EsAceptada(string cadena) {
+  return conjunto_.AceptaCadena(cadena);
 }
 
-bool Automata::aceptado(string cadena) {
-  int estado_actual = 0;
-  for(const char simbolo : cadena) {
-    if(!alfabeto_.contiene_alfabeto(simbolo)) { // Si el símbolo no esta contenido en el alfabeto se rechaza
-      return false;
-    }
-    int siguiente;
-    if (!estados_.contieneTransicion(estado_actual, simbolo, siguiente)) {
-      // No hay transición para el símbolo, la cadena es rechazada
-      return false;
-    }
-    estado_actual = siguiente;
-  }
-  // Verificar si el estado actual es de aceptación
-  if (estados_.contiene_estado(estado_actual)) {
-    return estados_.obtener_estado(estado_actual).aceptacion();
-  }
-  return false;
+/**
+ * @brief Sobrecarga del operador << de la clase Automata
+*/
+ostream& operator<<(ostream& os, Automata& autom) {
+  os << autom.alfabeto_;
+  os << autom.conjunto_;
+  return os;
 }

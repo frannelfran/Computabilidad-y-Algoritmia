@@ -27,15 +27,9 @@ int main(int argc, char* argv[]) {
   ConjuntoDeEstados conjest(filein1);
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
-  // Comprobar si la cadena es aceptada por el autómata
-  string cadena;
-  while(filein2 >> cadena) {
-    bool aceptada = autom.EsAceptada(cadena);
-    cout << cadena << " --- " << (aceptada ? "Accepted" : "Rejected") << endl;
-  }
+  
 
   // CERRAMOS LOS FICHEROS
   filein1.close();
   filein2.close();
-  return 0;
 }
