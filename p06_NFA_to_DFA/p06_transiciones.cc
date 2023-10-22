@@ -5,6 +5,12 @@ Transiciones::Transiciones() {} // Constructor por defecto
 
 /**
  * @brief Constructor de la clase transiciones
+ * @param num_estados Indica el número de estados
+ * @param estado_inicial Indica el estado inicial
+ * @param estados Va indicando los estados
+ * @param transiciones Número de transiciones de cada estado
+ * @param siguiente Estado siguiente
+ * @return Devuelve un objeto de la clase transiciones
 */
 Transiciones::Transiciones(ifstream& file) {
   int num_estados, estado_inicial, estados, transiciones, siguiente;
@@ -14,7 +20,7 @@ Transiciones::Transiciones(ifstream& file) {
   while(num_estados != 0) {
     file >> estados; // Estado del conjunto
     file >> aceptacion; // Verificar que es de aceptación
-    aceptacion_.push_back(aceptacion);
+    aceptacion_.push_back(aceptacion); // Crear el vector de aceptación
     file >> transiciones;
     while(transiciones != 0) {
       char simbolo;
@@ -34,7 +40,7 @@ ostream& operator<<(ostream& os, const Transiciones& transiciones) {
   for (const auto& pair : transiciones.transiciones_) {
     os << "  " << pair.first << " -> " << pair.second << endl;
   }
-  os << "Asceptación ? ";
+  os << "Asceptación ? " << endl;
   for (const bool esAceptado : transiciones.aceptacion_) {
     os << (esAceptado ? "Sí" : "No") << endl;
   }

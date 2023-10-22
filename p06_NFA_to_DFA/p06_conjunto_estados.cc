@@ -7,8 +7,9 @@ ConjuntoDeEstados::ConjuntoDeEstados() {} // Constructor por defecto de la clase
  * @param file Fichero que contiene la información de los estados
 */
 
-ConjuntoDeEstados::ConjuntoDeEstados(int estado, Transiciones transiciones) {
-  conjunto_de_estados_.insert(pair<int, Transiciones>(estado, transiciones));
+ConjuntoDeEstados::ConjuntoDeEstados(Transiciones transicions) {
+  
+
 }
 
 ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto) {

@@ -26,7 +26,11 @@ int main(int argc, char* argv[]) {
   cout << alf << endl;
   //CREAR EL CONJUNTO DE ESTADOS
   Transiciones trans(filein1);
-  cout << trans;
+  ConjuntoDeEstados conjest(trans);
+  
+
+  
+
   
   
 }
