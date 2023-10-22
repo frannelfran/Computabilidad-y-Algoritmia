@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include "p06_alfabeto.h"
 
 using namespace std;
 
@@ -15,4 +14,13 @@ int main(int argc, char* argv[]) {
     cout << "Pruebe ’NFA2DFA --help’ para más información." << endl;
     return 1;
   }
+  // LECTURA DE LOS FICHEROS
+  string archivo1 = argv[1];
+  string archivo2 = argv[2];
+  ifstream filein1(archivo1);
+  ifstream filein2(archivo2);
+  // CONSTRUIR EL ALFABETO
+  Alfabeto alf(filein1);
+  cout << alf << endl;
+  
 }
