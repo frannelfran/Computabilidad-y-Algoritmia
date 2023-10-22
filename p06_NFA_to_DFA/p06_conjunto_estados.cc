@@ -28,7 +28,7 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
       char simbolo;
       file >> simbolo;
       file >> siguiente;
-      conjunto_de_estados_.insert({estados, {{simbolo, siguiente}}});
+      conjunto_de_estados_[estados].emplace_back(simbolo, siguiente);
       transiciones--;
     }
     num_estados--;
@@ -43,6 +43,29 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
 void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
   initial_ = estado_inicial;
   cout << initial_ << endl;
+}
+
+bool ConjuntoDeEstados::AceptaCadena(const string& cadena) const {
+  int estado_actual = initial_;
+  for (const char& simbolo : cadena) {
+    auto it = conjunto_de_estados_.find(estado_actual);
+    if(it == conjunto_de_estados_.end()) {
+      return false; // No hay transiciones desde el estado actual
+    }
+    const vector<pair<char, int>>& transiciones = it->second;
+    bool transicion_encontrada = false;
+    for(const auto& transicion : transiciones) {
+      if (transicion.first == simbolo) {
+        estado_actual = transicion.second;
+        transicion_encontrada = true;
+        break;
+      }
+    }
+    if (!transicion_encontrada) {
+      return false; // No se encontró una transición para el símbolo
+    }
+  }
+  return aceptacion_[estado_actual];
 }
 
 /**
