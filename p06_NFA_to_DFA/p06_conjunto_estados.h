@@ -12,6 +12,7 @@ class ConjuntoDeEstados {
   ConjuntoDeEstados(ifstream&); // Constructor de la clase estado
   void setEstadoInicial(int); // Declarar el estado inicial del automata
   int getEstadoInicial(); // Obtener el estado inicial
+  bool esEstadoAceptacion(int); // Verificar si el estado es de aceptación
   friend ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto);
 
   private:

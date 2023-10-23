@@ -21,16 +21,17 @@ int main(int argc, char* argv[]) {
   string archivo1 = argv[1];
   string archivo2 = argv[2];
   ifstream filein1(archivo1);
-  ifstream filein2(archivo2);
+  ofstream fileout2(archivo2); // Fichero donde se va a guardar el DFA
   // CONSTRUIR EL ALFABETO
   Alfabeto alf(filein1);
   // CREAR EL CONJUNTO DE ESTADOS
   ConjuntoDeEstados conjest(filein1);
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
+  fileout2 << autom;
   
 
   // CERRAMOS LOS FICHEROS
   filein1.close();
-  filein2.close();
+  fileout2.close();
 }

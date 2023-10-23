@@ -52,6 +52,21 @@ int ConjuntoDeEstados::getEstadoInicial() {
 }
 
 /**
+ * @brief Función para saber si un estado es de aceptación
+ * @param estado Estado que se quiere comprobar
+ * @return Devuelve 1 si es de aceptación y 0 si ocurre lo contrario
+*/
+bool ConjuntoDeEstados::esEstadoAceptacion(int estado) {
+  // Verifica si el estado está en el vector de estados de aceptación
+  for (int aceptacion : aceptacion_) {
+    if (estado == aceptacion) {
+      return true; // El estado es un estado de aceptación
+    }
+  }
+  return false; // El estado no es un estado de aceptación
+}
+
+/**
  * @brief Sobrecarga del operador << para la clase ConjuntoDeEstados
 */
 ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto) {
