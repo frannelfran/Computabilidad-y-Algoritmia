@@ -56,6 +56,15 @@ void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
   initial_ = estado_inicial;
 }
 
+/**
+ * @brief Función booleana que lee la cadena y va transitando entre los estados
+ * @param cadena Conjunto de símbolos
+ * @param estado_actual Indica el estado actual 
+ * @param it Busca el estado actual en el conjunto
+ * @param transiciones Vector para transitar entre los estados
+ * @return Devuelve 1 si la cadena es aceptada y 0 si es rechazada
+*/
+
 bool ConjuntoDeEstados::AceptaCadena(string cadena) {
   int estado_actual = initial_;
   for (const char simbolo : cadena) {
