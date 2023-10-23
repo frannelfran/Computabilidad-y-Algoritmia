@@ -1,6 +1,7 @@
 #include "p06_alfabeto.h"
 #include "p06_conjunto_estados.h"
 #include "p06_automata.h"
+#include "p06_afd.h"
 
 using namespace std;
 

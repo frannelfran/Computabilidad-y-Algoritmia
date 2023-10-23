@@ -17,6 +17,15 @@ Alfabeto::Alfabeto(ifstream& file) {
     }
   }
 }
+
+/**
+ * @brief Función para obetener el alfabeto
+ * @return Devuele el objeto de la clase Alfabeto
+*/
+set<char> Alfabeto::getAlfabeto() {
+  return alfabeto_;
+}
+
 /**
  *  @brief Sobrecarga del operador << de la clase Alfabeto
 */

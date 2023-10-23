@@ -11,6 +11,7 @@ class ConjuntoDeEstados {
   ConjuntoDeEstados(); // Constructor por defecto
   ConjuntoDeEstados(ifstream&); // Constructor de la clase estado
   void setEstadoInicial(int); // Declarar el estado inicial del automata
+  int getEstadoInicial(); // Obtener el estado inicial
   friend ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto);
 
   private:

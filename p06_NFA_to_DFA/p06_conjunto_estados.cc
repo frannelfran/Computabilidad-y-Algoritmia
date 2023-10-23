@@ -39,9 +39,16 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
  * @brief Procedimiento que declara el estado inicial del conjunto
  * @param estado_inicial Variable que contiene el estado inicial del conjunto
 */
-
 void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
   initial_ = estado_inicial;
+}
+
+/**
+ * @brief Función para obtener el estado inicial del conjunto
+ * @return Devuelve el estado inicial
+*/
+int ConjuntoDeEstados::getEstadoInicial() {
+  return initial_;
 }
 
 /**
