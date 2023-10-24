@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
   ConjuntoDeEstados conjest(filein1);
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
+  cout << autom;
   // Comprobar si la cadena es aceptada por el autómata
   string cadena;
   while(filein2 >> cadena) {
