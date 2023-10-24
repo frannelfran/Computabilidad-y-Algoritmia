@@ -4,11 +4,7 @@ ConjuntoDeEstados::ConjuntoDeEstados() {} // Constructor por defecto de la clase
 
 /**
  * @brief Constructor de la clase transiciones
- * @param num_estados Indica el número de estados
- * @param estado_inicial Indica el estado inicial
- * @param estados Va indicando los estados
- * @param transiciones Número de transiciones de cada estado
- * @param siguiente Estado siguiente
+ * @param file Fichero que contiene la información del autómata
  * @return Devuelve un objeto de la clase transiciones
 */
 ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
@@ -26,9 +22,9 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
     file >> transiciones; // Cuantas transiciones tiene cada estado
     while(transiciones != 0) {
       char simbolo;
-      file >> simbolo;
-      file >> siguiente;
-      conjunto_de_estados_[estados].push_back({simbolo, siguiente});
+      file >> simbolo; // Almacena el simbolo para transitar
+      file >> siguiente; // Almacena el estado_siguiente
+      conjunto_de_estados_[estados].push_back({simbolo, siguiente}); // Inserta los estados con sus transiciones
       transiciones--;
     }
     num_estados--;

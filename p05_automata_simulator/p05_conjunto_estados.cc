@@ -16,13 +16,10 @@ ConjuntoDeEstados::ConjuntoDeEstados() {} // Constructor por defecto de la clase
 
 /**
  * @brief Constructor de la clase transiciones
- * @param num_estados Indica el número de estados
- * @param estado_inicial Indica el estado inicial
- * @param estados Va indicando los estados
- * @param transiciones Número de transiciones de cada estado
- * @param siguiente Estado siguiente
+ * @param file Fichero que contiene la información del autómata
  * @return Devuelve un objeto de la clase transiciones
 */
+
 ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
   int num_estados, estado_inicial, estados, transiciones, siguiente;
   bool aceptacion;
@@ -59,9 +56,6 @@ void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
 /**
  * @brief Función booleana que lee la cadena y va transitando entre los estados
  * @param cadena Conjunto de símbolos
- * @param estado_actual Indica el estado actual 
- * @param it Busca el estado actual en el conjunto
- * @param transiciones Vector para transitar entre los estados
  * @return Devuelve 1 si la cadena es aceptada y 0 si es rechazada
 */
 
@@ -91,6 +85,7 @@ bool ConjuntoDeEstados::AceptaCadena(string cadena) {
 /**
  * @brief Sobrecarga del operador << para la clase ConjuntoDeEstados
 */
+
 ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto) {
   os << "Conjunto de estados" << endl;
   for (auto& estado : conjunto.conjunto_de_estados_) {
