@@ -14,6 +14,15 @@ Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstados mi_conjunto) {
   conjunto_ = mi_conjunto;
 }
 
+/**
+ * @brief Función para obtener un nuevo estado
+ * @return Un nuevo estado
+*/
+
+int Automata::obtenerNuevoEstado() {
+  return ultimoEstadoDFA++;
+}
+
 Automata Automata::ConstruirSubconjuntos() {
   set<char> alfabeto = alfabeto_.getAlfabeto(); // Obtener el alfabeto
   ConjuntoDeEstados ConjuntoDeEstados = conjunto_; // Obtener el conjunto de estados
@@ -37,7 +46,20 @@ Automata Automata::ConstruirSubconjuntos() {
     // Obtener el conjunto de estados alcanzable desde estadoActual con cada símbolo del alfabeto
     map<char, set<int>> conjuntoDeEstadosAlcanzable;
     for(char simbolo : alfabeto) {
-      set<int> estadosAlcanzable;
+      set<int> estadosAlcanzables = ConjuntoDeEstados.obtenerTransiciones(estadoActual, simbolo);
+      conjuntoDeEstadosAlcanzable[simbolo] = estadosAlcanzables;
+    }
+    // Agregar el conjunto de estados alcanzables al DFA si aún no se ha visitado
+    for(const auto& entrada : conjuntoDeEstadosAlcanzable) {
+      set<int> nuevoEstadoDFA = entrada.second;
+      if(!estadosDFAVisitados.count(nuevoEstadoDFA)) { // Verifica que no se ha visitado
+        estadosPorProcesar.push(nuevoEstadoDFA);
+        estadosDFAVisitados.insert(nuevoEstadoDFA);
+        int nuevoEstadoDFA = dfa.obtenerNuevoEstado();
+      }
+      
+
+
 
     }
   }

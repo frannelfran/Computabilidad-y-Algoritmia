@@ -51,6 +51,25 @@ int ConjuntoDeEstados::getEstadoInicial() {
 }
 
 /**
+ * @brief Función para obtener las transiciones desde un estado con un símbolo
+ * @param estado Estado al que le quieres mirar las transiciones
+ * @param simbolo Simbolo necesario para poder hacer las transiciones de ese estado
+ * @return Transiciones del estado
+*/
+
+set<int> ConjuntoDeEstados::obtenerTransiciones(int estado, char simbolo) {
+  set<int> transiciones;
+  // Verificar que el estado tiene transiciones con el simbolo proporcionado
+  if(conjunto_de_estados_.find(estado) != conjunto_de_estados_.end()) {
+    for(const auto& transicion : conjunto_de_estados_.at(estado)) {
+      if(transicion.first == simbolo) {
+        transiciones.insert(transicion.second);
+      }
+    }
+  }
+}
+
+/**
  * @brief Función para saber si un estado es de aceptación
  * @param estado Estado que se quiere comprobar
  * @return Devuelve 1 si es de aceptación y 0 si ocurre lo contrario
