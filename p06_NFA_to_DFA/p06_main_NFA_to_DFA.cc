@@ -27,9 +27,10 @@ int main(int argc, char* argv[]) {
   ConjuntoDeEstados conjest(filein1);
   // CREAR EL AUTOMATA
   Automata autom(alf, conjest);
-  fileout2 << autom;
+  cout << autom;
+  Automata DFA = autom.ConstruirSubconjuntos();
+  cout << DFA;
   
-
   // CERRAMOS LOS FICHEROS
   filein1.close();
   fileout2.close();
