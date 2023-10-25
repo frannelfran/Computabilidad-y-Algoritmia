@@ -7,6 +7,7 @@ Alfabeto::Alfabeto() {}
  * @param file fichero donde solo se lee el alfabeto.
  * @return Objeto de la clase Alfabeto
 */
+
 Alfabeto::Alfabeto(ifstream& file) {
   string linea;
   getline(file, linea);
@@ -21,6 +22,7 @@ Alfabeto::Alfabeto(ifstream& file) {
  * @brief Función para obetener el alfabeto
  * @return Devuele el objeto de la clase Alfabeto
 */
+
 set<char> Alfabeto::getAlfabeto() {
   return alfabeto_;
 }
@@ -28,6 +30,7 @@ set<char> Alfabeto::getAlfabeto() {
 /**
  *  @brief Sobrecarga del operador << de la clase Alfabeto
 */
+
 ostream& operator<<(ostream& os, const Alfabeto& alfabeto) {
   os << "Alfabeto: ";
   os << "{";

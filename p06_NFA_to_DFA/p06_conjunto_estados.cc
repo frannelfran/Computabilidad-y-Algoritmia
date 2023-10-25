@@ -7,6 +7,7 @@ ConjuntoDeEstados::ConjuntoDeEstados() {} // Constructor por defecto de la clase
  * @param file Fichero que contiene la información del autómata
  * @return Devuelve un objeto de la clase transiciones
 */
+
 ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
   int num_estados, estado_inicial, estados, transiciones, siguiente;
   bool aceptacion;
@@ -35,6 +36,7 @@ ConjuntoDeEstados::ConjuntoDeEstados(ifstream& file) {
  * @brief Procedimiento que declara el estado inicial del conjunto
  * @param estado_inicial Variable que contiene el estado inicial del conjunto
 */
+
 void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
   initial_ = estado_inicial;
 }
@@ -43,6 +45,7 @@ void ConjuntoDeEstados::setEstadoInicial(int estado_inicial) {
  * @brief Función para obtener el estado inicial del conjunto
  * @return Devuelve el estado inicial
 */
+
 int ConjuntoDeEstados::getEstadoInicial() {
   return initial_;
 }
@@ -52,6 +55,7 @@ int ConjuntoDeEstados::getEstadoInicial() {
  * @param estado Estado que se quiere comprobar
  * @return Devuelve 1 si es de aceptación y 0 si ocurre lo contrario
 */
+
 bool ConjuntoDeEstados::esEstadoAceptacion(int estado) {
   // Verifica si el estado está en el vector de estados de aceptación
   for (int aceptacion : aceptacion_) {
@@ -65,6 +69,7 @@ bool ConjuntoDeEstados::esEstadoAceptacion(int estado) {
 /**
  * @brief Sobrecarga del operador << para la clase ConjuntoDeEstados
 */
+
 ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto) {
   os << "Conjunto de estados" << endl;
   for (auto& estado : conjunto.conjunto_de_estados_) {

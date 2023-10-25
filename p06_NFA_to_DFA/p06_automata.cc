@@ -8,6 +8,7 @@ Automata::Automata() {} // Constructor por defecto
  * @param mi_conjunto Objeto de la clase Conjunto
  * @return Objeto de la clase Automata
 */
+
 Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstados mi_conjunto) {
   alfabeto_ = mi_alfabeto;
   conjunto_ = mi_conjunto;
