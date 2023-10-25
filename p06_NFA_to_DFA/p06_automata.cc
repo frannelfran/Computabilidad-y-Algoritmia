@@ -23,6 +23,11 @@ int Automata::obtenerNuevoEstado() {
   return ultimoEstadoDFA++;
 }
 
+/**
+ * @brief Algoritmo de construcción de subconjuntos
+ * @return Devuelve un objeto de la clase autómata (DFA)
+*/
+
 Automata Automata::ConstruirSubconjuntos() {
   set<char> alfabeto = alfabeto_.getAlfabeto(); // Obtener el alfabeto
   ConjuntoDeEstados ConjuntoDeEstados = conjunto_; // Obtener el conjunto de estados
