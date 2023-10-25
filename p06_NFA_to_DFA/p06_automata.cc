@@ -9,7 +9,7 @@ Automata::Automata() {} // Constructor por defecto
  * @return Objeto de la clase Automata
 */
 
-Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstados mi_conjunto) {
+Automata::Automata(const Alfabeto& mi_alfabeto, const ConjuntoDeEstados& mi_conjunto) {
   alfabeto_ = mi_alfabeto;
   conjunto_ = mi_conjunto;
 }

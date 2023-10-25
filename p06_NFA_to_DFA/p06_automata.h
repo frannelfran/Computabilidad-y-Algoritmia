@@ -10,7 +10,7 @@ using namespace std;
 class Automata{
   public:
   Automata(); // Constructor por defecto
-  Automata(Alfabeto, ConjuntoDeEstados); // Constructor de la clase automata
+  Automata(const Alfabeto&, const ConjuntoDeEstados&); // Constructor de la clase automata
   int obtenerNuevoEstado(); // Obtener un nuevo estado para el DFA
   Automata ConstruirSubconjuntos();
   friend ostream& operator<<(ostream& os, Automata& autom); // Sobrecarga del operador de salida
