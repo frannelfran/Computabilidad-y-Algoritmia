@@ -67,6 +67,19 @@ set<int> ConjuntoDeEstados::obtenerTransiciones(int estado, char simbolo) {
       }
     }
   }
+  return transiciones;
+}
+
+void ConjuntoDeEstados::agregarTransiciones(int estadoOrigen, int estadoDestino, char simbolo) {
+  // Verificar si el estado origen ya existe
+  if(conjunto_de_estados_.find(estadoOrigen) != conjunto_de_estados_.end()) {
+    conjunto_de_estados_[estadoOrigen].push_back({simbolo, estadoDestino});
+  }
+  // Si no existe lo creamos
+  else {
+    vector<pair<char, int>> transiciones = {{simbolo, estadoDestino}};
+    conjunto_de_estados_[estadoOrigen] = transiciones;
+  }
 }
 
 /**

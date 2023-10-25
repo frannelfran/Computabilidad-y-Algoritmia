@@ -14,6 +14,7 @@ class ConjuntoDeEstados {
   void setEstadoInicial(int); // Declarar el estado inicial del automata
   int getEstadoInicial(); // Obtener el estado inicial
   set<int> obtenerTransiciones(int, char); // Obtener las transiciones
+  void agregarTransiciones(int, int, char);
   bool esEstadoAceptacion(int); // Verificar si el estado es de aceptación
   friend ostream& operator<<(ostream& os, ConjuntoDeEstados& conjunto);
 

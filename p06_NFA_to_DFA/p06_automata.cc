@@ -40,7 +40,7 @@ Automata Automata::ConstruirSubconjuntos() {
   map<set<int>, int> mapeoEstados; // Mapa que asocia conjuntos de estados del NFA con estados del DFA
 
   while(!estadosPorProcesar.empty()) {
-    int estadoActual =estadosPorProcesar.front();
+    int estadoActual = estadosPorProcesar.front();
     estadosPorProcesar.pop();
 
     // Obtener el conjunto de estados alcanzable desde estadoActual con cada símbolo del alfabeto
@@ -57,12 +57,10 @@ Automata Automata::ConstruirSubconjuntos() {
         estadosDFAVisitados.insert(nuevoEstadoDFA);
         int nuevoEstadoDFA = dfa.obtenerNuevoEstado();
       }
-      
-
-
-
+      dfa.conjunto_.agregarTransiciones(estadoActual, mapeoEstados[nuevoEstadoDFA], entrada.first);
     }
   }
+  return dfa;
 }
 
 /**
