@@ -17,6 +17,7 @@ Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstados mi_conjunto) {
 /**
  * @brief Sobrecarga del operador << de la clase Automata
 */
+
 ostream& operator<<(ostream& os, Automata& autom) {
   os << autom.alfabeto_;
   os << autom.conjunto_;
