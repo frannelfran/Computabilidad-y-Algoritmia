@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <queue>
 #include "p06_alfabeto.h"
 #include "p06_conjunto_estados.h"
 #pragma once
@@ -10,7 +11,7 @@ class Automata{
   public:
   Automata(); // Constructor por defecto
   Automata(Alfabeto, ConjuntoDeEstados); // Constructor de la clase automata
-  Automata ConstruirAFD(Alfabeto, ConjuntoDeEstados);
+  Automata ConstruirSubconjuntos();
   friend ostream& operator<<(ostream& os, Automata& autom); // Sobrecarga del operador de salida
   private:
   Alfabeto alfabeto_;

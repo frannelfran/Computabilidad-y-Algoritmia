@@ -14,6 +14,35 @@ Automata::Automata(Alfabeto mi_alfabeto, ConjuntoDeEstados mi_conjunto) {
   conjunto_ = mi_conjunto;
 }
 
+Automata Automata::ConstruirSubconjuntos() {
+  set<char> alfabeto = alfabeto_.getAlfabeto(); // Obtener el alfabeto
+  ConjuntoDeEstados ConjuntoDeEstados = conjunto_; // Obtener el conjunto de estados
+
+  // Inicializar el DFA
+  Automata dfa;
+  Alfabeto nuevoAlfabeto;
+  int estadoInicial = ConjuntoDeEstados.getEstadoInicial();
+  dfa.conjunto_.setEstadoInicial(estadoInicial);
+
+  // Creo una cola para ir procesando los estados
+  queue<int> estadosPorProcesar;
+  estadosPorProcesar.push(estadoInicial);
+  set<set<int>> estadosDFAVisitados; // Conjunto de estados visitados
+  map<set<int>, int> mapeoEstados; // Mapa que asocia conjuntos de estados del NFA con estados del DFA
+
+  while(!estadosPorProcesar.empty()) {
+    int estadoActual =estadosPorProcesar.front();
+    estadosPorProcesar.pop();
+
+    // Obtener el conjunto de estados alcanzable desde estadoActual con cada símbolo del alfabeto
+    map<char, set<int>> conjuntoDeEstadosAlcanzable;
+    for(char simbolo : alfabeto) {
+      set<int> estadosAlcanzable;
+
+    }
+  }
+}
+
 /**
  * @brief Sobrecarga del operador << de la clase Automata
 */
