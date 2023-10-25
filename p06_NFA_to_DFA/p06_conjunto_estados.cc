@@ -57,28 +57,31 @@ int ConjuntoDeEstados::getEstadoInicial() {
  * @return Transiciones del estado
 */
 
-set<int> ConjuntoDeEstados::obtenerTransiciones(int estado, char simbolo) {
-  set<int> transiciones;
-  // Verificar que el estado tiene transiciones con el simbolo proporcionado
-  if(conjunto_de_estados_.find(estado) != conjunto_de_estados_.end()) {
-    for(const auto& transicion : conjunto_de_estados_.at(estado)) {
-      if(transicion.first == simbolo) {
-        transiciones.insert(transicion.second);
+set<int> ConjuntoDeEstados::obtenerTransiciones(set<int> estado, char simbolo) {
+  set<int> estadosAlcanzables;
+  // Recorre cada estado del conjunto y obtén las transiciones para cada uno
+  for(int estadoIndividual : estado) {
+    if(conjunto_de_estados_.count(estadoIndividual) > 0) {
+      const vector<pair<char, int>>& transiciones = conjunto_de_estados_[estadoIndividual];
+      for (const pair<char, int>& transicion : transiciones) {
+        if (transicion.first == simbolo) {
+          estadosAlcanzables.insert(transicion.second);
+        }
       }
     }
   }
-  return transiciones;
+  return estadosAlcanzables;
 }
 
-void ConjuntoDeEstados::agregarTransiciones(int estadoOrigen, int estadoDestino, char simbolo) {
-  // Verificar si el estado origen ya existe
-  if(conjunto_de_estados_.find(estadoOrigen) != conjunto_de_estados_.end()) {
-    conjunto_de_estados_[estadoOrigen].push_back({simbolo, estadoDestino});
-  }
-  // Si no existe lo creamos
-  else {
-    vector<pair<char, int>> transiciones = {{simbolo, estadoDestino}};
-    conjunto_de_estados_[estadoOrigen] = transiciones;
+void ConjuntoDeEstados::agregarTransiciones(set<int> estadosOrigen, int estadoDestino, char simbolo) {
+  for (int estadoOrigen : estadosOrigen) {
+    if (conjunto_de_estados_.find(estadoOrigen) != conjunto_de_estados_.end()) {
+      conjunto_de_estados_[estadoOrigen].push_back({simbolo, estadoDestino});
+    }
+    else {
+      vector<pair<char, int>> transiciones = {{simbolo, estadoDestino}};
+      conjunto_de_estados_[estadoOrigen] = transiciones;
+    }
   }
 }
 

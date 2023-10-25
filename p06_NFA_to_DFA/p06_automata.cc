@@ -34,19 +34,19 @@ Automata Automata::ConstruirSubconjuntos() {
   dfa.conjunto_.setEstadoInicial(estadoInicial);
 
   // Creo una cola para ir procesando los estados
-  queue<int> estadosPorProcesar;
-  estadosPorProcesar.push(estadoInicial);
+  queue<set<int>> estadosPorProcesar;
+  estadosPorProcesar.push({estadoInicial});
   set<set<int>> estadosDFAVisitados; // Conjunto de estados visitados
   map<set<int>, int> mapeoEstados; // Mapa que asocia conjuntos de estados del NFA con estados del DFA
 
   while(!estadosPorProcesar.empty()) {
-    int estadoActual = estadosPorProcesar.front();
+    set<int> conjuntoActual = estadosPorProcesar.front();
     estadosPorProcesar.pop();
 
-    // Obtener el conjunto de estados alcanzable desde estadoActual con cada símbolo del alfabeto
+    // Obtener el conjunto de estados alcanzable desde conjuntoActual con cada símbolo del alfabeto
     map<char, set<int>> conjuntoDeEstadosAlcanzable;
     for(char simbolo : alfabeto) {
-      set<int> estadosAlcanzables = ConjuntoDeEstados.obtenerTransiciones(estadoActual, simbolo);
+      set<int> estadosAlcanzables = ConjuntoDeEstados.obtenerTransiciones(conjuntoActual, simbolo);
       conjuntoDeEstadosAlcanzable[simbolo] = estadosAlcanzables;
     }
     // Agregar el conjunto de estados alcanzables al DFA si aún no se ha visitado
@@ -57,7 +57,7 @@ Automata Automata::ConstruirSubconjuntos() {
         estadosDFAVisitados.insert(nuevoEstadoDFA);
         int nuevoEstadoDFA = dfa.obtenerNuevoEstado();
       }
-      dfa.conjunto_.agregarTransiciones(estadoActual, mapeoEstados[nuevoEstadoDFA], entrada.first);
+      dfa.conjunto_.agregarTransiciones(conjuntoActual, mapeoEstados[nuevoEstadoDFA], entrada.first);
     }
   }
   return dfa;
