@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
   cout << autom;
   Automata DFA = autom.ConstruirSubconjuntos();
   cout << DFA;
-  
+
   // CERRAMOS LOS FICHEROS
   filein1.close();
   fileout2.close();
