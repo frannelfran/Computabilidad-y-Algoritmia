@@ -4,22 +4,32 @@ Estado: 0
   Entrada: 0 -> Siguiente Estado: 0
   Entrada: 1 -> Siguiente Estado: 1
   Entrada: 0 -> Siguiente Estado: 0
-  Entrada: 1 -> Siguiente Estado: 2
+  Entrada: 1 -> Siguiente Estado: 1
+  Entrada: 0 -> Siguiente Estado: 2
+  Entrada: 1 -> Siguiente Estado: 3
+  Entrada: 0 -> Siguiente Estado: 4
+  Entrada: 1 -> Siguiente Estado: 1
+  Entrada: 0 -> Siguiente Estado: 5
+  Entrada: 1 -> Siguiente Estado: 3
   Entrada: 0 -> Siguiente Estado: 0
   Entrada: 1 -> Siguiente Estado: 1
-  Entrada: 0 -> Siguiente Estado: 3
+  Entrada: 0 -> Siguiente Estado: 4
   Entrada: 1 -> Siguiente Estado: 1
-  Entrada: 0 -> Siguiente Estado: 0
-  Entrada: 1 -> Siguiente Estado: 2
 Estado: 1
-  Entrada: 0 -> Siguiente Estado: 0
-  Entrada: 1 -> Siguiente Estado: 2
-  Entrada: 0 -> Siguiente Estado: 0
-  Entrada: 1 -> Siguiente Estado: 2
+  Entrada: 0 -> Siguiente Estado: 2
+  Entrada: 1 -> Siguiente Estado: 3
+  Entrada: 0 -> Siguiente Estado: 5
+  Entrada: 1 -> Siguiente Estado: 3
 Estado: 2
-  Entrada: 0 -> Siguiente Estado: 3
+  Entrada: 0 -> Siguiente Estado: 4
+  Entrada: 1 -> Siguiente Estado: 1
+  Entrada: 0 -> Siguiente Estado: 5
+  Entrada: 1 -> Siguiente Estado: 3
+  Entrada: 0 -> Siguiente Estado: 4
   Entrada: 1 -> Siguiente Estado: 1
 Estado: 3
   Entrada: 0 -> Siguiente Estado: 0
-  Entrada: 1 -> Siguiente Estado: 2
+  Entrada: 1 -> Siguiente Estado: 1
+  Entrada: 0 -> Siguiente Estado: 4
+  Entrada: 1 -> Siguiente Estado: 1
 Estados de Aceptación: 
