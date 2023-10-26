@@ -1,5 +1,17 @@
 #include "p06_automata.h"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 6: Convertir un NFA en un DFA
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 26/10/2023
+// Archivo: p06_automata.cc
+// Descripción: Implementación de la clase Automata
+
 Automata::Automata() {} // Constructor por defecto
 
 /**

@@ -1,5 +1,17 @@
 #include "p06_conjunto_estados.h"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 6: Convertir un NFA en un DFA
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 26/10/2023
+// Archivo: p06_conjunto_estados.cc
+// Descripción: Implementación de la clase ConjuntoDeEstados
+
 ConjuntoDeEstados::ConjuntoDeEstados() {} // Constructor por defecto de la clase
 
 /**
