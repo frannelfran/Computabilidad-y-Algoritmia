@@ -29,5 +29,5 @@ class Automata{
   private:
   Alfabeto alfabeto_;
   ConjuntoDeEstados conjunto_;
-  int ultimoEstadoDFA;
+  int ultimoEstadoDFA{0};
 };

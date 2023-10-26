@@ -72,9 +72,17 @@ Automata Automata::ConstruirSubconjuntos() {
       if(!estadosDFAVisitados.count(nuevoEstadoDFA)) { // Verifica que no se ha visitado
         estadosPorProcesar.push(nuevoEstadoDFA);
         estadosDFAVisitados.insert(nuevoEstadoDFA);
-        int nuevoEstadoDFA = dfa.obtenerNuevoEstado();
+        // Obtener un nuevo estado para el DFA
+        int nuevoEstadoDFANum = obtenerNuevoEstado();
+        // Mapear el conjutno de estados del NFA al DFA
+        mapeoEstados[nuevoEstadoDFA] = nuevoEstadoDFANum;
+        // agregar transiciones al DFA
+        dfa.conjunto_.agregarTransiciones(conjuntoActual, nuevoEstadoDFANum, entrada.first);
       }
-      dfa.conjunto_.agregarTransiciones(conjuntoActual, mapeoEstados[nuevoEstadoDFA], entrada.first);
+      else {
+        // si el conjunto de estados ya se visitó, solo agregamos transiciones
+        dfa.conjunto_.agregarTransiciones(conjuntoActual, mapeoEstados[nuevoEstadoDFA], entrada.first);
+      }
     }
   }
   return dfa;
