@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <map>
 #include <fstream>
 #include "p07_alfabeto.h"
@@ -16,5 +17,5 @@ class Producciones {
   private:
   Alfabeto alfabeto_;
   Terminales terminales_;
-  multimap<char, string> producciones_;
+  map<char, vector<string>> producciones_;
 };

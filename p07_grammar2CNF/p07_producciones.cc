@@ -20,7 +20,7 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, Terminales termina
   while (num_producciones != 0) {
     file >> term;
     file >> derivaciones;
-    producciones_.insert(make_pair(term, derivaciones));
+    producciones_[term].push_back(derivaciones);
     num_producciones--;
   }
 }
@@ -28,8 +28,14 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, Terminales termina
 ostream& operator<<(ostream& os, Producciones& prod) {
   os << "Producciones de la gramática" << endl;
   for (auto it = prod.producciones_.begin(); it != prod.producciones_.end(); it++) {
-    os << it->first << " --> ";
-    os << it->second << endl;
+    os << it->first << " → ";
+    for (const string& production : it->second) {
+      os << production;
+      if (production != it->second.back()) {
+        os << " | ";
+      }
+    }
+    os << endl;
   }
   return os;
 }
