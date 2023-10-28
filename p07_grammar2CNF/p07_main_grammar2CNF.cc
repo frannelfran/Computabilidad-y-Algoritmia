@@ -1,5 +1,5 @@
 #include "p07_alfabeto.h"
-#include "p07_terminales.h"
+#include "p07_no_terminales.h"
 #include "p07_producciones.h"
 
 using namespace std;
@@ -23,10 +23,10 @@ int main(int argc, char* argv[]) {
   Alfabeto alf(filein);
   fileout << alf;
   // CREAR LOS SÍMBOLOS TERMINALES
-  Terminales term(filein);
-  fileout << term;
+  NoTerminales NoTerm(filein);
+  fileout << NoTerm;
   // CREAR LAS PRODUCCIONES
-  Producciones prod(filein, alf, term);
+  Producciones prod(filein, alf, NoTerm);
   fileout << prod;
   
   // CIERRE DE FICHEROS

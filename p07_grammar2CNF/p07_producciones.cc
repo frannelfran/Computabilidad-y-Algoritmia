@@ -6,16 +6,16 @@ Producciones::Producciones() {} // Contructor por defecto de la clase
  * @brief Constructor de la clase Producciones
  * @param file Fichero para leer las producciones de la gramática
  * @param alfabeto Alfabeto de la gramática
- * @param terminales Símbolos terminales que tiene la gramática
+ * @param no_terminales Símbolos no terminales que tiene la gramática
  * @return Devuelve un objeto de la clase terminal
 */
 
-Producciones::Producciones(ifstream& file, Alfabeto alfabeto, Terminales terminales) {
+Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_terminales) {
   int num_producciones;
   char term; // símbolo terminal
   string derivaciones; // Derivaciones de cada símbolo
   alfabeto_ = alfabeto;
-  terminales_ = terminales;
+  no_terminales_ = no_terminales;
   file >> num_producciones;
   while (num_producciones != 0) {
     file >> term;
