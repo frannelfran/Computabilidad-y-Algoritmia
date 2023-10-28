@@ -32,8 +32,7 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_te
 */
 
 bool Producciones::EsTerminal(char simbolo) {
-  int conversion = static_cast<int>(simbolo); // Convierto el símbolo a entero
-  if(simbolo >= 65 || simbolo <= 90) { // Verificar mediante el código ASCII si el símbolo es terminal
+  if(isalpha(simbolo)) {
     return true;
   }
   return false;
@@ -50,7 +49,9 @@ void Producciones::AgregarProduccion(string simbolo_no_terminal, const string& p
 */
 
 void Producciones::ModificarProducciones() {
+  
 }
+
 
 ostream& operator<<(ostream& os, Producciones& prod) {
   os << prod.alfabeto_;
