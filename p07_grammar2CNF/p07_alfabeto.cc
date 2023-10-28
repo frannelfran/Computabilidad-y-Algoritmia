@@ -20,6 +20,12 @@ Alfabeto::Alfabeto(ifstream& file) {
 }
 
 /**
+ * @brief Comprobar que las producciones tiene símbolos del alfabeto
+ * @param simbolo Símbolo a comprobar
+ * @return Devolver 1 si existe, 0 en caso contrario
+*/
+
+/**
  * @brief Sobrecarga del operador de salida
 */
 

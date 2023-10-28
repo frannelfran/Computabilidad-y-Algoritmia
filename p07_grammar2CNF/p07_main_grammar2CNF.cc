@@ -1,5 +1,6 @@
 #include "p07_alfabeto.h"
 #include "p07_terminales.h"
+#include "p07_producciones.h"
 
 using namespace std;
 
@@ -24,7 +25,10 @@ int main(int argc, char* argv[]) {
   // CREAR LOS SÍMBOLOS TERMINALES
   Terminales term(filein);
   fileout << term;
-
+  // CREAR LAS PRODUCCIONES
+  Producciones prod(filein, alf, term);
+  fileout << prod;
+  
   // CIERRE DE FICHEROS
   filein.close();
   fileout.close();

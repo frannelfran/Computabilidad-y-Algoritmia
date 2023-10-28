@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <set>
+#pragma once
 
 using namespace std;
 
