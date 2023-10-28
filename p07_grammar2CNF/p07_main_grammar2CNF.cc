@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
   NoTerminales NoTerm(filein);
   // CREAR LAS PRODUCCIONES
   Producciones prod(filein, alf, NoTerm);
-  prod.NormalChomskyFor();
+  prod.ModificarProducciones();
   cout << prod;
   
   // CIERRE DE FICHEROS

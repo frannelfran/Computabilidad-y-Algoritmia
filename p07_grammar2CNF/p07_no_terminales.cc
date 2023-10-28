@@ -10,7 +10,7 @@ NoTerminales::NoTerminales() {} // Constructor por defecto
 
 NoTerminales::NoTerminales(ifstream& file) {
   int num_no_terminales;
-  char simbolo_no_terminal;
+  string simbolo_no_terminal;
   file >> num_no_terminales; // Compruebo cuantos símbolos no terminales hay en la gramática
   while (num_no_terminales != 0) {
     file >> simbolo_no_terminal;
@@ -19,8 +19,12 @@ NoTerminales::NoTerminales(ifstream& file) {
   }
 }
 
-void NoTerminales::Insertar(char no_terminal) {
+void NoTerminales::Insertar(string no_terminal) {
   no_terminales_.insert(no_terminal);
+}
+
+void NoTerminales::find(string no_terminal) {
+  no_terminales_.find(no_terminal);
 }
 
 /**
