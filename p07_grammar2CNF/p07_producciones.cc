@@ -12,7 +12,7 @@ Producciones::Producciones() {} // Contructor por defecto de la clase
 
 Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_terminales) {
   int num_producciones;
-  string term; // símbolo no terminal
+  char term; // símbolo no terminal
   string derivaciones; // Derivaciones de cada símbolo
   alfabeto_ = alfabeto;
   no_terminales_ = no_terminales;
@@ -32,13 +32,13 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_te
 */
 
 bool Producciones::EsTerminal(char simbolo) {
-  if(isalpha(simbolo)) {
+  if(islower(simbolo)) {
     return true;
   }
   return false;
 }
 
-void Producciones::AgregarProduccion(string simbolo_no_terminal, const string& produccion) {
+void Producciones::AgregarProduccion(char simbolo_no_terminal, const string& produccion) {
   // Asegurarse de que el símbolo no terminal exista en la gramática
   no_terminales_.Insertar(simbolo_no_terminal);
   producciones_[simbolo_no_terminal].push_back(produccion);
@@ -48,9 +48,8 @@ void Producciones::AgregarProduccion(string simbolo_no_terminal, const string& p
  * @brief Modificar las producciones (Primera parte del algoritmo)
 */
 
-void Producciones::ModificarProducciones() {
-  
-}
+void Producciones::ModificarProducciones() {}
+    
 
 
 ostream& operator<<(ostream& os, Producciones& prod) {

@@ -9,9 +9,9 @@ class NoTerminales {
   public:
   NoTerminales(); // Constructor por defecto
   NoTerminales(ifstream&); // Constructor de la clase
-  void Insertar(string); // Insertar no terminales
-  void find(string); // Buscar un símbolo no terminal
+  void Insertar(char); // Insertar no terminales
+  void find(char); // Buscar un símbolo no terminal
   friend ostream& operator<<(ostream& os, NoTerminales& term); // Sobrecarga del operador de salida
   private:
-  set<string> no_terminales_; // Atributo privado de la clase
+  set<char> no_terminales_; // Atributo privado de la clase
 };
