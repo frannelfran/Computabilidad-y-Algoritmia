@@ -25,7 +25,23 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_te
   }
 }
 
+/**
+ * @brief Transformar a la forma normal de Chomsky
+*/
+
+void Producciones::NormalChomskyFor() {
+  char Ca, Cb;
+  Ca = 'A';
+  Cb = 'B';
+  no_terminales_.Insertar(Ca);
+  no_terminales_.Insertar(Cb);
+  producciones_[Ca].push_back("a");
+  producciones_[Cb].push_back("b");
+}
+
 ostream& operator<<(ostream& os, Producciones& prod) {
+  os << prod.alfabeto_;
+  os << prod.no_terminales_;
   os << "Producciones de la gramática" << endl;
   for (auto it = prod.producciones_.begin(); it != prod.producciones_.end(); it++) {
     os << it->first << " → ";

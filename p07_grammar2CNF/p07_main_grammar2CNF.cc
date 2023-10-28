@@ -21,13 +21,12 @@ int main(int argc, char* argv[]) {
   ofstream fileout (argv[2]); // Fichero de salida
   // CREAR EL ALFABETO
   Alfabeto alf(filein);
-  fileout << alf;
   // CREAR LOS SÍMBOLOS TERMINALES
   NoTerminales NoTerm(filein);
-  fileout << NoTerm;
   // CREAR LAS PRODUCCIONES
   Producciones prod(filein, alf, NoTerm);
-  fileout << prod;
+  prod.NormalChomskyFor();
+  cout << prod;
   
   // CIERRE DE FICHEROS
   filein.close();

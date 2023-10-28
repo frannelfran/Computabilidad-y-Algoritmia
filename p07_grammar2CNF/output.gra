@@ -1,6 +1,0 @@
-Alfabeto: {a,b,c}
-Símbolos terminales: S X Y
-Producciones de la gramática
-S → aXbX | abX | aXb | ab
-X → aY | bY | a | b
-Y → aY | bY | a | b | c

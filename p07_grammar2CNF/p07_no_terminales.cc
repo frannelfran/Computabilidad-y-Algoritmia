@@ -14,9 +14,13 @@ NoTerminales::NoTerminales(ifstream& file) {
   file >> num_no_terminales; // Compruebo cuantos símbolos no terminales hay en la gramática
   while (num_no_terminales != 0) {
     file >> simbolo_no_terminal;
-    terminales_.insert(simbolo_no_terminal); // Inserto los símbolos no terminales
+    no_terminales_.insert(simbolo_no_terminal); // Inserto los símbolos no terminales
     num_no_terminales--;
   }
+}
+
+void NoTerminales::Insertar(char no_terminal) {
+  no_terminales_.insert(no_terminal);
 }
 
 /**
@@ -25,9 +29,9 @@ NoTerminales::NoTerminales(ifstream& file) {
 
 ostream& operator<<(ostream& os, NoTerminales& no_term) {
   os << "Símbolos terminales: ";
-  for(auto it = no_term.terminales_.begin(); it != no_term.terminales_.end(); it++) {
+  for(auto it = no_term.no_terminales_.begin(); it != no_term.no_terminales_.end(); it++) {
     os << *it;
-    if(next(it) != no_term.terminales_.end()) {
+    if(next(it) != no_term.no_terminales_.end()) {
       os << " ";
     }
   }
