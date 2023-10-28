@@ -13,7 +13,9 @@ class Producciones {
   public:
   Producciones(); // Constructor por defecto
   Producciones(ifstream&, Alfabeto, NoTerminales); // Constructor de la clase
-  void NormalChomskyFor(); // Transformar a la forma normal de Chomsky
+  void ModificarProducciones(); // Modificar las producciones (1er paso del algoritmo)
+  void AgregarProduccion(char, const string&); // Agregar producciones
+  bool EsTerminal(char); // Verificar que un símbolo sea terminal
   friend ostream& operator<<(ostream& os, Producciones& prod); // Sobrecarga del operador de salida
   private:
   Alfabeto alfabeto_;

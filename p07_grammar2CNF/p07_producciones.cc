@@ -26,17 +26,41 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_te
 }
 
 /**
- * @brief Transformar a la forma normal de Chomsky
+ * @brief Comprobar que el símbolo es terminal
+ * @param simbolo Terminal a comprobar
+ * @return 1 en caso de que sea terminal y 0 si no es terminal
 */
 
-void Producciones::NormalChomskyFor() {
-  char Ca, Cb;
-  Ca = 'A';
-  Cb = 'B';
-  no_terminales_.Insertar(Ca);
-  no_terminales_.Insertar(Cb);
-  producciones_[Ca].push_back("a");
-  producciones_[Cb].push_back("b");
+bool Producciones::EsTerminal(char simbolo) {
+  int conversion = static_cast<int>(simbolo); // Convierto el símbolo a entero
+  if(simbolo >= 65 || simbolo <= 90) { // Verificar mediante el código ASCII si el símbolo es terminal
+    return true;
+  }
+  return false;
+}
+
+void Producciones::AgregarProduccion(char simbolo, const string& produccion) {
+  // asegurarse de que el símbolo no terminal exista en la gramática
+}
+
+/**
+ * @brief Modificar las producciones (Primera parte del algoritmo)
+*/
+
+void Producciones::ModificarProducciones() {
+  for (auto it = producciones_.begin(); it != producciones_.end(); it++) {
+    char no_terminal = it->first;
+    for (auto& production : it->second) {
+      string nueva_produccion = production;
+      for(size_t i = 0; i < nueva_produccion.length(); i++) {
+        char simbolo = nueva_produccion[i];
+        if (EsTerminal(simbolo)) {
+
+        }
+      }
+    }
+  }
+
 }
 
 ostream& operator<<(ostream& os, Producciones& prod) {
