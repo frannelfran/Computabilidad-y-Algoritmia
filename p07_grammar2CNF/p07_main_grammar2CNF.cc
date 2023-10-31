@@ -25,7 +25,9 @@ int main(int argc, char* argv[]) {
   NoTerminales NoTerm(filein);
   // CREAR LAS PRODUCCIONES
   Producciones prod(filein, alf, NoTerm);
+  // REALIZAR EL ALGORITMO DE CHOMSKY
   prod.ModificarProducciones();
+  prod.DividirProducciones();
   cout << prod;
   
   // CIERRE DE FICHEROS

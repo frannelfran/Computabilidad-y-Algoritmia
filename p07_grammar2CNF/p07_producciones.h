@@ -14,6 +14,7 @@ class Producciones {
   Producciones(); // Constructor por defecto
   Producciones(ifstream&, Alfabeto, NoTerminales); // Constructor de la clase
   void ModificarProducciones(); // Modificar las producciones (1er paso del algoritmo)
+  void DividirProducciones(); // Dividir las producciones de la gramática (2do paso del algortimo)
   void AgregarProduccion(char, const string&); // Agregar producciones
   friend ostream& operator<<(ostream& os, Producciones& prod); // Sobrecarga del operador de salida
   private:

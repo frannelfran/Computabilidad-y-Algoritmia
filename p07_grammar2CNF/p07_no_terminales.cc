@@ -30,11 +30,18 @@ void NoTerminales::Insertar(char no_terminal) {
 }
 
 /**
- * @brief Función para buscar un no terminal
+ * @brief Obtener un no_terminal
+ * @return Devuelve un char (Símbolo no terminal)
 */
 
-void NoTerminales::find(char no_terminal) {
-  no_terminales_.find(no_terminal);
+char NoTerminales::ObtenerNoTerminal() {
+  string no_terminal = "ABCDEFGAHJKLMNOPQRSTUVWXYZ";
+  for(int it = 0; it < no_terminal.length(); it++) {
+    if(no_terminales_.find(no_terminal[it]) == no_terminales_.end()) {
+      return no_terminal[it];
+    }
+  }
+  exit(EXIT_FAILURE);
 }
 
 /**

@@ -61,6 +61,26 @@ void Producciones::ModificarProducciones() {
     }
   }
 }
+
+/**
+ * @brief Dividir las producciones (Segunda parte del algoritmo)
+*/
+
+void Producciones::DividirProducciones() {
+  string cadena;
+  for (auto it = producciones_.begin(); it != producciones_.end(); it++) {
+    for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
+      string produc = *it2;
+      if (produc.length() < 3) continue; // saltarse las producciones de tamaño menor que 3
+      for(int iterator = 0; iterator < produc.length() - 2; iterator++) {
+        char simbolo = produc[iterator];
+        cadena += simbolo;
+      }
+      AgregarProduccion(no_terminales_.ObtenerNoTerminal(), cadena);
+      cadena.clear(); // Reseteo la cadena
+    }
+  }
+}
     
 
 
