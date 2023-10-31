@@ -67,17 +67,17 @@ void Producciones::ModificarProducciones() {
 */
 
 void Producciones::DividirProducciones() {
-  string cadena;
   for (auto it = producciones_.begin(); it != producciones_.end(); it++) {
     for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
       string produc = *it2;
-      if (produc.length() < 3) continue; // saltarse las producciones de tamaño menor que 3
-      for(int iterator = 0; iterator < produc.length() - 2; iterator++) {
-        char simbolo = produc[iterator];
-        cadena += simbolo;
+      while (produc.length() >= 3) {
+        string subcadena = produc.substr(produc.length() - 2);
+        produc.erase(produc.length() - 2);
+        char no_terminal = no_terminales_.ObtenerNoTerminal();
+        AgregarProduccion(no_terminal, subcadena);
       }
-      AgregarProduccion(no_terminales_.ObtenerNoTerminal(), cadena);
-      cadena.clear(); // Reseteo la cadena
+      producciones_[it->first].erase(*it2);
+      producciones_[it->first].insert(produc);
     }
   }
 }

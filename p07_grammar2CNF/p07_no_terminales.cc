@@ -35,13 +35,11 @@ void NoTerminales::Insertar(char no_terminal) {
 */
 
 char NoTerminales::ObtenerNoTerminal() {
-  string no_terminal = "ABCDEFGAHJKLMNOPQRSTUVWXYZ";
-  for(int it = 0; it < no_terminal.length(); it++) {
-    if(no_terminales_.find(no_terminal[it]) == no_terminales_.end()) {
-      return no_terminal[it];
-    }
+  char caracter = 'A';
+  while (no_terminales_.find(caracter) != no_terminales_.end()) {
+    caracter++;
   }
-  exit(EXIT_FAILURE);
+  return caracter;
 }
 
 /**
