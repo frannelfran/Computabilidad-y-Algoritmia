@@ -99,6 +99,10 @@ void Producciones::DividirProducciones() {
   }
 }
 
+/**
+ * @overload Operador <<
+*/
+
 ostream& operator<<(ostream& os, Producciones& prod) {
   os << prod.alfabeto_;
   os << prod.no_terminales_;

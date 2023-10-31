@@ -55,9 +55,8 @@ char NoTerminales::ObtenerNoTerminal() {
 }
 
 /**
- * @brief Sobrecarga del operador de salida
+ * @overload Operador <<
 */
-
 ostream& operator<<(ostream& os, NoTerminales& no_term) {
   os << "Símbolos terminales: ";
   for(auto it = no_term.no_terminales_.begin(); it != no_term.no_terminales_.end(); it++) {

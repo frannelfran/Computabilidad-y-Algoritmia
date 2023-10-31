@@ -32,7 +32,7 @@ Alfabeto::Alfabeto(ifstream& file) {
 }
 
 /**
- * @brief Sobrecarga del operador de salida
+ * @overload Operador <<
 */
 
 ostream& operator<<(ostream& os, Alfabeto& alf) {
