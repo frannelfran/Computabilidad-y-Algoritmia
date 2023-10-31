@@ -71,18 +71,21 @@ void Producciones::DividirProducciones() {
     for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
       string produc = *it2;
       while (produc.length() >= 3) {
+        // Obtener los últimos términos de la cadena
         string subcadena = produc.substr(produc.length() - 2);
         produc.erase(produc.length() - 2);
+        // Obtener un nuevo no terminal
         char no_terminal = no_terminales_.ObtenerNoTerminal();
+        // Agregar la producción
         AgregarProduccion(no_terminal, subcadena);
+        produc += no_terminal;
       }
+      // Sustituir las producciones
       producciones_[it->first].erase(*it2);
       producciones_[it->first].insert(produc);
     }
   }
 }
-    
-
 
 ostream& operator<<(ostream& os, Producciones& prod) {
   os << prod.alfabeto_;
