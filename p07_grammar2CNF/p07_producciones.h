@@ -15,10 +15,9 @@ class Producciones {
   Producciones(ifstream&, Alfabeto, NoTerminales); // Constructor de la clase
   void ModificarProducciones(); // Modificar las producciones (1er paso del algoritmo)
   void AgregarProduccion(char, const string&); // Agregar producciones
-  bool EsTerminal(char); // Verificar que un símbolo sea terminal
   friend ostream& operator<<(ostream& os, Producciones& prod); // Sobrecarga del operador de salida
   private:
   Alfabeto alfabeto_;
   NoTerminales no_terminales_;
-  map<char, vector<string>> producciones_;
+  map<char, set<string>> producciones_;
 };

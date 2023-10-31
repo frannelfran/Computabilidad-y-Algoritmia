@@ -19,10 +19,19 @@ NoTerminales::NoTerminales(ifstream& file) {
   }
 }
 
+/**
+ * @brief Función para insertar un no terminal al conjunto de no terminales
+ * @param no_terminal No terminal a insertar en el conjunto
+*/
+
 void NoTerminales::Insertar(char no_terminal) {
   no_terminal = toupper(no_terminal); // Convierto el char en mayuscula
   no_terminales_.insert(no_terminal);
 }
+
+/**
+ * @brief Función para buscar un no terminal
+*/
 
 void NoTerminales::find(char no_terminal) {
   no_terminales_.find(no_terminal);

@@ -20,28 +20,21 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_te
   while (num_producciones != 0) {
     file >> term;
     file >> derivaciones;
-    producciones_[term].push_back(derivaciones);
+    producciones_[term].insert(derivaciones);
     num_producciones--;
   }
 }
 
 /**
- * @brief Comprobar que el símbolo es terminal
- * @param simbolo Terminal a comprobar
- * @return 1 en caso de que sea terminal y 0 si no es terminal
+ * @brief Función para agregar una producción
+ * @param simbolo_no_terminal Símbolo no terminal para agregarlo en la gramática
+ * @param produccion Producción que genera ese símbolo no terminal
 */
-
-bool Producciones::EsTerminal(char simbolo) {
-  if(islower(simbolo)) {
-    return true;
-  }
-  return false;
-}
 
 void Producciones::AgregarProduccion(char simbolo_no_terminal, const string& produccion) {
   // Asegurarse de que el símbolo no terminal exista en la gramática
   no_terminales_.Insertar(simbolo_no_terminal);
-  producciones_[toupper(simbolo_no_terminal)].push_back(produccion);
+  producciones_[toupper(simbolo_no_terminal)].insert(produccion);
 }
 
 /**
@@ -49,29 +42,24 @@ void Producciones::AgregarProduccion(char simbolo_no_terminal, const string& pro
 */
 
 void Producciones::ModificarProducciones() {
-  string producciones_modificadas;
   for (auto it = producciones_.begin(); it != producciones_.end(); it++) {
     for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
       string produc = *it2; // Almaceno la producción en un string
-      if (produc.length() == 1) continue;
-      for(char simbolo : produc) {
-        if (islower(simbolo)) {
-          string to_string(1, simbolo);
+      for (int iterator = 0; iterator < produc.length(); iterator++) {
+        if (produc.length() == 1) continue;
+        char simbolo = produc[iterator];
+        if (islower(simbolo)) { // Comprobar que la letra es minúscula
+          string to_string(1, simbolo); // Convertir el char a string para agregarlo a la producción
           AgregarProduccion(simbolo, to_string);
-          
+          char no_terminal = toupper(simbolo); // Convierto el terminal en no terminal
+          produc[iterator] = no_terminal;
         }
-
       }
-
-
-      
+      // Remplazar la producción original con la producción modificada
+      producciones_[it->first].erase(*it2);
+      producciones_[it->first].insert(produc);
     }
-    
   }
-
-
-
-
 }
     
 
@@ -82,13 +70,14 @@ ostream& operator<<(ostream& os, Producciones& prod) {
   os << "Producciones de la gramática" << endl;
   for (auto it = prod.producciones_.begin(); it != prod.producciones_.end(); it++) {
     os << it->first << " → ";
-    for (const string& production : it->second) {
-      os << production;
-      if (production != it->second.back()) {
-        os << " | ";
+    for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
+      os << *it2;
+      if (next(it2) == it->second.end()) {
+        os << endl;
+        break;
       }
+      os << " | ";
     }
-    os << endl;
   }
   return os;
 }
