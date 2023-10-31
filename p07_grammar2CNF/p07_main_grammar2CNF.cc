@@ -4,6 +4,17 @@
 
 using namespace std;
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 7: Gramáticas en Forma Normal de Chomsky
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 31/10/2023
+// Archivo: p07_main_grammar2CNF.cc
+
 int main(int argc, char* argv[]) {
   if (argc == 2) {
     string ayuda = argv[1];
@@ -28,7 +39,7 @@ int main(int argc, char* argv[]) {
   // REALIZAR EL ALGORITMO DE CHOMSKY
   prod.ModificarProducciones();
   prod.DividirProducciones();
-  cout << prod;
+  fileout << prod;
   
   // CIERRE DE FICHEROS
   filein.close();
