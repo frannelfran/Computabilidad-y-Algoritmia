@@ -20,6 +20,7 @@ NoTerminales::NoTerminales(ifstream& file) {
 }
 
 void NoTerminales::Insertar(char no_terminal) {
+  no_terminal = toupper(no_terminal); // Convierto el char en mayuscula
   no_terminales_.insert(no_terminal);
 }
 

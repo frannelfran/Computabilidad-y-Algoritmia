@@ -41,14 +41,38 @@ bool Producciones::EsTerminal(char simbolo) {
 void Producciones::AgregarProduccion(char simbolo_no_terminal, const string& produccion) {
   // Asegurarse de que el símbolo no terminal exista en la gramática
   no_terminales_.Insertar(simbolo_no_terminal);
-  producciones_[simbolo_no_terminal].push_back(produccion);
+  producciones_[toupper(simbolo_no_terminal)].push_back(produccion);
 }
 
 /**
  * @brief Modificar las producciones (Primera parte del algoritmo)
 */
 
-void Producciones::ModificarProducciones() {}
+void Producciones::ModificarProducciones() {
+  string producciones_modificadas;
+  for (auto it = producciones_.begin(); it != producciones_.end(); it++) {
+    for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
+      string produc = *it2; // Almaceno la producción en un string
+      if (produc.length() == 1) continue;
+      for(char simbolo : produc) {
+        if (islower(simbolo)) {
+          string to_string(1, simbolo);
+          AgregarProduccion(simbolo, to_string);
+          
+        }
+
+      }
+
+
+      
+    }
+    
+  }
+
+
+
+
+}
     
 
 
