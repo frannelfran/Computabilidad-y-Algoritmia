@@ -32,6 +32,19 @@ NoTerminales::NoTerminales(ifstream& file) {
 }
 
 /**
+ * @brief Comprobar que los símbolos introducidos en el fichero pertenezcan al conjunto de no terminales
+ * @param simbolo Símbolo a comprobar
+ * @return true en caso de verdadero y false en el caso contrario
+*/
+
+bool NoTerminales::IsTerminal(char simbolo) {
+  if (no_terminales_.count(simbolo)) {
+    return true;
+  }
+  return false;
+}
+
+/**
  * @brief Función para insertar un no terminal al conjunto de no terminales
  * @param no_terminal No terminal a insertar en el conjunto
 */

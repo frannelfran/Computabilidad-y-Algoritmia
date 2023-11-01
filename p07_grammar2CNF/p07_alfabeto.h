@@ -21,6 +21,7 @@ class Alfabeto {
   public:
   Alfabeto(); // Constructor por defecto
   Alfabeto(ifstream&); // Constructor de la clase
+  bool IsAlfabeto(char); // Comprobar que los símbolos pertenezcan al alfabeto
   friend ostream& operator<<(ostream& os, Alfabeto& alf); // Sobrecarga del operador de salida
   private:
   set<char> alfabeto_;

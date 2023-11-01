@@ -31,7 +31,27 @@ Producciones::Producciones(ifstream& file, Alfabeto alfabeto, NoTerminales no_te
   file >> num_producciones;
   while (num_producciones != 0) {
     file >> term;
+    // Comprobar si los símbolos no terminales del fichero pertenecen al conjunto de no terminales
+    if (!no_terminales_.IsTerminal(term)) {
+      cout << "Error en el fichero: Se ha introducido un símbolo que no pertenece al conjunto de no terminales." << endl;
+      exit(EXIT_SUCCESS);
+    }
     file >> derivaciones;
+    // Comprobar que las derivaciónes tengan símbolos del alfabeto y del conjunto de no terminales
+    for (char simbolo : derivaciones) {
+      if (islower(simbolo)) {
+        if(!alfabeto_.IsAlfabeto(simbolo)) { // Comprobar que el símbolo pertenezca al alfabeto
+          cout << "Error en el fichero: Se ha introducido un símbolo que no pertenece al alfabeto." << endl;
+          exit(EXIT_SUCCESS);
+        }
+      }
+      else if (isupper(simbolo)) {
+        if (!no_terminales_.IsTerminal(simbolo)) { // Comprobar que el símbolo pertenezca al conjunto de no terminales
+          cout << "Error en el fichero: Se ha introducido un símbolo que no pertenece al conjunto de no terminales." << endl;
+          exit(EXIT_SUCCESS);
+        }
+      }
+    }
     producciones_[term].insert(derivaciones);
     num_producciones--;
   }

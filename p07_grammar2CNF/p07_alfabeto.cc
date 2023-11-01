@@ -32,6 +32,19 @@ Alfabeto::Alfabeto(ifstream& file) {
 }
 
 /**
+ * @brief Comprobar que los símbolos introducidos en el fichero pertenezcan al alfabeto
+ * @param simbolo Símbolo a comprobar
+ * @return true en caso de verdadero y false en el caso contrario
+*/
+
+bool Alfabeto::IsAlfabeto(char simbolo) {
+  if (alfabeto_.count(simbolo)) {
+    return true;
+  }
+  return false;
+}
+
+/**
  * @overload Operador <<
 */
 
