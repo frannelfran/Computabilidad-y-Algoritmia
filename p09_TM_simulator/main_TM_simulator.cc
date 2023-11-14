@@ -14,12 +14,15 @@ int main(int argc, char* argv[]) {
   TM turing(tup);
   cout << "Máquina de turing creada" << endl;
   cout << "---MENÚ---" << endl;
+  cout << "Opción 0: Salir" << endl;
   cout << "Opción 1: Mostrar TM" << endl;
   cout << "Opción 2: Introducir cadena" << endl;
   cout << "----------" << endl;
   int opcion;
   cin >> opcion;
   switch (opcion) {
+    case 0:
+    break;
     case 1:
       cout << turing;
     break;
