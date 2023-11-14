@@ -1,7 +1,7 @@
 # Compilación
 main:
 	@echo "Compilando ficheros..."
-	g++ -g main_TM_simulator.cc estados.cc -o TM_simulator
+	g++ -g main_TM_simulator.cc estados.cc tupla.cc turing.cc -o TM_simulator
 
 .PHONY: clean
 
