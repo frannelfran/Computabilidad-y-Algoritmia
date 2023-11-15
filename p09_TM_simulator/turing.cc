@@ -23,7 +23,7 @@ void TM::Funcionamiento(string& cadena) {
   
   cout << "$ q" << estado_actual << " " << cinta_contenido << endl;
   
-  for (; cabezal < cinta_contenido.size() -1;) {
+  while (cabezal < cinta_contenido.size()) {
     char letra = cinta_contenido[cabezal];
 
     // Buscamos la transición correspondiente en la cinta
@@ -45,8 +45,9 @@ void TM::Funcionamiento(string& cadena) {
         cabezal--;
       }
       // Imprimimos el estado actual de la máquina
-      cout << "$" << cinta_contenido.substr(0, cabezal + 1) << " q" << estado_actual << " " << cinta_contenido.substr(cabezal + 1) << endl;
+      cout << "$" << cinta_contenido.substr(0, cabezal) << " q" << estado_actual << " " << cinta_contenido[cabezal] << cinta_contenido.substr(cabezal + 1) << endl;
     }
+    // Si no se encuentra una transición para un estado parar
     else {
       cout << "No se ha encontrado una transición para leer '" << letra << "' desde el estado " << estado_actual << endl;
       break;
