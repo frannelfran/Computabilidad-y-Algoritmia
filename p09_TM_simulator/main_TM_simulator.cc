@@ -35,18 +35,21 @@ int main(int argc, char* argv[]) {
   cout << "Opción 0: Salir" << endl;
   cout << "------" << endl;
   int opcion;
-  cin >> opcion;
-  switch (opcion) {
-    case 0:
-    break;
-    case 1:
-      cout << tm;
-    break;
-    case 2:
-    string cadena;
-    cin >> cadena;
-    break;
-  }
+  do {
+    cin >> opcion;
+    switch (opcion) {
+      case 0:
+      break;
+      case 1:
+        cout << tm;
+      break;
+      case 2:
+        string cadena;
+        cin >> cadena;
+        tm.Funcionamiento(cadena);
+      break;
+    }
+  } while (opcion != 0);
   file.close();
   return 0;
 }

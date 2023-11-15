@@ -11,7 +11,7 @@ class Cinta {
   public:
   Cinta();
   Cinta(ifstream&); // Constructor de la clase
-  set<char> GetAlfabeto(); // Obtener la cinta
+  multimap<int, tuple<char, char, char, int>> GetCinta();
   friend ostream& operator<<(ostream& os, Cinta& cint);
   private:
   multimap<int, tuple<char, char, char, int>> cinta_;

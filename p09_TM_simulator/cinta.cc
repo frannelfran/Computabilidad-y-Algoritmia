@@ -18,9 +18,13 @@ Cinta::Cinta(ifstream& file) {
   }
 }
 
+/**
+ * @brief Función par obtener la cinta y poder trabajar con ella
+ * @return cinta de la máquina
+*/
 
-set<char> Cinta::GetAlfabeto() {
-  return alfabeto_;
+multimap<int, tuple<char, char, char, int>> Cinta::GetCinta() {
+  return cinta_;
 }
 
 ostream& operator<<(ostream& os, Cinta& cint) {
