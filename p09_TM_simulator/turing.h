@@ -15,5 +15,4 @@ class TM {
   set<int> estados_; // Estados de la máquina
   set<int> aceptacion_; // Estados de aceptación de la máquina
   int inicial_; // Estado inicial
-  int estado_actual_; // Estado actual de la máquina
 };
