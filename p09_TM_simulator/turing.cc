@@ -18,9 +18,8 @@ TM::TM(Cinta& mi_cinta, set<int> estados, set<int> aceptacion, int inicial) {
 
 void TM::Funcionamiento(string& cadena) {
   multimap <int, tuple<char, char, char, int>> mi_cinta = cinta_.GetCinta();
-  cinta_contenido = "$" + cadena + "$"; // Inicializar la cinta con la cadena
-  cout << "$ q" << estado_actual_ << " " << cinta_contenido << "$" << endl;
-  
+  string cinta_contenido = cadena + "$"; // Inicializar la cinta con la cadena
+  cout << "$ q" << estado_actual_ << " " << cinta_contenido << endl;
   for (char letra : cadena) {
     // Buscamos la transición correspondiente en la cinta
     auto transicion = mi_cinta.find(estado_actual_);
@@ -33,9 +32,9 @@ void TM::Funcionamiento(string& cadena) {
       estado_actual_ = get<3>(transicion->second);
 
       // Imprimo el estado actual de la máquina
-      cout << cinta_contenido.substr(0, transicion->first + 1) << " q" << estado_actual_
+      cout << "$" << cinta_contenido.substr(0, transicion->first + 1) << " q" << estado_actual_
       << " " << cinta_contenido.substr(transicion->first + 1) << endl;
-    } 
+    }
     else {
       cout << "transición no encontrada para " << letra << " en el estado " << estado_actual_ << endl;
       break;

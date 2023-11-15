@@ -16,5 +16,4 @@ class TM {
   set<int> aceptacion_; // Estados de aceptación de la máquina
   int inicial_; // Estado inicial
   int estado_actual_; // Estado actual de la máquina
-  string cinta_contenido; // Contenido de la cinta
 };
