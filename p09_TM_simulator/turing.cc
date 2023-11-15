@@ -49,7 +49,6 @@ void TM::Funcionamiento(string& cadena) {
     }
     // Si no se encuentra una transición para un estado parar
     else {
-      cout << "No se ha encontrado una transición para leer '" << letra << "' desde el estado " << estado_actual << endl;
       break;
     }
   }
