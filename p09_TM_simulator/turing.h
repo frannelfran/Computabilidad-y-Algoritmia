@@ -1,13 +1,19 @@
 #include <iostream>
-#include "estados.h"
-#include "tupla.h"
+#include <set>
+#include <string>
+#include "cinta.h"
 #pragma once
 
 class TM {
   public:
   TM();
-  TM(Tupla&); // Constructor de la clase
+  TM(Cinta&, set<int>, set<int>, int); // Constructor de la clase
+  void SetLenguaje(Cinta&); // Obtener el lenguaje de la máquina
   friend ostream& operator<<(ostream& os, TM& tm);
   private:
-  Tupla tupla_;
+  Cinta cinta_; // Cinta de la máquina
+  set<char> lenguaje_; // Lenguaje de la máquina
+  set<int> estados_; // Estados de la máquina
+  set<int> aceptacion_; // Estados de aceptación de la máquina
+  int inicial_; // Estado inicial
 };
