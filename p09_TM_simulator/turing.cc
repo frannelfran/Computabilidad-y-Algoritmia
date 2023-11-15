@@ -54,10 +54,10 @@ void TM::Funcionamiento(string& cadena) {
   }
   // Verificamos si el estado actual es un estado de aceptación
   if (aceptacion_.find(estado_actual) != aceptacion_.end()) {
-    cout << "Cadena ACEPTADA" << endl;
+    cout << "\nCadena ACEPTADA" << endl;
   }
   else {
-    cout << "Cadena RECHAZADA" << endl;
+    cout << "\nCadena RECHAZADA" << endl;
   }
 }
 
