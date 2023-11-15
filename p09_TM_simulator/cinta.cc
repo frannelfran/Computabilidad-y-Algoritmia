@@ -2,6 +2,12 @@
 
 Cinta::Cinta() {} // Constructor por defecto
 
+/**
+ * @brief Constructor de la clase Cinta
+ * @param file Fichero que contiene las tuplas de la cinta
+ * @return Objeto de la clase Cinta
+*/
+
 Cinta::Cinta(ifstream& file) {
   int num_tupla, estado_actual, estado_siguiente;
   char simbolo, cambio, direccion;
@@ -19,6 +25,21 @@ Cinta::Cinta(ifstream& file) {
 }
 
 /**
+ * @brief Función para determinar si los símbolos de la cadena pertencen al alfabeto de la cinta
+ * @param cadena Cadena a comprobar
+ * @return 1 en caso de verdadero y 0 en caso contrario
+*/
+
+bool Cinta::Pertenece(string & cadena) {
+  for (char simbolo : cadena) {
+    if (!cinta_.count(simbolo)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
  * @brief Función par obtener la cinta y poder trabajar con ella
  * @return cinta de la máquina
 */
@@ -26,6 +47,10 @@ Cinta::Cinta(ifstream& file) {
 multimap<int, tuple<char, char, char, int>> Cinta::GetCinta() {
   return cinta_;
 }
+
+/**
+ * @overload Operador <<
+*/
 
 ostream& operator<<(ostream& os, Cinta& cint) {
   os << "Alfabeto de la cinta: {";
@@ -41,7 +66,7 @@ ostream& operator<<(ostream& os, Cinta& cint) {
     os << get<0>(it2->second);
     os << get<1>(it2->second);
     os << get<2>(it2->second);
-    os << get<3>(it2->second);
+    os << " -> " << get<3>(it2->second);
     os << "\n";
   }
   return os;

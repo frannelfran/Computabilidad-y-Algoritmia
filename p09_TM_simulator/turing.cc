@@ -9,13 +9,18 @@ TM::TM(Cinta& mi_cinta, set<int> estados, set<int> aceptacion, int inicial) {
   this->inicial_ = inicial; // Estado inicial de la máquina
 }
 
-
 /**
  * @brief Funcionamiento de la máquina de turing
  * @param cadena Cadena a pasar por la máquina
 */
 
 void TM::Funcionamiento(string& cadena) {
+  // Comprobar que la cadena pertenece al alfabeto de la cinta
+  if (!cinta_.Pertenece(cadena)) {
+    cout << "La cadena posee un símbolo que no pertenece al alfabeto de la cinta" << endl;
+    exit(EXIT_SUCCESS);
+  }
+
   multimap <int, tuple<char, char, char, int>> mi_cinta = cinta_.GetCinta();
   int estado_actual = inicial_;
   string cinta_contenido = cadena + "$"; // Inicializar la cinta con la cadena
@@ -61,6 +66,9 @@ void TM::Funcionamiento(string& cadena) {
   }
 }
 
+/**
+ * @overload Operador <<
+*/
 
 ostream& operator<<(ostream& os, TM& tm) {
   os << "Estados de la máquina: ";
