@@ -19,34 +19,45 @@ void TM::Funcionamiento(string& cadena) {
   multimap <int, tuple<char, char, char, int>> mi_cinta = cinta_.GetCinta();
   int estado_actual = inicial_;
   string cinta_contenido = cadena + "$"; // Inicializar la cinta con la cadena
+  int cabezal = 0;
+  
   cout << "$ q" << estado_actual << " " << cinta_contenido << endl;
-  for (char letra : cadena) {
+  
+  for (; cabezal < cinta_contenido.size() -1;) {
+    char letra = cinta_contenido[cabezal];
+
     // Buscamos la transición correspondiente en la cinta
     auto transicion = mi_cinta.find(estado_actual);
     while (transicion != mi_cinta.end() && get<0>(transicion->second) != letra) {
       transicion++;
     }
+
     if (transicion != mi_cinta.end()) {
-      // Actualizo la cinta y el estado según la transición
-      cinta_contenido[transicion->first] = get<1>(transicion->second);
+      // Actualizamos la cinta y el estado según la transición
+      cinta_contenido[cabezal] = get<1>(transicion->second);
       estado_actual = get<3>(transicion->second);
 
-      // Imprimo el estado actual de la máquina
-      cout << "$" << cinta_contenido.substr(0, transicion->first + 1) << " q" << estado_actual
-      << " " << cinta_contenido.substr(transicion->first + 1) << endl;
+      // Movemos el cabezal según la transición
+      if (get<2>(transicion->second) == 'R') {
+        cabezal++;
+      }
+      else if (get<2>(transicion->second) == 'L') {
+        cabezal--;
+      }
+      // Imprimimos el estado actual de la máquina
+      cout << "$" << cinta_contenido.substr(0, cabezal + 1) << " q" << estado_actual << " " << cinta_contenido.substr(cabezal + 1) << endl;
     }
     else {
-      cout << "transición no encontrada para " << letra << " en el estado " << estado_actual << endl;
+      cout << "No se ha encontrado una transición para leer '" << letra << "' desde el estado " << estado_actual << endl;
       break;
     }
   }
-
-  // Verificamos si el estado actual es de aceptación
+  // Verificamos si el estado actual es un estado de aceptación
   if (aceptacion_.find(estado_actual) != aceptacion_.end()) {
     cout << "Cadena ACEPTADA" << endl;
   }
   else {
-    cout << "Cadena NO ACEPTADA" << endl;
+    cout << "Cadena RECHAZADA" << endl;
   }
 }
 
