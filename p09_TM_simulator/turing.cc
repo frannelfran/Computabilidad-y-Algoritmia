@@ -4,7 +4,7 @@ TM::TM() {} // Constructor por defecto
 
 TM::TM(Cinta& mi_cinta, set<int> estados, set<int> aceptacion, int inicial) {
   this->cinta_ = mi_cinta; // Cinta de la máquina
-  this->estados_ = estados; // estados de la máquina
+  this->estados_ = estados; // Estados de la máquina
   this->aceptacion_ = aceptacion; // Estados de aceptación de la máquina
   this->inicial_ = inicial; // Estado inicial de la máquina
 }
