@@ -53,13 +53,14 @@ int main(int argc, char* argv[]) {
   // CREAR LA TM
   TM tm(cint, estados, aceptance, inicial);
   string opcion, contenido_cinta;
+  // Preguntar al usuario si desea ver la máquina por pantalla
   cout << "Desea mostrar la máquina ? (Si | No) ";
   cin >> opcion;
   if (opcion == "Si") {
     cout << "---MÁQUINA DE TURING---" << endl;
     cout << tm;
   }
-  file_cadena >> contenido_cinta;
+  file_cadena >> contenido_cinta; // Leo el contenido de la cinta
   cout << "---PROCESOS DE LA MÁQUINA---" << endl;
   tm.Funcionamiento(contenido_cinta);
 
