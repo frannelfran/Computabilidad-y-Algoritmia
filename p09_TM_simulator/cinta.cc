@@ -74,11 +74,11 @@ ostream& operator<<(ostream& os, Cinta& cint) {
   }
   os << "}" << endl;
   for (auto it2 = cint.cinta_.begin(); it2 != cint.cinta_.end(); it2++) {
-    os << "Estado " << it2->first << " -> ";
-    os << get<0>(it2->second);
-    os << get<1>(it2->second);
-    os << get<2>(it2->second);
-    os << " -> " << get<3>(it2->second);
+    os << it2->first << " ";
+    os << get<0>(it2->second) << " ";
+    os << get<1>(it2->second) << " ";
+    os << get<2>(it2->second) << " ";
+    os << get<3>(it2->second);
     os << "\n";
   }
   return os;
