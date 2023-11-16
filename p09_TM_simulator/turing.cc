@@ -36,12 +36,12 @@ void TM::Funcionamiento(string& cadena) {
   multimap <int, tuple<char, char, char, int>> mi_cinta = cinta_.GetCinta();
   int estado_actual = inicial_;
   string cinta_contenido = cadena + "$"; // Inicializar la cinta con la cadena
-  int cabezal = 0;
+  int posicion = 0;
   
   cout << "$ q" << estado_actual << " " << cinta_contenido << endl;
   
-  while (cabezal < cinta_contenido.size()) {
-    char letra = cinta_contenido[cabezal];
+  while (posicion < cinta_contenido.size()) {
+    char letra = cinta_contenido[posicion];
 
     // Buscamos la transición correspondiente en la cinta
     auto transicion = mi_cinta.find(estado_actual);
@@ -51,18 +51,18 @@ void TM::Funcionamiento(string& cadena) {
 
     if (transicion != mi_cinta.end()) {
       // Actualizamos la cinta y el estado según la transición
-      cinta_contenido[cabezal] = get<1>(transicion->second);
+      cinta_contenido[posicion] = get<1>(transicion->second);
       estado_actual = get<3>(transicion->second);
 
-      // Movemos el cabezal según la transición
+      // Movemos el posicion según la transición
       if (get<2>(transicion->second) == 'R') {
-        cabezal++;
+        posicion++;
       }
       else if (get<2>(transicion->second) == 'L') {
-        cabezal--;
+        posicion--;
       }
       // Imprimimos el estado actual de la máquina
-      cout << "$" << cinta_contenido.substr(0, cabezal) << " q" << estado_actual << " " << cinta_contenido[cabezal] << cinta_contenido.substr(cabezal + 1) << endl;
+      cout << "$" << cinta_contenido.substr(0, posicion) << " q" << estado_actual << " " << cinta_contenido[posicion] << cinta_contenido.substr(posicion + 1) << endl;
     }
     // Si no se encuentra una transición para un estado parar
     else {
