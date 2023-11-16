@@ -53,10 +53,10 @@ void TM::Funcionamiento(string& cadena) {
 
   multimap <int, tuple<char, char, char, int>> mi_cinta = cinta_.GetCinta();
   int estado_actual = inicial_;
-  string cinta_contenido = cadena + "$"; // Inicializar la cinta con la cadena
-  int posicion = 0;
+  string cinta_contenido = "$" + cadena + "$"; // Inicializar la cinta con la cadena
+  int posicion = 1;
   
-  cout << "$ q" << estado_actual << " " << cinta_contenido << endl;
+  cout << "$ q" << estado_actual << " " << cinta_contenido.substr(posicion) << endl;
   
   while (posicion < cinta_contenido.size()) {
     char letra = cinta_contenido[posicion];
@@ -76,7 +76,7 @@ void TM::Funcionamiento(string& cadena) {
       cinta_.MovePosicion((get<2>(transicion->second)), posicion);
 
       // Imprimimos el estado actual de la máquina
-      cout << "$" << cinta_contenido.substr(0, posicion) << " q" << estado_actual << " " << cinta_contenido[posicion] << cinta_contenido.substr(posicion + 1) << endl;
+      cout << cinta_contenido.substr(0, posicion) << " q" << estado_actual << " " << cinta_contenido.substr(posicion) << endl;
     }
     // Si no se encuentra una transición para un estado parar
     else {
