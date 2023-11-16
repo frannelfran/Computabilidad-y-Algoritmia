@@ -12,4 +12,4 @@
 3 x a S 5
 3 a x R 4
 4 a a R 0
-4 x a R 6
+4 x a S 6
