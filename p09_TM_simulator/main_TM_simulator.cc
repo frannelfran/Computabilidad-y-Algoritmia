@@ -1,6 +1,17 @@
 #include "cinta.h"
 #include "turing.h"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 9: Implementación de un simulador de Máquinas de Turing
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 15/11/2023
+// Archivo:main_TM_simulator.cc
+
 int main(int argc, char* argv[]) {
   if (argc == 2) {
     string ayuda = argv[1];

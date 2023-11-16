@@ -1,5 +1,17 @@
 #include "turing.h"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 9: Implementación de un simulador de Máquinas de Turing
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 15/11/2023
+// Archivo:turing.cc
+// Descripción: Implementación de la clase TM
+
 TM::TM() {} // Constructor por defecto
 
 TM::TM(Cinta& mi_cinta, set<int> estados, set<int> aceptacion, int inicial) {
