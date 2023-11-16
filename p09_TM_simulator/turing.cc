@@ -72,13 +72,9 @@ void TM::Funcionamiento(string& cadena) {
       cinta_contenido[posicion] = get<1>(transicion->second);
       estado_actual = get<3>(transicion->second);
 
-      // Movemos el posicion según la transición
-      if (get<2>(transicion->second) == 'R') {
-        posicion++;
-      }
-      else if (get<2>(transicion->second) == 'L') {
-        posicion--;
-      }
+      // Movemos la posicion según la transición
+      cinta_.MovePosicion((get<2>(transicion->second)), posicion);
+
       // Imprimimos el estado actual de la máquina
       cout << "$" << cinta_contenido.substr(0, posicion) << " q" << estado_actual << " " << cinta_contenido[posicion] << cinta_contenido.substr(posicion + 1) << endl;
     }

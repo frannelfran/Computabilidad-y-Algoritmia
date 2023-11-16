@@ -52,6 +52,22 @@ bool Cinta::Pertenece(string & cadena) {
 }
 
 /**
+ * @brief Función para moverse en la cinta
+ * @param direccion Símbolo en la cinta para saber a donde nos tenemos que mover
+ * @param posicion Posición actual en la cinta
+*/
+
+void Cinta::MovePosicion(char direccion, int& posicion) {
+  // Dependiendo del símbolo que leamos en la transición nos movemos de una manera u otra en la cinta
+  if (direccion == 'R') {
+    posicion++;
+  }
+  else if (direccion == 'L') {
+    posicion--;
+  }
+}
+
+/**
  * @brief Función par obtener la cinta y poder trabajar con ella
  * @return cinta de la máquina
 */
