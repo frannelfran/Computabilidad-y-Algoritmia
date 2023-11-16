@@ -28,7 +28,7 @@ TM::TM(Cinta& mi_cinta, set<int> estados, set<int> aceptacion, int inicial) {
 
 void TM::Funcionamiento(string& cadena) {
   // Comprobar que la cadena pertenece al alfabeto de la cinta
-  if (!cinta_.Pertenece(cadena)) {
+  if (cinta_.Pertenece(cadena)) {
     cout << "La cadena posee un símbolo que no pertenece al alfabeto de la cinta" << endl;
     exit(EXIT_SUCCESS);
   }

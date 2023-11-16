@@ -52,7 +52,6 @@ int main(int argc, char* argv[]) {
   Cinta cint(file);
   // CREAR LA TM
   TM tm(cint, estados, aceptance, inicial);
-  cout << "Creando de turing..." << endl;
   string opcion, contenido_cinta;
   cout << "Desea mostrar la máquina ? (Si | No) ";
   cin >> opcion;
