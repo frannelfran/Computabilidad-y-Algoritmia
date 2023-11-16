@@ -22,6 +22,24 @@ TM::TM(Cinta& mi_cinta, set<int> estados, set<int> aceptacion, int inicial) {
 }
 
 /**
+ * @brief Comprobar que el estado de aceptación no contenga una transición saliente
+ * @param estado Estado a comprobar
+ * @return 1 En caso de que haya una transición y 0 en caso contrario
+*/
+
+bool TM::AceptacionSinTransiciones(int estado) const {
+  auto mi_cinta = cinta_.GetCinta();
+  auto transicion = mi_cinta.find(estado);
+  while (transicion != mi_cinta.end()) {
+    if (estado == std::get<3>(transicion->second)) {
+      return true;  // Transición saliente desde el estado de aceptación
+    }
+    transicion++;
+  }
+  return false;  // No se encontraron transiciones salientes desde el estado de aceptación
+}
+
+/**
  * @brief Funcionamiento de la máquina de turing
  * @param cadena Cadena a pasar por la máquina
 */
@@ -71,7 +89,12 @@ void TM::Funcionamiento(string& cadena) {
   }
   // Verificamos si el estado actual es un estado de aceptación
   if (aceptacion_.find(estado_actual) != aceptacion_.end()) {
-    cout << "\nCadena ACEPTADA" << endl;
+    if (AceptacionSinTransiciones(estado_actual)) { // Comprobar que el estado de aceptación no tiene una transición saliente
+      cout << "\nEl estado q" << estado_actual << " no puede tener una transición" << endl;
+    }
+    else {
+      cout << "\nCadena ACEPTADA" << endl;
+    }
   }
   else {
     cout << "\nCadena RECHAZADA" << endl;

@@ -56,7 +56,7 @@ bool Cinta::Pertenece(string & cadena) {
  * @return cinta de la máquina
 */
 
-multimap<int, tuple<char, char, char, int>> Cinta::GetCinta() {
+multimap<int, tuple<char, char, char, int>> Cinta::GetCinta() const {
   return cinta_;
 }
 

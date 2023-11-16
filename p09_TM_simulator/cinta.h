@@ -23,7 +23,7 @@ class Cinta {
   public:
   Cinta();
   Cinta(ifstream&); // Constructor de la clase
-  multimap<int, tuple<char, char, char, int>> GetCinta(); // Obtener la cinta de la máquina
+  multimap<int, tuple<char, char, char, int>> GetCinta() const; // Obtener la cinta de la máquina
   bool Pertenece(string&); // Verificar que la cadena pertenece al alfabeto de la cinta
   friend ostream& operator<<(ostream& os, Cinta& cint); // Sobrecarga del operador <<
   private:

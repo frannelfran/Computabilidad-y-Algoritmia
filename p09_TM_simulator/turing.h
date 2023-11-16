@@ -23,6 +23,7 @@ class TM {
   TM();
   TM(Cinta&, set<int>, set<int>, int); // Constructor de la clase
   void Funcionamiento(string&); // Funcionamiento de la máquina
+  bool AceptacionSinTransiciones(int) const; // Comprobar que el estado de aceptación no tenga transiciones
   friend ostream& operator<<(ostream& os, TM& tm); // Sobrecarga del operador <<
   private:
   Cinta cinta_; // Cinta de la máquina
