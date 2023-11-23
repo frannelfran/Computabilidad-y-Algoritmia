@@ -73,10 +73,7 @@ int ejemplo6(const int n) {
   return suma;
 }
 
-
-
-
-int main() { 
+int main() {
   // pedir el valor de n
   int n;
   cout << "Introducir n: ";
