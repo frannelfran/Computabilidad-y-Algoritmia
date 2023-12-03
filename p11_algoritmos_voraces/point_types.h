@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 typedef pair<double, double> point; // Representar un punto en el plano
 
 typedef pair<point, point> line; // Segmento de línea formado por 2 puntos 
