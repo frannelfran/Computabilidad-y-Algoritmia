@@ -5,6 +5,8 @@
 
 #include "point_types.h"
 
+#include <algorithm>
+#include <utility>
 
 class sub_tree {
   // Atributos privados de la clase
