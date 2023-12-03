@@ -20,7 +20,7 @@ class point_set : public point_vector {
   inline const double get_cost(void) const { return compute_cost(); } // Obtener el costo total del EMST
 
   private:
-  void compute_arc_vector(arc_vector &av) const; // Calcular el vector de arcos ponderados basado en el conjutno de puntos y el EMST
+  void compute_arc_vector(arc_vector &av) const; // Calcular el vector de arcos ponderados basado en el conjunto de puntos y el EMST
   void find_incident_subtrees(const forest& st, const arc &a, int& i, int& j) const; // Encontrar los sub-árboles incidentes en un arco
   void merge_subtrees(forest& st, const arc &a, int i, int j) const; // Fusionar dos sub-árboles incidentes en un arco
 

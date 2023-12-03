@@ -1,5 +1,10 @@
 #include "point_set.h"
 
+/**
+ * @brief Calcular el vector de arcos ponderados basado en el conjunto de puntos y el EMST
+ * @param av Vector de arcos
+*/
+
 void point_set::compute_arc_vector(arc_vector &av) const {
   av.clear();
 
