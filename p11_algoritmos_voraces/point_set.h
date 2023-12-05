@@ -5,6 +5,7 @@ typedef vector<sub_tree> forest; // Definir un alias forest
 class point_set : public point_vector {
   private:
   tree emst_; // Árbol mínimo de expansión sobre el conjunto de puntos
+  point_collection points_; // Conjunto de puntos
 
   public:
   point_set(const point_vector &points); // Construtor de la clase point_set
