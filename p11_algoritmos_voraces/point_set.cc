@@ -1,6 +1,39 @@
 #include "point_set.h"
 
 /**
+ * @brief Constructor de la clase point_set
+*/
+
+point_set::point_set(const point_vector &points) : point_vector(points), emst_() {}
+
+/**
+ * @brief Destructor de la clase
+*/
+
+point_set::~point_set() {}
+
+/**
+ * @brief Escribir el árbol mínimo de expansión
+*/
+
+void point_set::write_tree(ostream& os) const {
+  for (const auto& arc : emst_) {
+    os << arc.first.second << " " << arc.first.second << " " << arc.second.first << " " << arc.second.second << endl;
+  }
+}
+
+/**
+ * @brief Escribir el conjunto de puntos
+*/
+
+void point_set::write(ostream& os) const {
+  for (const auto& point : points_) {
+    os << point.first << " " << point.second << endl;
+  }
+}
+
+
+/**
  * @brief Calcular el vector de arcos ponderados basado en el conjunto de puntos y el EMST
  * @param av Vector de arcos
 */

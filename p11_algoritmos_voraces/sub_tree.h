@@ -4,7 +4,7 @@
 #include <cmath>
 
 #include "point_types.h"
-
+#include <limits>
 #include <algorithm>
 #include <utility>
 
