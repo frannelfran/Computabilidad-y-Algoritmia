@@ -11,6 +11,7 @@ namespace EMST {
     public:
     point_set(const CyA::point_vector& points);
     ~point_set();
+    sub_tree_vector sub_tree_vector_;
 
     void EMST();
 

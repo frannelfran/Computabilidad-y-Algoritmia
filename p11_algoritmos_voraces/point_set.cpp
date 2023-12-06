@@ -85,12 +85,11 @@ namespace EMST {
 
   double point_set::compute_cost() const {
     // Calcular el costo total del árbol
-    double total_cost = 0.0;
-    /*for (const sub_tree& st : st) {
-      total_cost += st.get_cost();
+    double coste_total = 0.0;
+    for (const sub_tree& st : sub_tree_vector_) {
+      coste_total += st.get_cost();
     }
-    */
-    return total_cost;
+    return coste_total;
   }
 
   double point_set::euclidean_distance(const CyA::arc& a) const {

@@ -7,12 +7,25 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-  if (argc != 2) {
-    cout << "Se debe de introducir un fichero con una nube de puntos." << endl;
+  if (argc < 2) {
+    cout << "Modo de empleo: " << argv[0] << " [-d] archivo_entrada" << endl;
     exit(EXIT_FAILURE);
   }
+
+  bool generateDot = false;
+  std::string inputFileName;
+
+  // Verificar la opción -d
+  if (argc == 3 && std::string(argv[1]) == "-d") {
+    generateDot = true;
+    inputFileName = argv[2];
+  } 
+  else if (argc == 2) {
+    inputFileName = argv[1];
+  }
+
   // Crear un conjunto de puntos a partir del fichero
-  ifstream file(argv[1]);
+  ifstream file(inputFileName);
   int num_puntos;
   file >> num_puntos;
 
@@ -35,9 +48,9 @@ int main(int argc, char* argv[]) {
   const double cost = pointSet.get_cost();
 
   // Imprimir resultados
-  std::cout << "Conjunto de puntos original:\n" << originalPoints << std::endl;
-  std::cout << "Árbol de Expansión Mínima:\n" << emstTree << std::endl;
-  std::cout << "Costo total del árbol: " << cost << std::endl;
+  cout << "Conjunto de puntos original:\n" << originalPoints << endl;
+  cout << "Árbol de Expansión Mínima:\n" << emstTree << endl;
+  cout << "Costo total del árbol: " << cost << endl;
 
   return 0;
 }
