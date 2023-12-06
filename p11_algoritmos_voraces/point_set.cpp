@@ -8,6 +8,18 @@ namespace EMST {
 
   point_set::~point_set() {}
 
+  const CyA::tree& point_set::get_tree() const {
+    return emst_; // Emst_ es el atributo privado que almacena el árbol
+  }
+
+  const CyA::point_vector& point_set::get_points() const {
+    return *this; // Devuelve el vector de puntos heredado de CyA::point_vector
+  }
+
+  const double point_set::get_cost() const {
+    return compute_cost(); // Puedes implementar esta función según tu lógica
+  }
+
   void point_set::EMST() {
     CyA::arc_vector av;
     compute_arc_vector(av);
@@ -74,9 +86,10 @@ namespace EMST {
   double point_set::compute_cost() const {
     // Calcular el costo total del árbol
     double total_cost = 0.0;
-    for (const sub_tree& st : st) {
+    /*for (const sub_tree& st : st) {
       total_cost += st.get_cost();
     }
+    */
     return total_cost;
   }
 

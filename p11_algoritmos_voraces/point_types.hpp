@@ -25,6 +25,6 @@ namespace CyA {
 
 std::ostream& operator<<(std::ostream& os, const CyA::point_vector& ps);
 std::ostream& operator<<(std::ostream& os, const CyA::point& ps);
-
+std::ostream& operator<<(std::ostream& os, const CyA::tree& t);
 std::istream& operator>>(std::istream& is, CyA::point_vector& ps);
 std::istream& operator>>(std::istream& is, CyA::point& ps);
