@@ -141,8 +141,10 @@ namespace EMST {
   double point_set::compute_cost() const {
     // Calcular el costo total del árbol
     double coste_total = 0.0;
-    for (const sub_tree& st : sub_tree_vector_) {
-      coste_total += st.get_cost();
+    
+    const CyA::tree& emst_tree = get_tree();
+    for (const auto& arc : emst_tree) {
+      coste_total += euclidean_distance(arc);
     }
     return coste_total;
   }
@@ -158,5 +160,39 @@ namespace EMST {
     double dx = a.first.first - a.second.first;
     double dy = a.first.second - a.second.second;
     return std::sqrt(dx * dx + dy * dy);
+  }
+
+  /**
+   * @brief Realizar el fichero .dot si se ejecuta -d
+   * @param filename Nombre del fichero .dot
+  */
+
+  void point_set::write_dot_file(const string& filename) const {
+    ofstream dotFile(filename);
+    dotFile << "graph EMST {" << std::endl;
+
+    // Obtener la referencia constante al árbol generador mínimo (EMST)
+    const CyA::tree& emst_tree = get_tree();
+
+    // Mapa para asignar identificadores únicos a los puntos
+    std::map<CyA::point, std::string> pointIds;
+
+    // Asignar identificadores a los puntos basados en su posición
+    for (size_t i = 0; i < size(); ++i) {
+      const CyA::point& point = at(i);
+      pointIds[point] = "p" + std::to_string(i + 1); // Usar 'p' como prefijo para evitar números iniciales
+      dotFile << "  " << pointIds[point] << " [pos=\"" << point.first << "," << -point.second << "!\"]" << std::endl;
+    }
+
+    // Iterar sobre los arcos del EMST y escribir las conexiones
+    for (const auto& arc : emst_tree) {
+      const CyA::point& point1 = arc.first;
+      const CyA::point& point2 = arc.second;
+
+      dotFile << "  " << pointIds.at(point1) << " -- " << pointIds.at(point2) << std::endl;
+    }
+
+    dotFile << "}" << std::endl;
+    dotFile.close();
   }
 }

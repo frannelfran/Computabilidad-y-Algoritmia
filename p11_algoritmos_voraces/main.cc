@@ -52,5 +52,10 @@ int main(int argc, char* argv[]) {
   cout << "Árbol de Expansión Mínima:\n" << emstTree << endl;
   cout << "Costo total del árbol: " << cost << endl;
 
+  // Generar el archivo .dot si el usuario lo solicita
+  if (generateDot) {
+    pointSet.write_dot_file("emst_tree.dot");
+  }
+
   return 0;
 }

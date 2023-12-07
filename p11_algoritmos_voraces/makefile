@@ -9,3 +9,5 @@ main:
 clean:
 	@echo "Eliminando ficheros compilados..."
 	rm -f sub_tree
+	rm -f emst_tree.dot
+	rm -f emst_tree.pdf
