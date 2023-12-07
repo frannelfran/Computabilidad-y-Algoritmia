@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
   int num_puntos;
   file >> num_puntos;
 
+  // Crear el vector de puntos
   CyA::point_vector points;
   for (int i = 0; i < num_puntos; i++) {
     double x, y;
@@ -63,6 +64,10 @@ int main(int argc, char* argv[]) {
   cout << "Conjunto de puntos original:\n" << originalPoints << endl;
   cout << "Árbol de Expansión Mínima:\n" << emstTree << endl;
   cout << "Costo total del árbol: " << cost << endl;
+
+  // Costo promedio de las aristas
+  const double costo_promedio = pointSet.promedio_aristas();
+  cout << "Costo promedio de las aristas: " << costo_promedio << endl;
 
   // Generar el archivo .dot si el usuario lo solicita
   if (generateDot) {

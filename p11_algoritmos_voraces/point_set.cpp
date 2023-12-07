@@ -207,4 +207,27 @@ namespace EMST {
     dotFile << "}" << endl;
     dotFile.close();
   }
+
+  // Modificación
+
+  /**
+   * @brief Calcular el costo promedio que forman las aristas del árbol
+   * @return Costo promedio
+  */
+
+  const double point_set::promedio_aristas() const {
+    double coste_promedio = 0.0;
+
+    // Obtener la referencia constante al árbol generador mínimo (EMST)
+    const CyA::tree& emst_tree = get_tree();
+
+    // Iterar sobre los arcos del EMST y sumar sus costos
+    for (const auto& arc : emst_tree) {
+      coste_promedio += euclidean_distance(arc);
+    }
+
+    // Calcular el promedio dividiendo la suma total por la cantidad de aristas
+    int num_arcos = emst_tree.size();
+    return coste_promedio / static_cast<double>(num_arcos);
+  }
 }
