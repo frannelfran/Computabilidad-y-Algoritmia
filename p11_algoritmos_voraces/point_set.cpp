@@ -169,7 +169,7 @@ namespace EMST {
 
   void point_set::write_dot_file(const string& filename) const {
     ofstream dotFile(filename);
-    dotFile << "graph EMST {" << std::endl;
+    dotFile << "graph {" << std::endl;
 
     // Obtener la referencia constante al árbol generador mínimo (EMST)
     const CyA::tree& emst_tree = get_tree();
