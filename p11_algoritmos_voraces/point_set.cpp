@@ -90,13 +90,13 @@ namespace EMST {
       for (int j = i + 1; j < n; ++j) {
         const CyA::point& p_j = (*this)[j];
 
-        const double dist = euclidean_distance(std::make_pair(p_i, p_j));
+        const double dist = euclidean_distance(make_pair(p_i, p_j));
 
-        av.push_back(std::make_pair(dist, std::make_pair(p_i, p_j)));
+        av.push_back(make_pair(dist, make_pair(p_i, p_j)));
       }
     }
 
-    std::sort(av.begin(), av.end());
+    sort(av.begin(), av.end());
   }
 
   /**
@@ -129,7 +129,7 @@ namespace EMST {
 
   void point_set::merge_subtrees(sub_tree_vector& st, const CyA::arc& a, int i, int j) const {
     // Fusionar los dos subárboles i y j en uno solo
-    st[i].merge(st[j], std::make_pair(euclidean_distance(a), a));
+    st[i].merge(st[j], make_pair(euclidean_distance(a), a));
     st.erase(st.begin() + j);
   }
 
@@ -159,7 +159,7 @@ namespace EMST {
     // Calcular la distancia euclidiana entre dos puntos
     double dx = a.first.first - a.second.first;
     double dy = a.first.second - a.second.second;
-    return std::sqrt(dx * dx + dy * dy);
+    return sqrt(dx * dx + dy * dy);
   }
 
   /**
@@ -169,19 +169,19 @@ namespace EMST {
 
   void point_set::write_dot_file(const string& filename) const {
     ofstream dotFile(filename);
-    dotFile << "graph {" << std::endl;
+    dotFile << "graph {" << endl;
 
     // Obtener la referencia constante al árbol generador mínimo (EMST)
     const CyA::tree& emst_tree = get_tree();
 
     // Mapa para asignar identificadores únicos a los puntos
-    std::map<CyA::point, std::string> pointIds;
+    map<CyA::point, string> pointIds;
 
     // Asignar identificadores a los puntos basados en su posición
     for (size_t i = 0; i < size(); ++i) {
       const CyA::point& point = at(i);
-      pointIds[point] = "p" + std::to_string(i + 1); // Usar 'p' como prefijo para evitar números iniciales
-      dotFile << "  " << pointIds[point] << " [pos=\"" << point.first << "," << -point.second << "!\"]" << std::endl;
+      pointIds[point] = "p" + to_string(i + 1); // Usar 'p' como prefijo para evitar números iniciales
+      dotFile << "  " << pointIds[point] << " [pos=\"" << point.first << "," << -point.second << "!\"]" << endl;
     }
 
     // Iterar sobre los arcos del EMST y escribir las conexiones
@@ -189,10 +189,10 @@ namespace EMST {
       const CyA::point& point1 = arc.first;
       const CyA::point& point2 = arc.second;
 
-      dotFile << "  " << pointIds.at(point1) << " -- " << pointIds.at(point2) << std::endl;
+      dotFile << "  " << pointIds.at(point1) << " -- " << pointIds.at(point2) << endl;
     }
 
-    dotFile << "}" << std::endl;
+    dotFile << "}" << endl;
     dotFile.close();
   }
 }
