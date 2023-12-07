@@ -6,29 +6,26 @@
 namespace EMST {
   class point_set : public CyA::point_vector {
     private:
-    CyA::tree emst_;
+    CyA::tree emst_; // Árbol generador mínimo
 
     public:
-    point_set(const CyA::point_vector& points);
-    ~point_set();
-    sub_tree_vector sub_tree_vector_;
+    point_set(const CyA::point_vector& points); // Constructor de la clase
+    ~point_set(); // Destructor de la clase
+    sub_tree_vector sub_tree_vector_; // Vector de sub-árboles
 
-    void EMST();
+    void EMST(); // Construir el árbol generador mínimo
 
-    void write_tree(std::ostream& os) const;
-    void write(std::ostream& os) const;
-
-    const CyA::tree& get_tree() const;
-    const CyA::point_vector& get_points() const;
-    const double get_cost() const;
+    const CyA::tree& get_tree() const; // Obtener el árbol
+    const CyA::point_vector& get_points() const; // Obtener los puntos
+    const double get_cost() const; // Obtener el costo
 
     private:
-    void compute_arc_vector(CyA::arc_vector& av) const;
-    void find_incident_subtrees(const sub_tree_vector& st, const CyA::arc& a, int& i, int& j) const;
-    void merge_subtrees(sub_tree_vector& st, const CyA::arc& a, int i, int j) const;
+    void compute_arc_vector(CyA::arc_vector& av) const; // Calcular un vector de arcos a partir del conjunto de puntos
+    void find_incident_subtrees(const sub_tree_vector& st, const CyA::arc& a, int& i, int& j) const; // Encontrar sub-árboles incidentes a un arco
+    void merge_subtrees(sub_tree_vector& st, const CyA::arc& a, int i, int j) const; // Fusionar subárboles en función de un arco 
 
-    double compute_cost() const;
+    double compute_cost() const; // Calcular el costo total de árbol
 
-    double euclidean_distance(const CyA::arc& a) const;
+    double euclidean_distance(const CyA::arc& a) const; // Calcular la distancia euclidiana de los arcos
   };
 }
