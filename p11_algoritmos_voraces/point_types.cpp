@@ -2,6 +2,8 @@
 
 #include <iomanip>
 
+// Sobrecarga de los operadores
+
 std::ostream& operator<<(std::ostream& os, const CyA::point_vector& ps) {
   os << ps.size() << std::endl;
 
