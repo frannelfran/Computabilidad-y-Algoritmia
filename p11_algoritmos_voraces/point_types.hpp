@@ -8,6 +8,18 @@
 #define MAX_SZ 3
 #define MAX_PREC 0
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 11: Algoritmos voraces + Divide y Vencerás
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 07/12/2023
+// Archivo: point_types.hpp
+// Descripción: Declaración de point_types
+
 namespace CyA {
   typedef std::pair<double, double> point; // Representar un punto
 

@@ -6,6 +6,18 @@
 
 using namespace std;
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 11: Algoritmos voraces + Divide y Vencerás
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 07/12/2023
+// Archivo: main.cpp
+// Descripción: Programa que genera un EMST a partir de una nube de puntos
+
 int main(int argc, char* argv[]) {
   if (argc < 2) {
     cout << "Modo de empleo: " << argv[0] << " [-d] archivo_entrada" << endl;

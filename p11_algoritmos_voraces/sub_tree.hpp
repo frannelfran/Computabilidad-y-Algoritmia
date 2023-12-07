@@ -4,6 +4,18 @@
 #include <cmath>
 #include "point_types.hpp"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 11: Algoritmos voraces + Divide y Vencerás
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 07/12/2023
+// Archivo: sub_tree.hpp
+// Descripción: Declaración de la clase sub_tree
+
 namespace EMST {
   class sub_tree {
     private:
