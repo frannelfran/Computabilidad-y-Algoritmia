@@ -4,21 +4,50 @@
 #include "point_set.hpp"
 
 namespace EMST {
+
+  /**
+   * @brief Cosntructor de la clase point_set
+   * @param points Vector de puntos
+  */
+
   point_set::point_set(const CyA::point_vector& points) : CyA::point_vector(points), emst_() {}
 
+  /**
+   * @brief Destructor de la clase point_set
+  */
+
   point_set::~point_set() {}
+
+  /**
+   * @brief Obtener el árbol generador de mínimo coste
+   * @return emst
+  */
 
   const CyA::tree& point_set::get_tree() const {
     return emst_; // Emst_ es el atributo privado que almacena el árbol
   }
 
+  /**
+   * @brief Obtener los puntos
+   * @return Puntos
+  */
+
   const CyA::point_vector& point_set::get_points() const {
     return *this; // Devuelve el vector de puntos heredado de CyA::point_vector
   }
 
+  /**
+   * @brief Obtener el costo del árbol
+   * @return Costo
+  */
+
   const double point_set::get_cost() const {
     return compute_cost(); // Puedes implementar esta función según tu lógica
   }
+
+  /**
+   * @brief Calcular el árbol generador mínimo (EMST)
+  */
 
   void point_set::EMST() {
     CyA::arc_vector av;
@@ -45,6 +74,11 @@ namespace EMST {
     emst_ = st[0].get_arcs();
   }
 
+  /**
+   * @brief Calcular un vector de arcos a partir del conjutno de puntos
+   * @param av Conjunto de arcos
+  */
+
   void point_set::compute_arc_vector(CyA::arc_vector& av) const {
     av.clear();
 
@@ -65,6 +99,14 @@ namespace EMST {
     std::sort(av.begin(), av.end());
   }
 
+  /**
+   * @brief Encontrar árboles incidentes en un arco
+   * @param st Vector de sub-arboles
+   * @param a Arco
+   * @param i Entero
+   * @param j Entero
+  */
+
   void point_set::find_incident_subtrees(const sub_tree_vector& st, const CyA::arc& a, int& i, int& j) const {
     // Buscar los índices de los árboles incidentes en la arista a en el vector de subárboles st
     for (int index = 0; index < st.size(); ++index) {
@@ -77,11 +119,24 @@ namespace EMST {
     }
   }
 
+  /**
+   * @brief Fusionar sub-árboles en función de un arco
+   * @param st Vector de sub-árboles
+   * @param a Arco
+   * @param i Entero
+   * @param j Entero
+  */
+
   void point_set::merge_subtrees(sub_tree_vector& st, const CyA::arc& a, int i, int j) const {
     // Fusionar los dos subárboles i y j en uno solo
     st[i].merge(st[j], std::make_pair(euclidean_distance(a), a));
     st.erase(st.begin() + j);
   }
+
+  /**
+   * @brief Calcular el costo total del árbol
+   * @return Costo total
+  */
 
   double point_set::compute_cost() const {
     // Calcular el costo total del árbol
@@ -91,6 +146,12 @@ namespace EMST {
     }
     return coste_total;
   }
+
+  /**
+   * @brief Calcular la distancia euclidiana de un arco
+   * @param a Arco
+   * @return Distancia euclidiana
+  */
 
   double point_set::euclidean_distance(const CyA::arc& a) const {
     // Calcular la distancia euclidiana entre dos puntos
