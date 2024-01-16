@@ -126,16 +126,11 @@ void Producciones::DividirProducciones() {
 ostream& operator<<(ostream& os, Producciones& prod) {
   os << prod.alfabeto_;
   os << prod.no_terminales_;
-  os << "Producciones de la gramática" << endl;
+  os << prod.producciones_.size() << endl;
   for (auto it = prod.producciones_.begin(); it != prod.producciones_.end(); it++) {
-    os << it->first << " → ";
     for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
-      os << *it2;
-      if (next(it2) == it->second.end()) {
-        os << endl;
-        break;
-      }
-      os << " | ";
+      os << it->first << " ";
+      os << *it2 << endl;
     }
   }
   return os;

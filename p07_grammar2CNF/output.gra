@@ -1,12 +1,34 @@
-Alfabeto: {a,b,c}
-Símbolos terminales: A B C D E F S X Y
-Producciones de la gramática
-A → a
-B → b
-C → BX
-D → XB
-E → BX
-F → XE
-S → AB | AC | AD | AF
-X → AY | BY | a | b
-Y → AY | BY | a | b | c
+3
+a
+b
+c
+9
+A
+B
+C
+D
+E
+F
+S
+X
+Y
+9
+A a
+B b
+C BX
+D XB
+E BX
+F XE
+S AB
+S AC
+S AD
+S AF
+X AY
+X BY
+X a
+X b
+Y AY
+Y BY
+Y a
+Y b
+Y c

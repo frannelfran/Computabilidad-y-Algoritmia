@@ -49,13 +49,9 @@ bool Alfabeto::IsAlfabeto(char simbolo) {
 */
 
 ostream& operator<<(ostream& os, Alfabeto& alf) {
-  os << "Alfabeto: {";
+  os << alf.alfabeto_.size() << endl;
   for (auto it = alf.alfabeto_.begin(); it != alf.alfabeto_.end(); it++) {
-    os << *it;
-    if(next(it) != alf.alfabeto_.end()) {
-      os << ",";
-    }
+    os << *it << endl;
   }
-  os << "}" << endl;
   return os;
 }

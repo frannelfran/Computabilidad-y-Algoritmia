@@ -72,13 +72,9 @@ char NoTerminales::ObtenerNoTerminal() {
 */
 
 ostream& operator<<(ostream& os, NoTerminales& no_term) {
-  os << "Símbolos terminales: ";
-  for(auto it = no_term.no_terminales_.begin(); it != no_term.no_terminales_.end(); it++) {
-    os << *it;
-    if(next(it) != no_term.no_terminales_.end()) {
-      os << " ";
-    }
+  os << no_term.no_terminales_.size() << endl;
+  for (auto it = no_term.no_terminales_.begin(); it != no_term.no_terminales_.end(); it++) {
+    os << *it << endl;
   }
-  os << endl;
   return os;
 }
