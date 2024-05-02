@@ -28,7 +28,6 @@ void Califications::add(string alumno, double nota) { // Agregar un alumno
 // Modificación
 void Califications::ordenar() { // Ordenar las notas de mayor a menor de los estudiantes
   for(map<string, std::vector<double>>::iterator it = lista_.begin(); it != lista_.end(); it++) {
-    string alumno = it->first;
     std::vector<double>& calificacion = it->second; // Apuntamos al vector de notas
     std::sort(calificacion.rbegin(), calificacion.rend()); // Ordenar las calificaciones de los estudiantes en orden descendente
   }
