@@ -7,22 +7,51 @@
  * @return Estructura Tools con los argumentos parseados
  */
 
-Tools parseArgs(int argc, char* argv[]) {
-  Tools tools;
-
-  if (argc < 4) {
+vector<Cadena> parseArgs(int argc, char* argv[]) {
+  if (argc < 4 && string(argv[1]) != "--help") {
     cerr << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode "
          << "Pruebe ./p02_strings --help para más información." << endl;
     exit(EXIT_FAILURE);
-  } else if (string(argv[1]) == "--help") {
+  } else if (string(argv[1]) == "--help") { // Mostrar ayuda 
     printHelp();
     exit(EXIT_SUCCESS);
   }
-  tools.filein = argv[1];
-  tools.fileout = argv[2];
-  tools.opcion = stoi(argv[3]);
+   else if (stoi(argv[3]) < 1 || stoi(argv[3]) > 4) { // Manejar el opcode
+    throw invalid_argument("Error: El opcode debe ser un número entre 1 y 4.");
+  }
 
-  return tools;
+  string fileName = argv[1];
+  ifstream filein(fileName);
+
+  string cadena, alfabeto;
+  vector<Cadena> cadenas;
+
+  while (filein >> cadena >> alfabeto) {
+    if (!perteneceAlfabeto(cadena, alfabeto)) {
+      throw invalid_argument("Error: La cadena '" + cadena +
+                             "' no pertenece al alfabeto '" + alfabeto + "'.");
+    }
+    else {
+      Cadena c(cadena, Alfabeto(alfabeto));
+      cadenas.push_back(c);
+    }
+  }
+  return cadenas;
+}
+
+/**
+ * @brief Función para comprobar si la cadena pertenece al alfabeto
+ * @param cadena Cadena a comprobar
+ * @param alfabeto Alfabeto
+ * @return true si la cadena pertenece al alfabeto, false en caso contrario
+ */
+bool perteneceAlfabeto(const string& cadena, const string& alfabeto) {
+  for (char c : cadena) {
+    if (alfabeto.find(c) == string::npos) {
+      return false; // Si el carácter no está en el alfabeto, retorna false
+    }
+  }
+  return true; // Todos los caracteres están en el alfabeto
 }
 
 /**
