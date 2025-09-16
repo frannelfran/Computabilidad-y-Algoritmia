@@ -8,7 +8,7 @@
  */
 
 vector<Cadena> parseArgs(int argc, char* argv[]) {
-  if (argc < 4 && string(argv[1]) != "--help") {
+  if ((argc < 4 || argc > 4) && string(argv[1]) != "--help") {
     cerr << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode "
          << "Pruebe ./p02_strings --help para más información." << endl;
     exit(EXIT_FAILURE);
@@ -16,8 +16,8 @@ vector<Cadena> parseArgs(int argc, char* argv[]) {
     printHelp();
     exit(EXIT_SUCCESS);
   }
-   else if (stoi(argv[3]) < 1 || stoi(argv[3]) > 4) { // Manejar el opcode
-    throw invalid_argument("Error: El opcode debe ser un número entre 1 y 4.");
+   else if (stoi(argv[3]) < 1 || stoi(argv[3]) > 5) { // Manejar el opcode
+    throw invalid_argument("Error: El opcode debe ser un número entre 1 y 5.");
   }
 
   string fileName = argv[1];
@@ -55,6 +55,19 @@ bool perteneceAlfabeto(const string& cadena, const string& alfabeto) {
 }
 
 /**
+ * @brief FUnción para mostrar el menú de opciones
+ * @return void
+ */
+void mostrarMenu() {
+  cout << "Seleccionar una opción de las siguientes:\n"
+       << "1. Mostrar el alfabeto.\n"
+       << "2. Mostrar la longitud de cada cadena.\n"
+       << "3. Mostrar la inversa de cada cadena.\n"
+       << "4. Calcular los prefijos de cada cadena.\n"
+       << "5. Calcular los sufijos de cada cadena.\n";
+}
+
+/**
  * @brief Función para imprimir la ayuda
  * @return void
  */
@@ -63,11 +76,6 @@ void printHelp() {
        << "Donde:\n"
        << "  filein.txt: Fichero de entrada con el alfabeto y las cadenas.\n"
        << "  fileout.txt: Fichero de salida donde se escribirán los resultados.\n"
-       << "  opcode: Operación a realizar (1-4):\n"
-       << "    1: Longitud de cada cadena.\n"
-       << "    2: Inversa de cada cadena.\n"
-       << "    3: Comprobar si cada cadena es palíndroma.\n"
-       << "    4: Comprobar si cada cadena pertenece al alfabeto.\n"
-       << "Ejemplo:\n"
-       << "  ./p02_strings input.txt output.txt 1\n";
+       << "  opcode: Operación a realizar (1-5):\n";
+  mostrarMenu();
 }
