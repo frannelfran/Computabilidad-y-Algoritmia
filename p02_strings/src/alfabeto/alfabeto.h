@@ -17,7 +17,7 @@ class Alfabeto {
     // Sobrecarga de operadores
     friend ostream& operator<<(ostream& os, const Alfabeto& alfabeto);
   private:
-    set<char> simbolos;
+    set<char> simbolos_;
 };
 
 #endif // ALFABETO_H

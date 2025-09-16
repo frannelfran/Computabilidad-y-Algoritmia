@@ -6,7 +6,7 @@
  */
 Alfabeto::Alfabeto(const string& alfabeto) {
   for (const char& caracter : alfabeto) {
-    simbolos.insert(caracter);
+    simbolos_.insert(caracter);
   }
 }
 
@@ -15,9 +15,9 @@ Alfabeto::Alfabeto(const string& alfabeto) {
  */
 ostream& operator<<(ostream& os, const Alfabeto& alfabeto) {
   os << "{";
-  for (auto it = alfabeto.simbolos.begin(); it != alfabeto.simbolos.end(); ++it) {
+  for (auto it = alfabeto.simbolos_.begin(); it != alfabeto.simbolos_.end(); ++it) {
     os << *it;
-    if (next(it) != alfabeto.simbolos.end()) {
+    if (next(it) != alfabeto.simbolos_.end()) {
       os << ", ";
     }
   }
