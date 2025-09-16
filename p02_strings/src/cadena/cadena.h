@@ -1,11 +1,15 @@
-#include "../alfabeto/alfabeto.h"
-#include "../lenguaje/lenguaje.h"
-#include <string>
-#include <algorithm> // Para reverse
 #pragma once
 
 #ifndef CADENA_H
 #define CADENA_H
+
+// Declaración adelantada para evitar dependencias circulares
+class Lenguaje;
+
+#include "../alfabeto/alfabeto.h"
+#include <string>
+#include <algorithm> // Para reverse
+
 
 class Cadena {
   public:
@@ -24,7 +28,7 @@ class Cadena {
 
     // Sobrecarga de operadores
     friend ostream& operator<<(ostream& os, const Cadena& cadena);
-    inline friend bool operator<(const Cadena& c1, const Cadena& c2) { return c1.cadena_ < c2.cadena_; }
+    friend bool operator<(const Cadena& c1, const Cadena& c2);
 
   private:
     string cadena_;

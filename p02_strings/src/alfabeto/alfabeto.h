@@ -1,7 +1,7 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <set>
-#pragma once
 
 #ifndef ALFABETO_H
 #define ALFABETO_H

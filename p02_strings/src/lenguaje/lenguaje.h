@@ -13,6 +13,9 @@ class Lenguaje {
     // Métodos
     inline void agregar(const Cadena& cadena) { cadenas_.insert(cadena); }
 
+    // Sobrecarga de operadores
+    friend ostream& operator<<(ostream& os, const Lenguaje& lenguaje);
+
   private:
     set<Cadena> cadenas_;
 };

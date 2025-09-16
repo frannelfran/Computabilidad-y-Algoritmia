@@ -1,3 +1,4 @@
+#pragma once
 #include "../cadena/cadena.h"
 #include "../alfabeto/alfabeto.h"
 #include <fstream> // Para los ficheros

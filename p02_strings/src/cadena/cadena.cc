@@ -1,3 +1,4 @@
+#include "../lenguaje/lenguaje.h"
 #include "cadena.h"
 
 /**
@@ -16,8 +17,12 @@ string Cadena::inversa() const {
  */
 Lenguaje Cadena::prefijos() const {
   Lenguaje lenguaje;
-  for (size_t i = 0; i <= cadena_.size(); ++i) {
-    lenguaje.agregar(Cadena(cadena_.substr(0, i), alfabeto_));
+  // Agrego la cadena vacía
+  lenguaje.agregar(Cadena("&", alfabeto_));
+  string prefijo = "";
+  for (int i = 0; i < cadena_.size(); ++i) {
+    prefijo += cadena_[i];
+    lenguaje.agregar(Cadena(prefijo, alfabeto_));
   }
   return lenguaje;
 }
@@ -28,8 +33,31 @@ Lenguaje Cadena::prefijos() const {
  */
 Lenguaje Cadena::sufijos() const {
   Lenguaje lenguaje;
-  for (size_t i = 0; i <= cadena_.size(); ++i) {
-    lenguaje.agregar(Cadena(cadena_.substr(i), alfabeto_));
+  // Agrego la cadena vacía
+  lenguaje.agregar(Cadena("&", alfabeto_));
+  for (size_t i = 0; i < cadena_.size(); ++i) {
+    string sufijo = cadena_.substr(i);
+    lenguaje.agregar(Cadena(sufijo, alfabeto_));
   }
   return lenguaje;
+}
+
+/**
+ * @overload Sobrecarga del operador <
+ * @param c1 Cadena 1
+ * @param c2 Cadena 2
+ * @return true si c1 < c2, false en caso contrario
+ */
+bool operator<(const Cadena& c1, const Cadena& c2) {
+  if (c1.cadena_.size() != c2.cadena_.size())
+    return c1.cadena_.size() < c2.cadena_.size();
+  return c1.cadena_ < c2.cadena_;
+}
+
+/**
+ * @overload Sobrecarga del operador de salida
+ */
+ostream& operator<<(ostream& os, const Cadena& cadena) {
+  os << cadena.cadena_;
+  return os;
 }

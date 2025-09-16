@@ -25,29 +25,23 @@ int main(int argc, char* argv[]) {
           fileout << cadena.inversa() << endl;
         }
         break;
-      
-
-
+      case 4:
+        for (const auto& cadena : cadenas) {
+          fileout << cadena.prefijos() << endl;
+        }
+        break;
+      case 5:
+        for (const auto& cadena : cadenas) {
+          fileout << cadena.sufijos() << endl;
+        }
+        break;
     }
-
     cout << "Operación realizada con éxito. Resultados en " << argv[2] << endl;
     fileout.close();
 
-    
-
-
-
-
-
-
     return 0;
-
   } catch (const exception& e) {
     cerr << e.what() << endl;
     return EXIT_FAILURE;
   }
-
-
-
-
 }
