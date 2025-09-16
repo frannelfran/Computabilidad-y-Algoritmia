@@ -36,6 +36,8 @@ vector<Cadena> parseArgs(int argc, char* argv[]) {
       cadenas.push_back(c);
     }
   }
+
+  filein.close(); // Cierro el fichero
   return cadenas;
 }
 

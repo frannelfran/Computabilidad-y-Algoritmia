@@ -1,5 +1,6 @@
 #include "../alfabeto/alfabeto.h"
 #include <string>
+#include <algorithm> // Para reverse
 #pragma once
 
 #ifndef CADENA_H
@@ -13,11 +14,18 @@ class Cadena {
 
     // Métodos
     inline size_t longitud() const { return cadena_.size(); }
-    
+    string inversa() const;
+
+    // Getters
+    inline Alfabeto getAlfabeto() const { return alfabeto_; }
+
+    // Sobrecarga de operadores
+    friend ostream& operator<<(ostream& os, const Cadena& cadena);
+    inline friend bool operator<(const Cadena& c1, const Cadena& c2) { return c1.cadena_ < c2.cadena_; }
 
   private:
     string cadena_;
-    const Alfabeto& alfabeto_;
+    const Alfabeto alfabeto_;
 };
 
 #endif
