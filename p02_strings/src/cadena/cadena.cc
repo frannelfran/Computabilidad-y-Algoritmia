@@ -49,8 +49,9 @@ Lenguaje Cadena::sufijos() const {
  * @return true si c1 < c2, false en caso contrario
  */
 bool operator<(const Cadena& c1, const Cadena& c2) {
-  if (c1.cadena_.size() != c2.cadena_.size())
+  if (c1.cadena_.size() != c2.cadena_.size()) {
     return c1.cadena_.size() < c2.cadena_.size();
+  }
   return c1.cadena_ < c2.cadena_;
 }
 
