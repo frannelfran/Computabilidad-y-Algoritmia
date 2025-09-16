@@ -1,4 +1,5 @@
 #include "../alfabeto/alfabeto.h"
+#include "../lenguaje/lenguaje.h"
 #include <string>
 #include <algorithm> // Para reverse
 #pragma once
@@ -15,6 +16,8 @@ class Cadena {
     // Métodos
     inline size_t longitud() const { return cadena_.size(); }
     string inversa() const;
+    Lenguaje prefijos() const;
+    Lenguaje sufijos() const;
 
     // Getters
     inline Alfabeto getAlfabeto() const { return alfabeto_; }

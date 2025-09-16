@@ -1,7 +1,8 @@
-#include "../cadena/cadena.h"
+#pragma once
 
 #ifndef LENGUAJE_H
 #define LENGUAJE_H
+#include "../cadena/cadena.h"
 
 class Lenguaje {
   public:
