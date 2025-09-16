@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+#include <set>
+#pragma once
+
+#ifndef ALFABETO_H
+#define ALFABETO_H
+
+using namespace std;
+
+class Alfabeto {
+  public:
+    // Constructor y destructor
+    Alfabeto(const string& alfabeto);
+    ~Alfabeto() = default;
+
+    // Sobrecarga de operadores
+    friend ostream& operator<<(ostream& os, const Alfabeto& alfabeto);
+  private:
+    set<char> simbolos;
+};
+
+#endif // ALFABETO_H
