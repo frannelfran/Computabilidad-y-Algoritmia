@@ -7,7 +7,7 @@
  * @return Estructura Tools con los argumentos parseados
  */
 
-vector<Cadena> parseArgs(int argc, char* argv[]) {
+Tools parseArgs(int argc, char* argv[]) {
   if ((argc < 4 || argc > 4) && string(argv[1]) != "--help") {
     cerr << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode "
          << "Pruebe ./p02_strings --help para más información." << endl;
@@ -20,8 +20,26 @@ vector<Cadena> parseArgs(int argc, char* argv[]) {
     throw invalid_argument("Error: El opcode debe ser un número entre 1 y 5.");
   }
 
-  string fileName = argv[1];
+  // Almaceno los argumentos
+  Tools tool;
+  tool.filein = argv[1];
+  tool.fileout = argv[2];
+  tool.opcode = stoi(argv[3]);
+
+  return tool;
+}
+
+/**
+ * @brief Función para leer el fichero de entrada
+ * @param filename Nombre del fichero
+ * @return Vector de Cadenas leídas del fichero
+ */
+vector<Cadena> readFile(const string& fileName) {
   ifstream filein(fileName);
+
+  if (filein.fail()) {
+    throw invalid_argument("Error: No se pudo abrir el fichero " + fileName);
+  }
 
   string cadena, alfabeto;
   vector<Cadena> cadenas;

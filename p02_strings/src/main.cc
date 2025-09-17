@@ -5,11 +5,14 @@
 
 int main(int argc, char* argv[]) {
   try {
-    vector<Cadena> cadenas = parseArgs(argc, argv);
-    ofstream fileout(argv[2]);
+    Tools argumentos = parseArgs(argc, argv);
+    
+    // Leo el fichero de entrada
+    vector<Cadena> cadenas = readFile(argumentos.filein);
+    ofstream fileout(argumentos.fileout);
 
     // Ejecutamos las opciones
-    switch (stoi(argv[3])) {
+    switch (argumentos.opcode) {
       case 1: // Mostrar el alfabeto
         for (const auto& cadena : cadenas) {
           fileout << cadena.getAlfabeto() << endl;
