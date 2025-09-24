@@ -1,7 +1,19 @@
 #include "tools.h"
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 2: Cadenas y Lenguajes
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 24/09/2025
+// Archivo: tools.cc
+// Descripción: Funciones para manejar los argumentos y ficheros
+
 /**
- * @brief FUnción para tomar los argumentos de la línea de comandos
+ * @brief Función para tomar los argumentos de la línea de comandos
  * @param argc Número de argumentos
  * @param argv Vector de argumentos
  * @return Estructura Tools con los argumentos parseados
@@ -9,8 +21,8 @@
 
 Tools parseArgs(int argc, char* argv[]) {
   if ((argc < 4 || argc > 4) && string(argv[1]) != "--help") {
-    cerr << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode "
-         << "Pruebe ./p02_strings --help para más información." << endl;
+    cerr << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode " << endl;
+    cerr << "Pruebe ./p02_strings --help para más información." << endl;
     exit(EXIT_FAILURE);
   } else if (string(argv[1]) == "--help") { // Mostrar ayuda 
     printHelp();

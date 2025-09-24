@@ -1,3 +1,15 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 2: Cadenas y Lenguajes
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 24/09/2025
+// Archivo: main.cc
+// Descripción: Programa principal
+
 #include "alfabeto/alfabeto.h"
 #include "cadena/cadena.h"
 #include "lenguaje/lenguaje.h"

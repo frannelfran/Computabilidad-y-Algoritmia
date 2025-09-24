@@ -1,3 +1,15 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 2: Cadenas y Lenguajes
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 24/09/2025
+// Archivo: tools.h
+// Descripción: Funciones para manejar los argumentos y ficheros
+
 #pragma once
 #include "../cadena/cadena.h"
 #include "../alfabeto/alfabeto.h"
@@ -6,6 +18,7 @@
 #include <stdexcept> // Para las excepciones
 
 using namespace std;
+
 
 struct Tools {
   string filein;  // Fichero de entrada

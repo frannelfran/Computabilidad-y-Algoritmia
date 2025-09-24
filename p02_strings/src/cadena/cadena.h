@@ -1,9 +1,20 @@
 #pragma once
 
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 2: Cadenas y Lenguajes
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 24/09/2025
+// Archivo: cadena.h
+// Descripción: Declaración de la clase Cadena
+
 #ifndef CADENA_H
 #define CADENA_H
 
-// Declaración adelantada para evitar dependencias circulares
 class Lenguaje;
 
 #include "../alfabeto/alfabeto.h"
