@@ -27,13 +27,12 @@ void Analizador::clasificar(const string& linea, int principio, int fin) {
   regex bucle(R"(^\s*(for|while)\s*\([^)]*\)\s*\{?)");
   regex main(R"(^\s*int\s+main\s*\([^)]*\)\s*\{?)");
   
-
   smatch match;
 
   if (regex_search(linea, match, variableSinInicializar)) {
     crearVariable(match[1], principio, match[2]);
   } else if (regex_search(linea, match, variableInicializada)) {
-    crearVariable(match[1], principio, match[2], stoi(match[3]));
+    crearVariable(match[1], principio, match[2].str() + '=' + match[3].str(), true);
   } else if (regex_search(linea, match, bucle)) {
     crearBucle(match[1], principio);
   } else if (regex_search(linea, match, main) && !main_) {
@@ -48,8 +47,18 @@ void Analizador::clasificar(const string& linea, int principio, int fin) {
  * @param nombre Nombre de la variable.
  * @param valor Valor de la variable (0 por defecto si no está inicializada).
  */
-void Analizador::crearVariable(const string& tipo, int linea, const string& nombre, int valor) {
-  variables_.push_back(Variable{tipo, linea, nombre, valor});
+void Analizador::crearVariable(const string& tipo, int linea, const string& nombre, bool inicializada) {
+  if (inicializada) {
+    string var, valor;
+    // Buscar donde empieza el número (no hay '=' en el string)
+    size_t pos = nombre.find('=');
+    // Separar nombre y valor
+    var = nombre.substr(0, pos);
+    valor = nombre.substr(pos + 1);
+    variables_.push_back(new VariableInicializada(tipo, linea, var, stod(valor)));
+  } else {
+    variables_.push_back(new Variable(tipo, linea, nombre));
+  }
 }
 
 /**

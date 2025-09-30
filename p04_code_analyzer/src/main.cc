@@ -1,8 +1,22 @@
 #include "tools/tools.h"
+#include "analizador/analizador.h"
 
 int main(int argc, char* argv[]) {
-  Tools tools = parseArgs(argc, argv);
-  std::cout << "Fichero de entrada: " << tools.filein << std::endl;
-  std::cout << "Fichero de salida: " << tools.fileout << std::endl;
+  try {
+    Tools args = parseArgs(argc, argv);
+    ifstream filein(args.filein);
+    
+    // Creo el analizador
+    Analizador analizador;
+    analizador.analizar(filein);
+
+    // Cerramos ficheros
+    filein.close();
+
+    
+  } catch (const exception& e) {
+    cerr << e.what() << endl;
+    return EXIT_FAILURE;
+  }
   return 0;
 }

@@ -20,14 +20,14 @@ class Analizador {
     void analizar(ifstream& archivo);
     void clasificar(const string& linea, int principio, int fin = 0); // Clasifica una línea de código
 
-    void crearVariable(const string& tipo, int linea, const string& nombre, int valor = 0);
+    void crearVariable(const string& tipo, int linea, const string& nombre, bool inicializada = false);
     void crearBucle(const string& tipo, int linea);
 
     // Sobrecarga de operadores
     //friend ostream& operator<<(ostream& os, const Analizador& analizador);
 
   private:
-    vector<Variable> variables_; // Almacenar las variables encontradas
+    vector<Variable*> variables_; // Almacenar las variables encontradas
     vector<Bucle> bucles_;       // Almacenar los bucles encontrados
     vector<Comentario> comentarios_; // Almacenar los comentarios encontrados
     bool main_ = false; // Indica si se ha encontrado la función main
