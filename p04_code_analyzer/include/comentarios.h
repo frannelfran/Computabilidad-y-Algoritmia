@@ -9,6 +9,6 @@ using namespace std;
 struct Comentario {
   string tipo; // simple, multiple o descripcion
   int principio; // Linea en la que empieza
-  int fin; // Linea en la que termina
+  int fin = 0; // Linea en la que termina
   string contenido; // Contenido del comentario
 };
