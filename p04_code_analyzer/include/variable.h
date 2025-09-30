@@ -10,5 +10,5 @@ struct Variable {
   string tipo; // double o int
   int linea; // Linea en la que se declara
   string nombre; // Nombre de la variable
-  int valor = 0;
+  int valor; // Valor de la variable
 };
