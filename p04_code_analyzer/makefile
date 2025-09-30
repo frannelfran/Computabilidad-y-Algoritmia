@@ -2,11 +2,11 @@
 CXX := g++
 CXXFLAGS := -std=c++20 -I include -O0 -g
 
-# Obtener todos los archivos .cc en el proyecto (recursivamente)
-SRCS := $(shell find . -name '*.cc')
+# Obtener todos los archivos .cc en el proyecto (recursivamente), excluyendo code.cc
+SRCS := $(shell find . -name '*.cc' | grep -v 'code.cc')
 
 # Nombre del ejecutable
-TARGET := p02_strings
+TARGET := p04_code_analyzer
 
 .PHONY: all clean
 
