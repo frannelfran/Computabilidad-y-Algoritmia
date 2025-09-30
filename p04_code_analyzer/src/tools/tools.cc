@@ -18,6 +18,9 @@ Tools parseArgs(int argc, char* argv[]) {
     exit(EXIT_SUCCESS);
   }
   // Almaceno los argumentos
+  if (string(argv[1]).find(".cc") == string::npos || string(argv[2]).find(".txt") == string::npos) {
+    throw invalid_argument("Los ficheros deben tener extensión .cc y .txt respectivamente");
+  }
   tools.filein = argv[1];
   tools.fileout = argv[2];
   return tools;
