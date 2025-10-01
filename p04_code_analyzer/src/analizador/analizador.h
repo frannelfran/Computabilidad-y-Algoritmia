@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <fstream> // Para manejar archivos
+#include <algorithm> // Para transform
 #include <iostream>
 
 /**
@@ -20,14 +21,14 @@ class Analizador {
     // Métodos
     void analizar(ifstream& archivo);
     void clasificar(ifstream& archivo, const string& linea, int& numeroLinea); // Clasifica una línea de código
-    void crearVariable(const string& tipo, int linea, const string& nombre, bool inicializada = false);
+    void crearVariable(string tipo, int linea, string nombre, bool inicializada = false);
     void crearBucle(const string& tipo, int linea);
     void crearComentario(const string& tipo, int principio, int fin, const string& contenido);
     void procesarComentario(ifstream& archivo, string linea, int& numLinea);
 
 
     // Sobrecarga de operadores
-    //friend ostream& operator<<(ostream& os, const Analizador& analizador);
+    friend ostream& operator<<(ostream& os, const Analizador& analizador);
 
   private:
     vector<Variable*> variables_; // Almacenar las variables encontradas

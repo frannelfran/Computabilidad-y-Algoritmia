@@ -89,7 +89,10 @@ void Analizador::clasificar(ifstream& archivo, const string& linea, int& numeroL
  * @param nombre Nombre de la variable.
  * @param valor Valor de la variable (0 por defecto si no está inicializada).
  */
-void Analizador::crearVariable(const string& tipo, int linea, const string& nombre, bool inicializada) {
+void Analizador::crearVariable(string tipo, int linea, string nombre, bool inicializada) {
+  // Convierto el tipo a mayuscula
+  transform(tipo.begin(), tipo.end(), tipo.begin(), ::toupper);
+
   if (inicializada) {
     string var, valor;
     // Buscar donde empieza el número (no hay '=' en el string)
@@ -121,4 +124,47 @@ void Analizador::crearBucle(const string& tipo, int linea) {
  */
 void Analizador::crearComentario(const string& tipo, int principio, int fin, const string& contenido) {
   comentarios_.push_back(Comentario{tipo, principio, fin, contenido});
+}
+
+/**
+ * @overload Sobrecarga del operador de salida para imprimir el análisis.
+ */
+ostream& operator<<(ostream& os, const Analizador& analizador) {
+  // compruebo que hay descrpcion
+  if (analizador.comentarios_[0].tipo == "descripcion") {
+    os << "DESCRIPTION:\n";
+    os << analizador.comentarios_[0].contenido << "\n\n";
+  }
+  // Variables
+  os << "VARIABLES:\n";
+  for (const auto& var : analizador.variables_) {
+    os << "[Line " << var->getLinea() << "] " << var->getTipo() << " " << var->getNombre();
+    if (var->inicializada()) {
+      os << " = " << var->getValor();
+    }
+    os << "\n";
+  }
+  // Bucles
+  os << "\nSTATEMENTS:\n";
+  for (const auto& bucle : analizador.bucles_) {
+    os << "[Line " << bucle.linea << "] LOOP: " << bucle.tipo << "\n";
+  }
+  // Verificar si existe un main
+  os << "\nMAIN:\n";
+  if (analizador.main_) {
+    os << "True\n";
+  } else {
+    os << "False\n";
+  }
+  // Comentarios
+  os << "\nCOMMENTS:\n";
+  for (const auto& comentario : analizador.comentarios_) {
+    if (comentario.tipo == "descripcion") {
+      os << "[Line " << comentario.principio << "-" << comentario.fin << "] DESCRIPTION\n";
+
+    } else {
+      os << "[Line " << comentario.principio << "] " << comentario.contenido << "\n";
+    }
+  }
+  return os;
 }
