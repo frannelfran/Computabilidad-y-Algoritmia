@@ -10,7 +10,56 @@ void Analizador::analizar(ifstream& archivo) {
   int numeroLinea = 0;
   while (getline(archivo, linea)) {
     numeroLinea++;
-    clasificar(linea, numeroLinea);
+    // Comprobar si lo primero del fichero es un comentario
+    if (numeroLinea == 1 && (linea.find("/*") != string::npos || linea.find("//") != string::npos)) {
+      procesarComentario(archivo, linea, numeroLinea);
+      continue;
+    }
+    clasificar(archivo, linea, numeroLinea);
+  }
+}
+
+/**
+ * @brief Método para procesar el encabezado del archivo.
+ * @param archivo Archivo fuente a analizar.
+ * @param numLinea Número de línea actual (se actualizará si el comentario es multilínea).
+ * @return void
+ */
+void Analizador::procesarComentario(ifstream& archivo, string linea, int& numLinea) {
+  smatch match;
+  
+  // Si es comentario simple
+  if (regex_search(linea, match, expresiones_.comentarioSimple)) {
+    string tipo = (numLinea == 1) ? "descripcion" : "simple";
+    crearComentario(tipo, numLinea, numLinea, match[0]);
+    return;
+  }
+  
+  // Si es comentario multilínea completo en una sola línea
+  if (regex_search(linea, match, expresiones_.comentarioMultilinea)) {
+    string tipo = (numLinea == 1) ? "descripcion" : "multilinea";
+    crearComentario(tipo, numLinea, numLinea, match[0]);
+    return;
+  }
+  
+  // Si es inicio de comentario multilínea que continúa en varias líneas
+  if (linea.find("/*") != string::npos && linea.find("*/") == string::npos) {
+    int lineaInicio = numLinea;
+    string comentarioCompleto = linea; // Empezar con la primera línea
+    
+    // Seguir leyendo líneas hasta encontrar el final
+    while (getline(archivo, linea)) {
+      numLinea++;
+      comentarioCompleto += "\n" + linea; // Concatenar cada línea
+      
+      // Si encontramos el final del comentario, salir
+      if (linea.find("*/") != string::npos) {
+        break;
+      }
+    }
+    
+    string tipo = (lineaInicio == 1) ? "descripcion" : "multilinea";
+    crearComentario(tipo, lineaInicio, numLinea, comentarioCompleto);
   }
 }
 
@@ -21,22 +70,19 @@ void Analizador::analizar(ifstream& archivo) {
  * @param fin Índice de fin de la línea.
  * @return void
  */
-void Analizador::clasificar(const string& linea, int principio, int fin) {
-  regex variableSinInicializar(R"(^\s*(int|double)\s+([a-zA-Z_]\w*)\s*;)");
-  regex variableInicializada(R"(^\s*(int|double)\s+([a-zA-Z_]\w*)\s*=\s*([^;]+)\s*;)");
-  regex bucle(R"(^\s*(for|while)\s*\([^)]*\)\s*\{?)");
-  regex main(R"(^\s*int\s+main\s*\([^)]*\)\s*\{?)");
-  
+void Analizador::clasificar(ifstream& archivo, const string& linea, int& numeroLinea) {
   smatch match;
 
-  if (regex_search(linea, match, variableSinInicializar)) {
-    crearVariable(match[1], principio, match[2]);
-  } else if (regex_search(linea, match, variableInicializada)) {
-    crearVariable(match[1], principio, match[2].str() + '=' + match[3].str(), true);
-  } else if (regex_search(linea, match, bucle)) {
-    crearBucle(match[1], principio);
-  } else if (regex_search(linea, match, main) && !main_) {
+  if (regex_search(linea, match, expresiones_.variableSinInicializar)) { // Variable sin inicializar
+    crearVariable(match[1], numeroLinea, match[2]);
+  } else if (regex_search(linea, match, expresiones_.variableInicializada)) { // Variable inicializada
+    crearVariable(match[1], numeroLinea, match[2].str() + '=' + match[3].str(), true);
+  } else if (regex_search(linea, match, expresiones_.bucle)) { // Bucles
+    crearBucle(match[1], numeroLinea);
+  } else if (regex_search(linea, match, expresiones_.main) && !main_) { // Main
     main_ = true;
+  } else {
+    procesarComentario(archivo, linea, numeroLinea);
   }
 }
 
@@ -68,4 +114,15 @@ void Analizador::crearVariable(const string& tipo, int linea, const string& nomb
  */
 void Analizador::crearBucle(const string& tipo, int linea) {
   bucles_.push_back(Bucle{tipo, linea});
+}
+
+/**
+ * @brief Método para crear un comentario y añadirlo al vector de comentarios.
+ * @param tipo Tipo de comentario (descripcion, multilinea, simple).
+ * @param principio Línea en la que empieza el comentario.
+ * @param fin Línea en la que termina el comentario.
+ * @param contenido Contenido del comentario.
+ */
+void Analizador::crearComentario(const string& tipo, int principio, int fin, const string& contenido) {
+  comentarios_.push_back(Comentario{tipo, principio, fin, contenido});
 }

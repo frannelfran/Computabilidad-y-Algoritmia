@@ -1,6 +1,7 @@
 #include "../../include/variable.h"
 #include "../../include/bucle.h"
-#include "../../include/comentarios.h"
+#include "../../include/comentario.h"
+#include "../../include/expresionRegular.h"
 #include <regex> // Para que las expresiones regulares funcionen
 #include <string>
 #include <vector>
@@ -18,10 +19,12 @@ class Analizador {
 
     // Métodos
     void analizar(ifstream& archivo);
-    void clasificar(const string& linea, int principio, int fin = 0); // Clasifica una línea de código
-
+    void clasificar(ifstream& archivo, const string& linea, int& numeroLinea); // Clasifica una línea de código
     void crearVariable(const string& tipo, int linea, const string& nombre, bool inicializada = false);
     void crearBucle(const string& tipo, int linea);
+    void crearComentario(const string& tipo, int principio, int fin, const string& contenido);
+    void procesarComentario(ifstream& archivo, string linea, int& numLinea);
+
 
     // Sobrecarga de operadores
     //friend ostream& operator<<(ostream& os, const Analizador& analizador);
@@ -31,4 +34,5 @@ class Analizador {
     vector<Bucle> bucles_;       // Almacenar los bucles encontrados
     vector<Comentario> comentarios_; // Almacenar los comentarios encontrados
     bool main_ = false; // Indica si se ha encontrado la función main
+    ExpresionRegular expresiones_; // Instancia de la clase ExpresionesRegulares
 };
