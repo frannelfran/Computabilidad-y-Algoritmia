@@ -26,40 +26,36 @@ void Analizador::analizar(ifstream& archivo) {
  * @return void
  */
 void Analizador::procesarComentario(ifstream& archivo, string linea, int& numLinea) {
+  // Compruebo si es de cabecera
+  string tipo;
   smatch match;
-  
-  // Si es comentario simple
+  if (numLinea == 1) {
+    tipo = "descripcion";
+  } else {
+    if (regex_search(linea, match, expresiones_.comentarioSimple)) {
+      tipo = "simple";
+    } else {
+      tipo = "multilinea";
+    }
+  }
+
+  // Comentario de una sola línea
   if (regex_search(linea, match, expresiones_.comentarioSimple)) {
-    string tipo = (numLinea == 1) ? "descripcion" : "simple";
-    crearComentario(tipo, numLinea, numLinea, match[0]);
+    crearComentario(tipo, numLinea, numLinea, linea);
     return;
-  }
-  
-  // Si es comentario multilínea completo en una sola línea
-  if (regex_search(linea, match, expresiones_.comentarioMultilinea)) {
-    string tipo = (numLinea == 1) ? "descripcion" : "multilinea";
-    crearComentario(tipo, numLinea, numLinea, match[0]);
-    return;
-  }
-  
-  // Si es inicio de comentario multilínea que continúa en varias líneas
-  if (linea.find("/*") != string::npos && linea.find("*/") == string::npos) {
-    int lineaInicio = numLinea;
-    string comentarioCompleto = linea; // Empezar con la primera línea
-    
-    // Seguir leyendo líneas hasta encontrar el final
+  } else { // Varias lineas
+    int principio = numLinea;
+    string comentario = linea;
+
     while (getline(archivo, linea)) {
       numLinea++;
-      comentarioCompleto += "\n" + linea; // Concatenar cada línea
-      
-      // Si encontramos el final del comentario, salir
-      if (linea.find("*/") != string::npos) {
-        break;
+      comentario += "\n" + linea; // Concatenar cada línea
+      if (regex_search(linea, match, expresiones_.finComentarioMultilinea)) {
+        break; // Salir cuando encuentra el final
       }
     }
-    
-    string tipo = (lineaInicio == 1) ? "descripcion" : "multilinea";
-    crearComentario(tipo, lineaInicio, numLinea, comentarioCompleto);
+    crearComentario(tipo, principio, numLinea, comentario);
+    return;
   }
 }
 
@@ -81,7 +77,7 @@ void Analizador::clasificar(ifstream& archivo, const string& linea, int& numeroL
     crearBucle(match[1], numeroLinea);
   } else if (regex_search(linea, match, expresiones_.main) && !main_) { // Main
     main_ = true;
-  } else {
+  } else if (regex_search(linea, match, expresiones_.comentarioSimple) || regex_search(linea, match, expresiones_.inicioComentarioMultilinea)) { // Comentario
     procesarComentario(archivo, linea, numeroLinea);
   }
 }

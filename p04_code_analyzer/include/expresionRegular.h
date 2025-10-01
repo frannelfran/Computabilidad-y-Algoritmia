@@ -18,5 +18,6 @@ struct ExpresionRegular {
 
   // Comentarios
   regex comentarioSimple = regex(R"(^\s*//.*)");
-  regex comentarioMultilinea = regex(R"(^\s*/\*.*\*/\s*$)");
+  regex inicioComentarioMultilinea = regex(R"(^\s*/\*.*)");
+  regex finComentarioMultilinea = regex(R"(.*\*/)");
 };
