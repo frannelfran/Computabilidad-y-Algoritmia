@@ -10,10 +10,15 @@ int main(int argc, char* argv[]) {
     Analizador analizador;
     analizador.analizar(filein);
 
+    ofstream fileout(args.fileout);
+    fileout << "PROGRAM: " << args.filein << "\n";
+    fileout << analizador;
+
+    cout << "Análisis completado. Resultados guardados en " << args.fileout << endl;
+
     // Cerramos ficheros
     filein.close();
-
-    
+    fileout.close();
   } catch (const exception& e) {
     cerr << e.what() << endl;
     return EXIT_FAILURE;
