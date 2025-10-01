@@ -13,7 +13,12 @@ class Variable {
     Variable(const string& tipo, const int& linea, const string& nombre, bool inicializada = false) : tipo_(tipo), linea_(linea), nombre_(nombre), inicializada_(inicializada) {}
     ~Variable() = default;
 
+    // Getters
     inline virtual double getValor() const { throw runtime_error("La variable no está inicializada"); }
+    inline int getLinea() const { return linea_; }
+    inline string getTipo() const { return tipo_; }
+    inline string getNombre() const { return nombre_; }
+    inline bool inicializada() const { return inicializada_; }
 
   protected:
     string tipo_;   // Tipo de la variable (int o double)

@@ -1,1 +1,25 @@
-Fichero de salida
+PROGRAM: code.cc
+DESCRIPTION:
+/**
+ * Universidad de La Laguna
+ * Escuela Superior de Ingeniería y Tecnología
+ * Informatica Basica
+ * 
+ * @brief Ejercicios de programacion
+ *        Version 1: Funcion factorial
+ */
+
+VARIABLES:
+[Line 20] INT factorial = 1
+[Line 30] INT limit
+
+STATEMENTS:
+[Line 21] LOOP: for
+[Line 32] LOOP: for
+
+MAIN:
+True
+
+COMMENTS:
+[Line 1-8] DESCRIPTION
+[Line 13] // Returns the factorial of the argument
