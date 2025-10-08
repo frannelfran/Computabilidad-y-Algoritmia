@@ -1,3 +1,15 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica 4: Expresiones regulares en C++
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 08/10/2025
+// Archivo: variable.h
+// Descripción: Clase para representar las variables del programa.
+
 #pragma once
 #include <string>
 #include <stdexcept>
