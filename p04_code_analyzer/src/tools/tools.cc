@@ -22,8 +22,8 @@
 Tools parseArgs(int argc, char* argv[]) {
   Tools tools;
   if (argc < 3 && string(argv[1]) != "--help") {
-    cerr << "Modo de empleo: ./p02_strings filein.txt fileout.txt opcode " << endl;
-    cerr << "Pruebe ./p02_strings --help para más información." << endl;
+    cerr << "Modo de empleo: ./p04_code_analyzer  filein.txt fileout.txt opcode " << endl;
+    cerr << "Pruebe ./p04_code_analyzer --help para más información." << endl;
     exit(EXIT_FAILURE);
   } else if (string(argv[1]) == "--help") { // Mostrar ayuda 
     printHelp();
