@@ -173,7 +173,8 @@ ostream& operator<<(ostream& os, const Analizador& analizador) {
   for (const auto& comentario : analizador.comentarios_) {
     if (comentario.tipo == "descripcion") {
       os << "[Line " << comentario.principio << "-" << comentario.fin << "] DESCRIPTION\n";
-
+    } else if (comentario.tipo == "multilinea") {
+      os << "[Line " << comentario.principio << "-" << comentario.fin << "] " << comentario.contenido << "\n";
     } else {
       os << "[Line " << comentario.principio << "] " << comentario.contenido << "\n";
     }
