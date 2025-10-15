@@ -42,6 +42,7 @@ void printHelp() {
  * @return Estructura Tools con los datos del fichero
  */
 Tools leerFichero(const string& nombreFichero) {
+  cout << "Leyendo fichero: " << nombreFichero << endl;
   ifstream file(nombreFichero);
 
   if (!file.is_open()) { // Comprobar la lectura del fichero
@@ -61,6 +62,12 @@ Tools leerFichero(const string& nombreFichero) {
   getline(file, linea);
   leerAlfabeto(istringstream(linea));
 
+  // Leo el numero de estados
+  int numEstados;
+  getline(file, linea);
+  numEstados = stoi(linea);
+  crearEstados(numEstados);
+
   // Leo el estado inicial
   getline(file, linea);
   comprobarEstado(stoi(linea));
@@ -71,6 +78,7 @@ Tools leerFichero(const string& nombreFichero) {
     }
   }
 
+  // Leo las transiciones
   while (getline(file, linea)) {
     if (linea.empty() || linea[0] == '#') {
       continue;
@@ -81,17 +89,14 @@ Tools leerFichero(const string& nombreFichero) {
 }
 
 /**
- * @brief Función para leer el conjunto de estados
- * @param is Stream de entrada
+ * @brief Función para crear los estados del autómata
+ * @param numEstados Número de estados a crear
  * @return void
  */
-void leerEstados(istringstream is) {
-  string linea;
-  set<Estado*> estados;
-  while (is >> linea) {
-    estados.insert(new Estado(stoi(linea)));
+void crearEstados(const int& numEstados) {
+  for (int i = 0; i < numEstados; i++) {
+    datos.estados.insert(new Estado(i));
   }
-  datos.estados = estados;
 }
 
 /**
@@ -112,7 +117,24 @@ void leerAlfabeto(istringstream is) {
  * @return void
  */
 void leerTransiciones(istringstream is) {
-  
+  static int id = 0; // ID de la transición
+  bool aceptacion = false;
+  int numTransiciones, actual, destino;
+  char simboloEntrada;
+  is >> actual >> aceptacion >> numTransiciones;
+  // Compruebo si el estado actual pertenece al conjunto de estados
+  comprobarEstado(actual);
+  Estado* estadoActual = buscarEstado(actual);
+  // Compruebo si es de aceptacion
+  if (aceptacion) { estadoActual->setAceptacion(); }
+  // Leo las transiciones
+  for (int i = 1; i <= numTransiciones; ++i) {
+    is >> simboloEntrada >> destino;
+    // Compruebo tanto el estado destino como el símbolo de entrada
+    comprobarEstado(destino), comprobarSimboloEntrada(simboloEntrada);
+    Estado* estadoDestino = buscarEstado(destino);
+    estadoActual->agregarTransicion(Transicion(++id, simboloEntrada, estadoActual, estadoDestino));
+  }
 }
 
 /**
@@ -136,7 +158,6 @@ Estado* buscarEstado(const int& estado) {
  */
 void comprobarSimboloEntrada(const char& simbolo) {
   if (!datos.alfabeto.pertenece(simbolo)) {
-    cerr << "Σ -> ";
     cerr << datos.alfabeto << endl;
     throw runtime_error("El símbolo '" + string(1, simbolo) + "' no pertenece al alfabeto de entrada (Σ).");
   }

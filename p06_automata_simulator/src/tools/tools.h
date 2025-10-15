@@ -25,6 +25,7 @@ void leerAlfabeto(istringstream is); // Leo el alfabeto del fichero
 void leerTransiciones(istringstream is); // Leo las transiciones del fichero
 void comprobarEstado(const int& estado); // Compruebo que el estado es válido
 void comprobarSimboloEntrada(const char& simbolo); // Compruebo que el símbolo pertenece al alfabeto de entrada (Σ)
+void crearEstados(const int& numEstados); // Creo los estados del autómata
 Estado* buscarEstado(const int& estado); // Buscar un estado en el conjunto de estados
 void printHelp(); // Imprimir la ayuda del programa
 
