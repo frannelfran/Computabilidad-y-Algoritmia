@@ -28,5 +28,6 @@ void comprobarSimboloEntrada(const char& simbolo); // Compruebo que el símbolo 
 void crearEstados(const int& numEstados); // Creo los estados del autómata
 Estado* buscarEstado(const int& estado); // Buscar un estado en el conjunto de estados
 void printHelp(); // Imprimir la ayuda del programa
+bool esDfa(const set<Estado*>& estados); // Compruebo si el autómata es un DFA
 
 #endif // TOOLS_H

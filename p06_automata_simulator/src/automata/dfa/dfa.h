@@ -1,5 +1,5 @@
 #pragma once
-#include "../automata/automata.h"
+#include "../automata.h"
 
 #ifndef DFA_H
 #define DFA_H
@@ -7,13 +7,12 @@
 class DFA : public Automata {
   public:
     // Constructor y destructor
-    DFA(const set<Estado*>& estados, const Alfabeto& alfabetoEntrada);
+    DFA(const set<Estado*>& estados, const Alfabeto& alfabetoEntrada) : Automata(estados, alfabetoEntrada) {}
     ~DFA() = default;
-
-    // Sobrecarga de operadores
-    friend ostream& operator<<(ostream& os, const DFA& dfa);
 
     // Métodos
     bool ejecutar(string cadena) override;
-    Transicion* obtenerTransicion(char simboloLeido) const;
+    Transicion* obtenerTransicion(char simboloLeido);
 };
+
+#endif // DFA_H

@@ -22,7 +22,7 @@ class Automata {
     friend ostream& operator<<(ostream& os, const Automata& automata);
 
     // Métodos
-    virtual bool ejecutar(string cadena);
+    virtual bool ejecutar(string cadena) = 0;
     bool esValida(const string& cadena) const;
     void reiniciar();
 

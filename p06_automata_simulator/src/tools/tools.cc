@@ -151,6 +151,25 @@ Estado* buscarEstado(const int& estado) {
 }
 
 /**
+ * @brief Función para comprobar si el automata es un DFA
+ * @param estados Conjunto de estados del autómata
+ * @return true si es un DFA, false en caso contrario
+ */
+bool esDfa(const set<Estado*>& estados) {
+  for (Estado* estado : estados) {
+    set<char> simbolosLeidos;
+    for (const Transicion& transicion : estado->getTransiciones()) {
+      char simbolo = transicion.getLecturaCadena();
+      if (simbolosLeidos.find(simbolo) != simbolosLeidos.end()) {
+        return false; // Símbolo repetido, no es un DFA
+      }
+      simbolosLeidos.insert(simbolo);
+    }
+  }
+  return true;
+}
+
+/**
  * @brief Función para comprobar si el simbolo de entrada pertenece al alfabeto
  * @param simbolo Símbolo a comprobar
  * @return void

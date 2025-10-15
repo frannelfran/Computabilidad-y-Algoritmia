@@ -61,15 +61,25 @@ ostream& operator<<(ostream& os, const Automata& Automata) {
   os << Automata.alfabetoEntrada_ << endl;
   os << "q0 -> " << Automata.estadoActual_->getId() << endl;
   os << "F -> {";
-  for (auto it = Automata.estados_.begin(); it != Automata.estados_.end(); ++it) {
-    if ((*it)->esAceptacion()) {
-      os << (*it)->getId();
-      if (next(it) != Automata.estados_.end()) {
-        os << ", ";
+  for (Estado* estado : Automata.estados_) {
+    if (estado->esAceptacion()) {
+      os << estado->getId();
+      // Comrpuebo si es el ultimo estado del conjunto de aceptación
+      bool esUltimo = true;
+      for (Estado* e : Automata.estados_) {
+        if (e->esAceptacion() && e->getId() > estado->getId()) {
+          esUltimo = false;
+          break;
+        }
+      }
+      if (esUltimo) {
+        os << "}" << endl;
+        break;
+      } else {
+        os << ", "; // Si no es el último, añado una coma
       }
     }
   }
-  os << "}" << endl;
   
   // Transiciones
   for (Estado* estado : Automata.estados_) {

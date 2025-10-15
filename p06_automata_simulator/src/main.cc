@@ -1,5 +1,5 @@
 #include "tools/tools.h"
-#include "automata/automata.h"
+#include "automata/dfa/dfa.h"
 #include <iostream>
 
 using namespace std;
@@ -15,18 +15,26 @@ int main(int argc, char* argv[]) {
   try {
     Tools datos = readData(argc, argv);
     cout << "Fichero leído correctamente." << endl;
-    // Creo la máquina de Turing con los datos leídos
-    Automata automata(datos.estados, datos.alfabeto);
-    
-    cout << automata;
+    // Creo  el autómata
+
+    Automata* automata;
+
+    if (esDfa(datos.estados)) {
+      automata = new DFA(datos.estados, datos.alfabeto);
+      cout << "El autómata es un DFA." << endl;
+    } else {
+      throw runtime_error("El autómata no es un DFA.");
+    }
+
+    cout << *automata;
     string cadena;
 
     ifstream cadenas(datos.ficheroCadenas); // Abro el fichero de cadenas
     
     while (cadenas >> cadena) {
-      automata.reiniciar(); // Reinicio el autómata antes de cada ejecución
+      automata->reiniciar(); // Reinicio el autómata antes de cada ejecución
       cout << cadena << " --- ";
-      if (automata.ejecutar(cadena)) {
+      if (automata->ejecutar(cadena)) {
         cout << "Accepted" << endl;
       } else {
         cout << "Rejected" << endl;

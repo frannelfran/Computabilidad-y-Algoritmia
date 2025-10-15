@@ -34,5 +34,6 @@ Estado* Transicion::ejecutar(string& cadena) {
  */
 ostream& operator<<(ostream& os, const Transicion& transicion) {
   os << "δ(" << transicion.actual_->getId() << ", " << transicion.lecturaCadena_ << ") -> " << transicion.siguiente_->getId();
+  os << " [ID: " << transicion.id_ << "]";
   return os;
 }
