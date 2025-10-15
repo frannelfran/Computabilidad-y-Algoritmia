@@ -7,7 +7,7 @@
  */
 bool NFA::ejecutar(string cadena) {
   if (!esValida(cadena)) {
-    throw runtime_error("La cadena contiene símbolos que no pertenecen al alfabeto de entrada.");
+    return false;
   }
 
   // Caso base: Cadena vacía

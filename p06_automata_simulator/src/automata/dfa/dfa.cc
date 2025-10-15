@@ -7,7 +7,7 @@
  */
 bool DFA::ejecutar(string cadena) {
   if (!esValida(cadena)) {
-    throw invalid_argument("La cadena contiene símbolos no pertenecientes al alfabeto de entrada.");
+    return false;
   }
 
   while (!cadena.empty()) {
