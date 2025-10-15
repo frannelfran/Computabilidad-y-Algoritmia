@@ -21,7 +21,7 @@ Tools readData(int argc, char* argv[]) {
   if (string(argv[1]).find(".fa") == string::npos || string(argv[2]).find(".txt") == string::npos) {
     throw invalid_argument("Los ficheros deben tener extensión .fa y .txt respectivamente");
   }
-  datos = leerFichero(string(argv[1]));
+  datos = leerFichero(argv[1]);
   datos.ficheroCadenas = string(argv[2]);
   return datos;
 }
@@ -42,7 +42,6 @@ void printHelp() {
  * @return Estructura Tools con los datos del fichero
  */
 Tools leerFichero(const string& nombreFichero) {
-  cout << "Leyendo fichero: " << nombreFichero << endl;
   ifstream file(nombreFichero);
 
   if (!file.is_open()) { // Comprobar la lectura del fichero
@@ -57,14 +56,12 @@ Tools leerFichero(const string& nombreFichero) {
     }
     break;
   }
-
-  // Leo el alfabeto de entrada
-  getline(file, linea);
+  // Leo el alfabeto
   leerAlfabeto(istringstream(linea));
 
   // Leo el numero de estados
-  int numEstados;
   getline(file, linea);
+  int numEstados;
   numEstados = stoi(linea);
   crearEstados(numEstados);
 
@@ -126,7 +123,9 @@ void leerTransiciones(istringstream is) {
   comprobarEstado(actual);
   Estado* estadoActual = buscarEstado(actual);
   // Compruebo si es de aceptacion
-  if (aceptacion) { estadoActual->setAceptacion(); }
+  if (aceptacion) { 
+    estadoActual->setAceptacion(); 
+  }
   // Leo las transiciones
   for (int i = 1; i <= numTransiciones; ++i) {
     is >> simboloEntrada >> destino;
