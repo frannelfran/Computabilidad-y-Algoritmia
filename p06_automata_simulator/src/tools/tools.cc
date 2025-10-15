@@ -160,7 +160,7 @@ bool esDfa(const set<Estado*>& estados) {
     set<char> simbolosLeidos;
     for (const Transicion& transicion : estado->getTransiciones()) {
       char simbolo = transicion.getLecturaCadena();
-      if (simbolosLeidos.find(simbolo) != simbolosLeidos.end()) {
+      if (simbolosLeidos.find(simbolo) != simbolosLeidos.end() || simbolo == '&') {
         return false; // Símbolo repetido, no es un DFA
       }
       simbolosLeidos.insert(simbolo);

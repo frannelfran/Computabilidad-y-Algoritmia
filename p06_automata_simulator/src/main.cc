@@ -1,5 +1,6 @@
 #include "tools/tools.h"
 #include "automata/dfa/dfa.h"
+#include "automata/nfa/nfa.h"
 #include <iostream>
 
 using namespace std;
@@ -23,7 +24,8 @@ int main(int argc, char* argv[]) {
       automata = new DFA(datos.estados, datos.alfabeto);
       cout << "El autómata es un DFA." << endl;
     } else {
-      throw runtime_error("El autómata no es un DFA.");
+      automata = new NFA(datos.estados, datos.alfabeto);
+      cout << "El autómata es un NFA." << endl;
     }
 
     cout << *automata;
