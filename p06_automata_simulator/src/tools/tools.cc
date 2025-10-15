@@ -3,6 +3,40 @@
 static Tools datos; // Variable global para almacenar los datos leídos
 
 /**
+ * @brief Función para leer los argumentos de la línea de comandos
+ * @param argc Número de argumentos
+ * @param argv Vector de argumentos
+ * @return Estructura Tools con los datos leídos
+ */
+Tools readData(int argc, char* argv[]) {
+  if (argc < 3 && string(argv[1]) != "--help") {
+    cerr << "Modo de empleo: " << argv[0] << " <input.fa> <cadenas.txt>" << endl;
+    cerr << "Pruebe " << argv[0] << " --help para más información." << endl;
+    exit(EXIT_FAILURE);
+  } else if (string(argv[1]) == "--help") { // Mostrar ayuda 
+    printHelp();
+    exit(EXIT_SUCCESS);
+  }
+  // Almaceno los argumentos
+  if (string(argv[1]).find(".fa") == string::npos || string(argv[2]).find(".txt") == string::npos) {
+    throw invalid_argument("Los ficheros deben tener extensión .fa y .txt respectivamente");
+  }
+  datos = leerFichero(string(argv[1]));
+  datos.ficheroCadenas = string(argv[2]);
+  return datos;
+}
+
+/**
+ * @brief Función para imprimir la ayuda del programa
+ * @return void
+ */
+void printHelp() {
+  cerr << "Uso: automata <input.fa> <cadenas.txt>" << endl;
+  cerr << "  <input.fa>    Archivo de descripción del autómata" << endl;
+  cerr << "  <cadenas.txt> Archivo con las cadenas a procesar" << endl;
+}
+
+/**
  * @brief Dunción para leer el fichero de entrada y almacenar los datos en una estructura Tools
  * @param nombreFichero Nombre del fichero de entrada
  * @return Estructura Tools con los datos del fichero
@@ -22,8 +56,6 @@ Tools leerFichero(const string& nombreFichero) {
     }
     break;
   }
-  // Leo los estados
-  leerEstados(istringstream(linea));
 
   // Leo el alfabeto de entrada
   getline(file, linea);
