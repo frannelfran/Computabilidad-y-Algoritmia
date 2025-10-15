@@ -15,21 +15,19 @@
 class Automata {
   public:
     // Constructor y destructor
-    Automata(const vector<Estado*>& estados, const Alfabeto& alfabetoEntrada, const Alfabeto& alfabetoCinta, int numCintas);
+    Automata(const set<Estado*>& estados, const Alfabeto& alfabetoEntrada);
     ~Automata() = default;
 
     // Sobrecarga de operadores
-    friend ostream& operator<<(ostream& os, const Automata& maquina);
+    friend ostream& operator<<(ostream& os, const Automata& automata);
 
     // Métodos
-    bool ejecutar(string cadena);
+    virtual bool ejecutar(string cadena);
     bool esValida(const string& cadena) const;
     void reiniciar();
-    void mostrarTraza(const string& cadena, const Transicion* transicion);
-    Transicion* obtenerTransicionPosible(vector<char> simbolosLeidos);
 
-  private:
-    vector<Estado*> estados_;
+  protected:
+    set<Estado*> estados_;
     Alfabeto alfabetoEntrada_;
     Estado* estadoActual_;
 };

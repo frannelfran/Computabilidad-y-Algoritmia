@@ -30,6 +30,9 @@ class Estado {
     // Métodos
     void agregarTransicion(const Transicion& transicion);
 
+    // Getters
+    bool esAceptacion() const { return aceptacion_; }
+
     // Sobrecarga de operadores
     friend ostream& operator<<(ostream& os, const Estado& estado);
 
