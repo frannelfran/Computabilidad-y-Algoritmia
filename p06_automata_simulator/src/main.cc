@@ -1,3 +1,15 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica x:
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 23/10/2025
+// Archivo: main.cc
+// Descripción: Implementación del programa principal del simulador de autómatas
+
 #include "tools/tools.h"
 #include "automata/dfa/dfa.h"
 #include "automata/nfa/nfa.h"
