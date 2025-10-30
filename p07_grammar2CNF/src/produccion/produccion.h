@@ -16,6 +16,8 @@ class Produccion {
   
   // Getters
   inline Simbolo getSimboloIzquierda() const { return simboloIzquierda; }
+  inline vector<vector<Simbolo>> getSimbolosDerecha() const { return simbolosDerecha; }
+  
   // Sobrecarga de operadores
   friend ostream& operator<<(ostream& os, const Produccion& produccion);
 

@@ -95,6 +95,8 @@ void leerProducciones(const string& noTerminal, const string& produccion) {
     comprobarSimbolo(simbolo);
     simbolosDerecha.push_back(simbolo);
   }
+  // Compruebo si la producción es unitaria
+  esProduccionUnitaria(noTerminal, produccion);
   // Agrego la producción a los datos
   bool produccionExiste = false;
   for (auto& prod : datos.producciones) {
@@ -108,6 +110,18 @@ void leerProducciones(const string& noTerminal, const string& produccion) {
     datos.producciones.push_back({Produccion(simboloIzqm)});
     datos.producciones.back()[0].agregarAlternativa(simbolosDerecha);
   }
+}
+
+/**
+ * @brief Función para comprobar si una producción es unitaria
+ * @param produccion Producción a comprobar
+ * @return true si la producción es unitaria, false en caso contrario
+ */
+bool esProduccionUnitaria(const string& noTerminal, const string& produccion) {
+  if (produccion.size() == 1 && !esTerminal(Simbolo(produccion))) {
+    throw invalid_argument("La producción " + noTerminal + " -> " + produccion + " es unitaria, lo cual no está permitido.");
+  }
+  return false;
 }
 
 /**
@@ -125,6 +139,9 @@ bool esTerminal(const Simbolo& simbolo) {
  * @return true si el símbolo es válido, false en caso contrario
  */
 bool comprobarSimbolo(const Simbolo& simbolo) {
+  if (simbolo.getNombre() == "&") {
+    throw invalid_argument("El símbolo & no está permitido en la gramática.");
+  }
   // Compruebo si el simbolo es terminal
   if (!datos.terminales.pertenece(simbolo) && !datos.noTerminales.contains(simbolo)) {
     cerr << datos.terminales << endl;

@@ -19,5 +19,6 @@ void leerFichero(const string& nombreFichero); // Leer gramática desde fichero
 void leerProducciones(const string& noTerminal, const string& produccion); // Leer producciones desde fichero
 bool comprobarSimbolo(const Simbolo& simbolo); // Comprobar si un símbolo es válido
 bool esTerminal(const Simbolo& simbolo); // Comprobar si un símbolo es terminal
+bool esProduccionUnitaria(const string& noTerminal, const string& produccion); // Comprobar si una producción es unitaria
 
 #endif // TOOLS_H
