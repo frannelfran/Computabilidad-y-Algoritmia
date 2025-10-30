@@ -9,7 +9,7 @@ class Gramatica {
   public:
     // Constructor y destructor
     Gramatica() = default;
-    Gramatica(const Alfabeto& alf, const set<Simbolo>& noTerminales, const vector<Produccion>& prods) : alfabeto_(alf), simbolosNoTerminales_(noTerminales), producciones_(prods) {};
+    Gramatica(const Alfabeto& alf, const set<Simbolo>& noTerminales, const vector<vector<Produccion>>& prods);
     ~Gramatica() = default;
 
     // Métodos

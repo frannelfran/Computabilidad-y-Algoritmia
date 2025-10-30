@@ -96,9 +96,18 @@ void leerProducciones(const string& noTerminal, const string& produccion) {
     simbolosDerecha.push_back(simbolo);
   }
   // Agrego la producción a los datos
-  Produccion prod(simboloIzqm);
-  prod.agregarAlternativa(simbolosDerecha);
-  datos.producciones.push_back(prod);
+  bool produccionExiste = false;
+  for (auto& prod : datos.producciones) {
+    if (prod[0].getSimboloIzquierda() == simboloIzqm) {
+      prod[0].agregarAlternativa(simbolosDerecha);
+      produccionExiste = true;
+      break;
+    }
+  }
+  if (!produccionExiste) {
+    datos.producciones.push_back({Produccion(simboloIzqm)});
+    datos.producciones.back()[0].agregarAlternativa(simbolosDerecha);
+  }
 }
 
 /**

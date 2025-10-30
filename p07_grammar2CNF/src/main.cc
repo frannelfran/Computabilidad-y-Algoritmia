@@ -9,8 +9,9 @@ int main(int argc, char* argv[]) {
     // Creo la gramática con los datos obtenidos
     Gramatica gramatica(datosGram.terminales, datosGram.noTerminales, datosGram.producciones);
     // Muestro la gramática leída
-    cout << "Fichero leído correctamente. Gramática obtenida:\n";
-    cout << gramatica << endl;
+    cout << "Fichero leído correctamente. \n";
+    cout << "Gramática obtenida:\n";
+    cout << gramatica;
   } catch (const invalid_argument& e) {
     cerr << "Error: " << e.what() << endl;
     return EXIT_FAILURE;

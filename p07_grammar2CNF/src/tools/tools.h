@@ -9,7 +9,7 @@
 struct Tools {
   Alfabeto terminales;
   set<Simbolo> noTerminales;
-  vector<Produccion> producciones;
+  vector<vector<Produccion>> producciones;
   string ficheroSalida;
 };
 
