@@ -12,11 +12,11 @@ class Produccion {
   ~Produccion() = default;
 
   // Métodos
-  inline void agregarsimboloDerecha(const vector<Simbolo>& simbolos) { simbolosDerecha.push_back(simbolos); }
+  inline void agregarAlternativa(const vector<Simbolo>& simbolos) { simbolosDerecha.push_back(simbolos); }
   
   // Sobrecarga de operadores
   friend ostream& operator<<(ostream& os, const Produccion& produccion);
-  
+
   private:
     Simbolo simboloIzquierda;
     vector<vector<Simbolo>> simbolosDerecha;
