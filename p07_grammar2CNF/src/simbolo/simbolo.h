@@ -7,7 +7,7 @@
 using namespace std;
 
 class Simbolo {
-public:
+  public:
     // Constructor y destructor
     Simbolo() = default;
     Simbolo(const string& nombre, bool esterminal = false) : nombre_(nombre), esTerminal_(esterminal) {};
@@ -16,6 +16,9 @@ public:
     // Getters
     inline string getNombre() const { return nombre_; }
     inline bool esTerminal() const { return esTerminal_; }
+
+    // Setters
+    inline void setTerminal() { esTerminal_ = true; }
 
     // Sobrecarga de operadores
     inline friend ostream& operator<<(ostream& os, const Simbolo& simbolo) {
@@ -26,7 +29,11 @@ public:
     inline bool operator<(const Simbolo& otro) const {
       return nombre_ < otro.nombre_;
     }
-private:
+
+    inline bool operator==(const Simbolo& otro) const {
+      return nombre_ == otro.nombre_;
+    }
+  private:
     string nombre_;
     bool esTerminal_;
 };

@@ -7,7 +7,7 @@
  * @return Flujo de salida con la gramática formateada
  */
 ostream& operator<<(ostream& os, const Gramatica& gramatica) {
-  os << "Σ -> " << gramatica.alfabeto_ << endl;
+  os << gramatica.alfabeto_ << endl;
   os << "V -> ";
   for (const auto& simbolo : gramatica.simbolosNoTerminales_) {
     os << simbolo << " ";

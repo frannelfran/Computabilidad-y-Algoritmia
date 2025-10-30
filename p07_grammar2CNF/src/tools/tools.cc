@@ -10,7 +10,6 @@ Tools datos; // Datos para almacenar las propiedades de la gramática
  */
 
 Tools parseArgs(int argc, char* argv[]) {
-  Tools tools;
   if (argc < 3 && string(argv[1]) != "--help") {
     cerr << "Modo de empleo: " << argv[0] << " input.gra output.gra" << endl;
     cerr << "Pruebe " << argv[0] << " --help para más información." << endl;
@@ -25,8 +24,8 @@ Tools parseArgs(int argc, char* argv[]) {
   }
   
   leerFichero(argv[1]);
-  tools.ficheroSalida = argv[2];
-  return tools;
+  datos.ficheroSalida = argv[2];
+  return datos;
 }
 
 /**
@@ -67,11 +66,11 @@ void leerFichero(const string& nombreFichero) {
   }
 
   // Leo las producciones
-  getline(fichero, linea);
   fichero >> producciones;
-  for (int i = 0; i <= producciones; ++i) {
-    getline(fichero, linea);
-    leerProducciones(istringstream(linea));
+  string produccion;
+  for (int i = 0; i < producciones; ++i) {
+    fichero >> linea >> produccion;
+    leerProducciones(linea, produccion);
   }
 
   fichero.close();
@@ -79,21 +78,36 @@ void leerFichero(const string& nombreFichero) {
 
 /**
  * @brief Función para leer las producciones desde un flujo de entrada
- * @param is Flujo de entrada
+ * @param noTerminal Nombre del símbolo no terminal
+ * @param produccion Producción a añadir
  * @return void
  */
-void leerProducciones(istringstream is) {
-  string simboloIzqm, produccion;
-  is >> simboloIzqm >> produccion;
-  comprobarSimbolo();
+void leerProducciones(const string& noTerminal, const string& produccion) {
+  Simbolo simboloIzqm(noTerminal);
+  vector<Simbolo> simbolosDerecha;
+  comprobarSimbolo(simboloIzqm);
+  // Compruebo si la produccion tiene simbolos invalidos
+  for (char c : produccion) {
+    Simbolo simbolo(string(1, c));
+    if (esTerminal(simbolo)) {
+      simbolo.setTerminal();
+    }
+    comprobarSimbolo(simbolo);
+    simbolosDerecha.push_back(simbolo);
+  }
+  // Agrego la producción a los datos
+  Produccion prod(simboloIzqm);
+  prod.agregarAlternativa(simbolosDerecha);
+  datos.producciones.push_back(prod);
+}
 
-
-
-
-
-
-
-  cout << produccion << endl;
+/**
+ * @brief Función para comprobar si un simbolo es terminal
+ * @param simbolo Símbolo a comprobar
+ * @return true si el símbolo es terminal, false en caso contrario
+ */
+bool esTerminal(const Simbolo& simbolo) {
+  return datos.terminales.pertenece(simbolo);
 }
 
 /**
@@ -101,10 +115,19 @@ void leerProducciones(istringstream is) {
  * @param simbolo Símbolo a comprobar
  * @return true si el símbolo es válido, false en caso contrario
  */
-bool comprobarSimbolo(const string& simbolo) {
+bool comprobarSimbolo(const Simbolo& simbolo) {
   // Compruebo si el simbolo es terminal
-  if (!datos.terminales.pertenece(Simbolo(simbolo, true))) {
+  if (!datos.terminales.pertenece(simbolo) && !datos.noTerminales.contains(simbolo)) {
     cerr << datos.terminales << endl;
-    throw invalid_argument("El símbolo " + simbolo + " no pertenece al alfabeto de terminales.");
+    cerr << "V -> {";
+    for (const auto& nt : datos.noTerminales) {
+      if (&nt != &(*datos.noTerminales.begin())) {
+        cerr << ", ";
+      }
+      cerr << nt;
+    }
+    cerr << "}" << endl;
+    throw invalid_argument("El símbolo " + simbolo.getNombre() + " no pertenece al alfabeto de terminales ni a los no-terminales.");
   }
+  return true;
 }
