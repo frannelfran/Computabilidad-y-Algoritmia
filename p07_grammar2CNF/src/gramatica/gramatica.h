@@ -12,9 +12,6 @@ class Gramatica {
     Gramatica(const Alfabeto& alf, const set<Simbolo>& noTerminales, const vector<vector<Produccion>>& prods);
     ~Gramatica() = default;
 
-    // Métodos
-    inline void agregarProduccion(const Produccion& produccion) { producciones_.push_back(produccion); }
-
     // Sobrecarga de operadores
     friend ostream& operator<<(ostream& os, const Gramatica& gramatica);
 

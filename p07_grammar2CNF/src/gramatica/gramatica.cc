@@ -23,11 +23,14 @@ Gramatica::Gramatica(const Alfabeto& alf, const set<Simbolo>& noTerminales, cons
  */
 ostream& operator<<(ostream& os, const Gramatica& gramatica) {
   os << gramatica.alfabeto_ << endl;
-  os << "V -> ";
+  os << "V -> {";
   for (const auto& simbolo : gramatica.simbolosNoTerminales_) {
-    os << simbolo << " ";
+    os << simbolo;
+    if (&simbolo != &(*gramatica.simbolosNoTerminales_.rbegin())) {
+      os << ", ";
+    }
   }
-  os << endl;
+  os << "}" << endl;
   os << "--- Producciones ---" << endl;
   for (const auto& produccion : gramatica.producciones_) {
     os << produccion << endl;
