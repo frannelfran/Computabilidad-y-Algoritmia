@@ -11,7 +11,7 @@ Gramatica FNC::ejecutar(const Gramatica& gramatica) {
   sustituirTerminalesEnProducciones(nuevaGramatica);
 
   // Reduzco las producciones largas del estilo A -> BCD... a producciones binarias
-  //reducirProduccionesLargas(nuevaGramatica);
+  reducirProduccionesLargas(nuevaGramatica);
 
   return nuevaGramatica;
 }
@@ -31,11 +31,7 @@ void FNC::sustituirTerminalesEnProducciones(Gramatica& gramatica) {
         // Recorro cada símbolo en la alternativa
         for (auto& simbolo : alternativa) {
           // Si el símbolo es terminal y la produccion es del estilo A -> aB o A -> Ba
-          if (simbolo.esTerminal() && !next(&simbolo)->esTerminal() && alternativa.size() >= 2) {
-            // Compruebo si el no-terminal ya existe en la gramática
-            if (gramatica.getSimbolosNoTerminales().count(Simbolo("X_" + simbolo.getNombre(), false)) > 0) {
-              continue; // Si ya existe, salto a la siguiente iteración
-            }
+          if ((simbolo.esTerminal() && !next(&simbolo)->esTerminal() || simbolo.esTerminal() && next(&simbolo)->esTerminal()) && alternativa.size() >= 2) {
             // Crear un nuevo símbolo no terminal para el terminal
             Simbolo nuevoNoTerminal("X_" + simbolo.getNombre(), false);
             // Agregar la nueva producción al alfabeto de la gramática
@@ -53,6 +49,11 @@ void FNC::sustituirTerminalesEnProducciones(Gramatica& gramatica) {
       }
     }
   }
+
+  // Sustituyo las producciones modificadas en la grmática
+  for (auto& produccionModificada : produccionesOriginales) {
+    gramatica.modificarAlternativa(produccionModificada);
+  }
 }
 
 /**
@@ -60,34 +61,39 @@ void FNC::sustituirTerminalesEnProducciones(Gramatica& gramatica) {
  * @param gramatica La gramática a modificar.
  */
 void FNC::reducirProduccionesLargas(Gramatica& gramatica) {
-    int contador = 0;
-    vector<Produccion> produccionesOriginales = gramatica.getProducciones();
-    // Recorremos las producciones por índice (para evitar invalidar el iterador)
-    for (auto& produccion : produccionesOriginales) {
-        for (auto& alternativa : produccion.getSimbolosDerecha()) {
-            // Mientras la producción tenga más de 2 símbolos, dividirla
-            while (alternativa.size() > 2) {
-                // Crear nuevo no terminal con nombre único
-                string nombreNuevo = "Y_" + std::to_string(contador++);
-                Simbolo nuevoNoTerminal(nombreNuevo, false);
+  int contador = 0;
+  vector<Produccion> produccionesOriginales = gramatica.getProducciones();
+  // Recorremos las producciones por índice (para evitar invalidar el iterador)
+  for (auto& produccion : produccionesOriginales) {
+    for (auto& alternativa : produccion.getSimbolosDerecha()) {
+      // Mientras la producción tenga más de 2 símbolos, dividirla
+      while (alternativa.size() > 2) {
+        // Crear nuevo no terminal con nombre único
+        string nombreNuevo = "Y_" + std::to_string(contador++);
+        Simbolo nuevoNoTerminal(nombreNuevo, false);
 
-                // Crear nueva producción: Y_i → X2 X3
-                vector<Simbolo> nuevaAlternativa = {
-                  alternativa[1], alternativa[2]
-                };
-                Produccion nuevaProduccion(nuevoNoTerminal);
-                nuevaProduccion.agregarAlternativa(nuevaAlternativa);
+        // Crear nueva producción: Y_i → X2 X3
+        vector<Simbolo> nuevaAlternativa = {
+          alternativa[1], alternativa[2]
+        };
+        Produccion nuevaProduccion(nuevoNoTerminal);
+        nuevaProduccion.agregarAlternativa(nuevaAlternativa);
 
-                // Registrar el nuevo no terminal y su producción directamente
-                gramatica.setSimboloNoTerminal(nuevoNoTerminal);
-                gramatica.agregarProduccion(nuevaProduccion);
+        // Registrar el nuevo no terminal y su producción directamente
+        gramatica.setSimboloNoTerminal(nuevoNoTerminal);
+        gramatica.agregarProduccion(nuevaProduccion);
 
-                // Modificar la alternativa original:
-                // A → X1 X2 X3 ...  →  A → X1 Y_i ...
-                alternativa.erase(alternativa.begin() + 1, alternativa.begin() + 3);
-                alternativa.insert(alternativa.begin() + 1, nuevoNoTerminal);
-            }
-        }
+        // Modificar la alternativa original:
+        // A → X1 X2 X3 ...  →  A → X1 Y_i ...
+        alternativa.erase(alternativa.begin() + 1, alternativa.begin() + 3);
+        alternativa.insert(alternativa.begin() + 1, nuevoNoTerminal);
+      }
     }
+  }
+
+  // Sustituyo las producciones modificadas en la gramática
+  for (auto& produccionModificada : produccionesOriginales) {
+    gramatica.modificarAlternativa(produccionModificada);
+  }
 }
 

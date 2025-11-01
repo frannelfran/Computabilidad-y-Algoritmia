@@ -3,6 +3,8 @@
 
 #include "../alfabeto/alfabeto.h"
 #include "../produccion/produccion.h"
+#include "algorithm" // Para std::find
+
 
 
 class Gramatica {
@@ -13,7 +15,8 @@ class Gramatica {
     ~Gramatica() = default;
 
     // Métodos
-    inline void agregarProduccion(const Produccion& produccion) { producciones_.push_back(produccion); }
+    void agregarProduccion(const Produccion& produccion);
+    void modificarAlternativa(const Produccion& nuevaProduccion);
 
     // Getters
     inline vector<Produccion>& getProducciones() { return producciones_; }

@@ -22,6 +22,9 @@ class Produccion {
   
   // Sobrecarga de operadores
   friend ostream& operator<<(ostream& os, const Produccion& produccion);
+  inline bool operator==(const Produccion& otra) const {
+    return simboloIzquierda == otra.simboloIzquierda && simbolosDerecha == otra.simbolosDerecha;
+  }
 
   private:
     Simbolo simboloIzquierda;

@@ -16,6 +16,31 @@ Gramatica::Gramatica(const Alfabeto& alf, const set<Simbolo>& noTerminales, cons
 }
 
 /**
+ * @brief Sustituye una producción en la gramática
+ * @param nueva Producción nueva que sustituirá a la existente
+ * @return void
+ */
+void Gramatica::modificarAlternativa(const Produccion& nuevaProduccion) {
+  for (auto& produccion : producciones_) {
+    // Cambio los terminales por los nuevos en la producción
+    if (produccion.getSimboloIzquierda() == nuevaProduccion.getSimboloIzquierda()) {
+      produccion = nuevaProduccion;
+    }
+  }
+}
+
+/**
+ * @brief Agrega una producción a la gramática
+ * @param produccion Producción a agregar
+ * @return void
+ */
+void Gramatica::agregarProduccion(const Produccion& produccion) {
+  if (find(producciones_.begin(), producciones_.end(), produccion) == producciones_.end()) {
+    producciones_.push_back(produccion);
+  }
+}
+
+/**
  * @overload Sobrecarga del operador de salida para mostrar la gramática
  * @param os Flujo de salida
  * @param gramatica Gramática a mostrar
