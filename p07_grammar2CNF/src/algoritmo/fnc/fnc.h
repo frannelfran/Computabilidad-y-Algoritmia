@@ -9,6 +9,7 @@ class FNC : public Algoritmo {
 
   private:
     void sustituirTerminalesEnProducciones(Gramatica& gramatica);
+    void reducirProduccionesLargas(Gramatica& gramatica);
 };
 
 #endif // FNC_H

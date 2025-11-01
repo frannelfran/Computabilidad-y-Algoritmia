@@ -1,34 +1,16 @@
-3
-a
-b
-c
-9
-A
-B
-C
-D
-E
-F
-S
-X
-Y
-9
-A a
-B b
-C BX
-D XB
-E BX
-F XE
-S AB
-S AC
-S AD
-S AF
-X AY
-X BY
-X a
-X b
-Y AY
-Y BY
-Y a
-Y b
-Y c
+Σ -> {a, b, c}
+V -> {S, X, X_a, X_b, Y}
+--- Producciones ---
+S -> aXbX | abX | aXb | ab
+X -> aY | bY | a | b
+Y -> aY | bY | a | b | c
+X_a -> a
+X_b -> b
+X_b -> b
+X_a -> a
+X_b -> b
+X_b -> b
+X_a -> a
+X_b -> b
+X_a -> a
+X_b -> b

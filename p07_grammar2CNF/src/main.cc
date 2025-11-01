@@ -1,4 +1,5 @@
 #include "tools/tools.h"
+#include "algoritmo/fnc/fnc.h"
 
 int main(int argc, char* argv[]) {
   try {
@@ -12,6 +13,20 @@ int main(int argc, char* argv[]) {
     cout << "Fichero leído correctamente. \n";
     cout << "Gramática obtenida:\n";
     cout << gramatica;
+
+    // Aplico el algoritmo de conversión a FNC
+    FNC fnc;
+    Gramatica gramaticaFNC = fnc.ejecutar(gramatica);
+
+    // Vuelco la gramatica en el fichero
+    ofstream ficheroSalida(datosGram.ficheroSalida);
+    if (!ficheroSalida.is_open()) {
+      throw invalid_argument("No se pudo abrir el fichero de salida.");
+    }
+    ficheroSalida << gramaticaFNC;
+    cout << "Gramática en FNC volcada en el fichero de salida correctamente.\n";
+    
+    ficheroSalida.close();
   } catch (const invalid_argument& e) {
     cerr << "Error: " << e.what() << endl;
     return EXIT_FAILURE;

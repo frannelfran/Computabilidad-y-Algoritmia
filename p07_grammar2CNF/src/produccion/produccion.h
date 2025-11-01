@@ -15,8 +15,10 @@ class Produccion {
   inline void agregarAlternativa(const vector<Simbolo>& simbolos) { simbolosDerecha.push_back(simbolos); }
   
   // Getters
-  inline Simbolo getSimboloIzquierda() const { return simboloIzquierda; }
-  inline vector<vector<Simbolo>> getSimbolosDerecha() const { return simbolosDerecha; }
+  inline Simbolo& getSimboloIzquierda() { return simboloIzquierda; }
+  inline const Simbolo& getSimboloIzquierda() const { return simboloIzquierda; }
+  inline vector<vector<Simbolo>>& getSimbolosDerecha() { return simbolosDerecha; }
+  inline const vector<vector<Simbolo>>& getSimbolosDerecha() const { return simbolosDerecha; }
   
   // Sobrecarga de operadores
   friend ostream& operator<<(ostream& os, const Produccion& produccion);

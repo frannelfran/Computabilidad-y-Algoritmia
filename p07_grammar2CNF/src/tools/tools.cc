@@ -72,7 +72,6 @@ void leerFichero(const string& nombreFichero) {
     fichero >> linea >> produccion;
     leerProducciones(linea, produccion);
   }
-
   fichero.close();
 }
 
