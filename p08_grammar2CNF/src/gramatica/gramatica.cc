@@ -1,0 +1,76 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica x:
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 05/11/2025
+// Archivo: gramatica.cc
+// Descripción: Implementación de la clase Gramática
+
+#include "gramatica.h"
+
+/**
+ * @brief Constructor de la clase Gramatica
+ * @param alf Alfabeto de la gramática
+ * @param noTerminales Conjunto de símbolos no terminales
+ * @param prods Vector de producciones de la gramática
+ */
+Gramatica::Gramatica(const Alfabeto& alf, const set<Simbolo>& noTerminales, const vector<vector<Produccion>>& prods)
+    : alfabeto_(alf), simbolosNoTerminales_(noTerminales) {
+  for (const auto& grupoProducciones : prods) {
+    for (const auto& produccion : grupoProducciones) {
+      producciones_.push_back(produccion);
+    }
+  }
+}
+
+/**
+ * @brief Sustituye una producción en la gramática
+ * @param nueva Producción nueva que sustituirá a la existente
+ * @return void
+ */
+void Gramatica::modificarAlternativa(const Produccion& nuevaProduccion) {
+  for (auto& produccion : producciones_) {
+    // Cambio los terminales por los nuevos en la producción
+    if (produccion.getSimboloIzquierda() == nuevaProduccion.getSimboloIzquierda()) {
+      produccion = nuevaProduccion;
+    }
+  }
+}
+
+/**
+ * @brief Agrega una producción a la gramática
+ * @param produccion Producción a agregar
+ * @return void
+ */
+void Gramatica::agregarProduccion(const Produccion& produccion) {
+  if (find(producciones_.begin(), producciones_.end(), produccion) == producciones_.end()) {
+    producciones_.push_back(produccion);
+  }
+}
+
+/**
+ * @overload Sobrecarga del operador de salida para mostrar la gramática
+ * @param os Flujo de salida
+ * @param gramatica Gramática a mostrar
+ * @return Flujo de salida con la gramática formateada
+ */
+ostream& operator<<(ostream& os, const Gramatica& gramatica) {
+  os << gramatica.alfabeto_ << endl;
+  os << "V -> {";
+  for (const auto& simbolo : gramatica.simbolosNoTerminales_) {
+    os << simbolo;
+    if (&simbolo != &(*gramatica.simbolosNoTerminales_.rbegin())) {
+      os << ", ";
+    }
+  }
+  os << "}" << endl;
+  os << "--- Producciones ---" << endl;
+  for (const auto& produccion : gramatica.producciones_) {
+    os << produccion << endl;
+  }
+  return os;
+}

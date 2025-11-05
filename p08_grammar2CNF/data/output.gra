@@ -1,0 +1,12 @@
+Σ -> {a, b, c}
+V -> {S, X, X_a, X_b, Y, Y_0, Y_1, Y_2, Y_3}
+--- Producciones ---
+S -> X_aY_1 | X_aY_2 | X_aY_3 | X_aX_b
+X -> X_aY | X_bY | a | b
+Y -> X_aY | X_bY | a | b | c
+X_a -> a
+X_b -> b
+Y_0 -> XX_b
+Y_1 -> Y_0X
+Y_2 -> X_bX
+Y_3 -> XX_b

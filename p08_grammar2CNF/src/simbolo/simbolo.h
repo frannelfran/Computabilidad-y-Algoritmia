@@ -1,0 +1,53 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 2º
+// Práctica x:
+// Autor: Franco Alla
+// Correo: alu0101571669@ull.edu.es
+// Fecha: 05/11/2025
+// Archivo: simbolo.h
+// Descripción: Implementación de la clase Simbolo
+
+#ifndef SIMBOLO_H
+#define SIMBOLO_H
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Simbolo {
+  public:
+    // Constructor y destructor
+    Simbolo() = default;
+    Simbolo(const string& nombre, bool esterminal = false) : nombre_(nombre), esTerminal_(esterminal) {};
+    ~Simbolo() = default;
+
+    // Getters
+    inline string getNombre() const { return nombre_; }
+    inline bool esTerminal() const { return esTerminal_; }
+
+    // Setters
+    inline void setTerminal() { esTerminal_ = true; }
+
+    // Sobrecarga de operadores
+    inline friend ostream& operator<<(ostream& os, const Simbolo& simbolo) {
+      os << simbolo.nombre_;
+      return os;
+    }
+
+    inline bool operator<(const Simbolo& otro) const {
+      return nombre_ < otro.nombre_;
+    }
+
+    inline bool operator==(const Simbolo& otro) const {
+      return nombre_ == otro.nombre_;
+    }
+  private:
+    string nombre_;
+    bool esTerminal_;
+};
+
+#endif // SIMBOLO_H
