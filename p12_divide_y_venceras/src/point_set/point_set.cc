@@ -100,7 +100,7 @@ namespace CyA
     // Dibujar todos los puntos
     for (size_t i = 0; i < size(); ++i) {
       os << "  p" << i << " [label=\"\", pos=\"" << (*this)[i].first
-         << "," << (*this)[i].second << "!\"];\n";
+      << "," << (*this)[i].second << "!\"];\n";
     }
     os << "}\n";
   }
