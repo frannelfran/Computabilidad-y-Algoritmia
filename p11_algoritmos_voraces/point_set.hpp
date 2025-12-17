@@ -36,7 +36,8 @@ namespace EMST {
     const double get_cost() const; // Obtener el costo
     void write_dot_file(const std::string& filename) const; // Generar el archivo .dot
     const double promedio_aristas() const; // Devolver el costo promedio de las aristas que forman el árbol
-    
+    const int bucles() const; // Devolver el número de bucles evitados
+
     private:
     void compute_arc_vector(CyA::arc_vector& av) const; // Calcular un vector de arcos a partir del conjunto de puntos
     void find_incident_subtrees(const sub_tree_vector& st, const CyA::arc& a, int& i, int& j) const; // Encontrar sub-árboles incidentes a un arco

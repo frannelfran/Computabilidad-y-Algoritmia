@@ -69,6 +69,9 @@ int main(int argc, char* argv[]) {
   const double costo_promedio = pointSet.promedio_aristas();
   cout << "Costo promedio de las aristas: " << costo_promedio << endl;
 
+  // Número de bucles evitados
+  cout << "Número de bucles evitados: " << pointSet.bucles() << endl;
+
   // Generar el archivo .dot si el usuario lo solicita
   if (generateDot) {
     pointSet.write_dot_file("emst_tree.dot");

@@ -230,4 +230,41 @@ namespace EMST {
     int num_arcos = emst_tree.size();
     return coste_promedio / static_cast<double>(num_arcos);
   }
+
+  /**
+   * @brief Devolver el número de veces que no se puede incluir una arista porque daría un bucle
+   * @return Número de bucles
+  */
+
+  const int point_set::bucles() const {
+    int contador_bucles = 0;
+
+    CyA::arc_vector av;
+    compute_arc_vector(av);
+
+    sub_tree_vector st;
+
+    // Inicializo cada punto como un sub-árbol independiente
+    for (const CyA::point& p : *this) {
+      sub_tree s;
+      s.add_point(p);
+
+      st.push_back(s);
+    }
+
+    // Recorro el vector de arcos ponderados
+    for (const CyA::weigthed_arc& a : av) {
+      int i, j;
+      find_incident_subtrees(st, a.second, i, j);
+
+      // Si i y j son iguales, significa que añadir este arco crearía un bucle
+      if (i != j) {
+        merge_subtrees(st, a.second, i, j);
+      } else { // Se evita el bucle
+        contador_bucles++;
+      }
+    }
+
+    return contador_bucles;
+  }
 }
