@@ -46,6 +46,9 @@ int main(int argc, char* argv[]) {
   std::cout << "Envoltura Convexa:" << std::endl;
   ps.WriteHull(std::cout);
 
+  // Mostrar número de llamadas recursivas
+  std::cout << "\nNúmero de llamadas recursivas: " << ps.get_recurive_calls() << std::endl;
+
   // Generación del fichero .dot
   if (dot_mode) {
     std::ofstream dot_file("point_set.dot");

@@ -4,18 +4,13 @@
 namespace CyA
 {
 
-  PointSet::PointSet(const std::vector<point> &points) : point_vector(points) {}
+  PointSet::PointSet(const std::vector<point> &points) : point_vector(points), recursive_calls_(0) {}
 
   PointSet::~PointSet() {}
 
-  void PointSet::QuickHull()
-  {
+  void PointSet::QuickHull() {
     hull_.clear();
-    if (size() < 3) {
-      hull_ = *this;
-      return;
-    }
-
+  
     point min_x_point, max_x_point;
     XBounds(min_x_point, max_x_point);
 
@@ -28,8 +23,8 @@ namespace CyA
     hull_.erase(std::unique(hull_.begin(), hull_.end()), hull_.end());
   }
 
-  void PointSet::QuickHull(const line &l, int side)
-  {
+  void PointSet::QuickHull(const line &l, int side) {
+    recursive_calls_++;
     point farthest;
     if (FarthestPoint(l, side, farthest)) {
       // El punto más lejano forma un triángulo, recursión en las nuevas fronteras

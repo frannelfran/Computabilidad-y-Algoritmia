@@ -32,6 +32,7 @@ namespace CyA {
 
       const point_vector &get_hull() const { return hull_; }
       const point_vector &get_points() const { return *this; }
+      inline int get_recurive_calls() { return recursive_calls_; }
 
     private:
       point_vector hull_;
@@ -42,6 +43,7 @@ namespace CyA {
       void XBounds(point &min_x, point &max_x) const;
       double Point2Line(const line &l, const point &p) const;
       bool FarthestPoint(const line &l, int side, point &farthest) const;
+      int recursive_calls_;
   };
 } // namespace CyA
 
